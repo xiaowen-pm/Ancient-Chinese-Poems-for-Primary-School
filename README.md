@@ -4,6 +4,14 @@
 
 A free reader for the classical poems Chinese primary students memorize. Horizontal lines, pinyin, and illustrated scenes. Four poems are readable today. 《江南》plays real audio. The rest of the 75 + 80 list can be searched by title, but the full text is not in yet.
 
+## 素材 / Assets
+
+`assets/` 目录存放整理用的原始素材：75 首古诗的图像版（79 张 JPG）、PDF 版（76 页）、10 个版本的朗读音频和 34 个跟读视频。
+
+- 图片、PDF、文档体积小（约 58 MB），直接提交在 [assets/](assets/)，一首一页，可打印。
+- 音频（980 MB）、视频（1.64 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。
+- 清单、体积和版权说明见 [assets/README.md](assets/README.md)。
+
 ## 本地运行 / Run locally
 
 需要 Node.js 22 或更新。不要直接双击打开 `index.html`，朗读和模块脚本需要一个本地服务器。

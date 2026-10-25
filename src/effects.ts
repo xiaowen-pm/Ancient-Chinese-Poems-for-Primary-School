@@ -24,13 +24,16 @@ export function startEffects(canvas: HTMLCanvasElement, getEffect: () => EffectN
     const width = canvas.width;
     const height = canvas.height;
     const effect = getEffect();
+    const plain = canvas.dataset.plain === "1";
     context.clearRect(0, 0, width, height);
     for (const point of points) {
       if (effect === "glow") {
         point.y -= 0.0004 * point.v;
         if (point.y < 0) point.y = 1;
         const alpha = 0.5 + 0.5 * Math.sin(time / 600 + point.r);
-        context.fillStyle = `rgba(255,240,200,${alpha * 0.7})`;
+        context.fillStyle = plain
+          ? `rgba(168,122,42,${alpha * 0.55})`
+          : `rgba(255,240,200,${alpha * 0.7})`;
         context.beginPath();
         context.arc(point.x * width, point.y * height, 2 * point.s, 0, Math.PI * 2);
         context.fill();
@@ -44,14 +47,22 @@ export function startEffects(canvas: HTMLCanvasElement, getEffect: () => EffectN
         context.save();
         context.translate(point.x * width, point.y * height);
         context.rotate((time / 1000) * point.v + point.r);
-        context.fillStyle = effect === "petal" ? "rgba(255,215,225,.85)" : "rgba(200,50,30,.85)";
+        context.fillStyle =
+          effect === "petal"
+            ? plain
+              ? "rgba(196,92,112,.8)"
+              : "rgba(255,215,225,.85)"
+            : plain
+              ? "rgba(150,62,36,.8)"
+              : "rgba(200,50,30,.85)";
         context.beginPath();
         context.ellipse(0, 0, 7 * point.s, 3.5 * point.s, 0, 0, Math.PI * 2);
         context.fill();
         context.restore();
       } else {
         const radius = ((time / 40 + point.r * 80) % 90) * point.s;
-        context.strokeStyle = `rgba(255,255,255,${0.45 * (1 - radius / (90 * point.s))})`;
+        const ink = plain ? "70,96,92" : "255,255,255";
+        context.strokeStyle = `rgba(${ink},${0.45 * (1 - radius / (90 * point.s))})`;
         context.beginPath();
         context.ellipse(point.x * width, point.y * height, radius, radius * 0.35, 0, 0, Math.PI * 2);
         context.stroke();

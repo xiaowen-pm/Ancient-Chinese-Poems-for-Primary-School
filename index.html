@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>必背诗笺 · 小学生必背古诗词</title>
-    <meta name="description" content="小学生必背古诗词 75 + 80 首。横排、拼音、画卷和朗读，免费读。眼下先开放四首，《江南》可以跟读。" />
+    <meta name="description" content="小学生必背古诗词。横排、一句一行、拼音。图文版正文已经可以读，《江南》可以跟读。不做视频。" />
     <meta name="theme-color" content="#efe8da" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
   </head>
@@ -40,6 +40,7 @@
       <section class="stage" id="stage">
         <div class="scene" id="scene">
           <img id="scene-img" alt="" />
+          <div class="scene-plate" id="scene-plate" hidden></div>
           <canvas id="fx" aria-hidden="true"></canvas>
           <div id="hots"></div>
           <button class="quiet-exit" id="quiet-exit" type="button">返回伴读</button>
@@ -67,6 +68,7 @@
             </svg>
             免费领取打印版 PDF
           </button>
+          <a class="sheetlink" id="sheet-link" hidden target="_blank" rel="noopener noreferrer">看图文打印稿</a>
           <div class="stamp" id="stamp">已背诵<br />诗小仙</div>
         </div>
       </section>

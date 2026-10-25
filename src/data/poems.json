@@ -38,14 +38,33 @@
       }
     ],
     "hotspots": [
-      { "x": 22, "y": 18, "label": "皎洁明月", "line": 0 },
-      { "x": 62, "y": 82, "label": "满地银霜", "line": 1 },
-      { "x": 70, "y": 42, "label": "望月诗人", "line": 2 }
+      {
+        "x": 22,
+        "y": 18,
+        "label": "皎洁明月",
+        "line": 0
+      },
+      {
+        "x": 62,
+        "y": 82,
+        "label": "满地银霜",
+        "line": 1
+      },
+      {
+        "x": 70,
+        "y": 42,
+        "label": "望月诗人",
+        "line": 2
+      }
     ],
     "story": "我是李白。那年我二十六岁，一个人离家很远很远。秋天的晚上睡不着，月光照进屋里，白得像霜。我抬头看月亮，想起家乡的月亮也是这样圆……",
     "sceneQuiz": {
       "question": "画面里地上白白亮亮的，诗人以为是什么？",
-      "options": ["霜", "雪", "水"],
+      "options": [
+        "霜",
+        "雪",
+        "水"
+      ],
       "answer": 0
     }
   },
@@ -88,14 +107,33 @@
       }
     ],
     "hotspots": [
-      { "x": 48, "y": 34, "label": "枝头啼鸟", "line": 1 },
-      { "x": 58, "y": 84, "label": "满阶落花", "line": 3 },
-      { "x": 14, "y": 55, "label": "推窗晨起", "line": 0 }
+      {
+        "x": 48,
+        "y": 34,
+        "label": "枝头啼鸟",
+        "line": 1
+      },
+      {
+        "x": 58,
+        "y": 84,
+        "label": "满阶落花",
+        "line": 3
+      },
+      {
+        "x": 14,
+        "y": 55,
+        "label": "推窗晨起",
+        "line": 0
+      }
     ],
     "story": "我是孟浩然，住在山里。那天早上我睡了个大懒觉，一睁眼窗外全是鸟叫声。我想起昨夜下了一场春雨，赶紧推开门——台阶上落满了花瓣。",
     "sceneQuiz": {
       "question": "画面里枝头唱歌的是什么？",
-      "options": ["啼鸟", "蝴蝶", "蜜蜂"],
+      "options": [
+        "啼鸟",
+        "蝴蝶",
+        "蜜蜂"
+      ],
       "answer": 0
     }
   },
@@ -138,14 +176,33 @@
       }
     ],
     "hotspots": [
-      { "x": 50, "y": 62, "label": "蜿蜒石径", "line": 0 },
-      { "x": 46, "y": 30, "label": "云中人家", "line": 1 },
-      { "x": 78, "y": 40, "label": "霜叶红枫", "line": 3 }
+      {
+        "x": 50,
+        "y": 62,
+        "label": "蜿蜒石径",
+        "line": 0
+      },
+      {
+        "x": 46,
+        "y": 30,
+        "label": "云中人家",
+        "line": 1
+      },
+      {
+        "x": 78,
+        "y": 40,
+        "label": "霜叶红枫",
+        "line": 3
+      }
     ],
     "story": "我是杜牧。那天我坐着马车上山，路弯弯的。太阳快落山了，满山枫叶红得像火。我忍不住喊车夫：「停一停！」就坐在那儿看了好久好久。",
     "sceneQuiz": {
       "question": "诗人为什么停下马车？",
-      "options": ["喜爱枫林", "车坏了", "迷路了"],
+      "options": [
+        "喜爱枫林",
+        "车坏了",
+        "迷路了"
+      ],
       "answer": 0
     }
   },
@@ -213,14 +270,33 @@
       }
     ],
     "hotspots": [
-      { "x": 22, "y": 30, "label": "田田莲叶", "line": 1 },
-      { "x": 62, "y": 66, "label": "嬉戏锦鲤", "line": 2 },
-      { "x": 80, "y": 18, "label": "采莲小舟", "line": 0 }
+      {
+        "x": 22,
+        "y": 30,
+        "label": "田田莲叶",
+        "line": 1
+      },
+      {
+        "x": 62,
+        "y": 66,
+        "label": "嬉戏锦鲤",
+        "line": 2
+      },
+      {
+        "x": 80,
+        "y": 18,
+        "label": "采莲小舟",
+        "line": 0
+      }
     ],
     "story": "我们是江南采莲的姑娘。夏天划着小船进荷塘，荷叶比伞还大，鱼儿就在叶子底下钻来钻去，东边一下、西边一下，我们一边采莲一边唱歌。",
     "sceneQuiz": {
       "question": "小鱼在哪里做游戏？",
-      "options": ["莲叶间", "石头下", "天空中"],
+      "options": [
+        "莲叶间",
+        "石头下",
+        "天空中"
+      ],
       "answer": 0
     },
     "translation": "江南又到了适合采莲的季节，莲叶浮出水面，挨挨挤挤，一片连着一片，多么茂盛啊！欢快的小鱼在莲叶中间游来游去。一会儿游到莲叶东边，一会儿游到西边，一会儿游到南边，一会儿又游到北边。",
@@ -233,24 +309,46 @@
     "quizzes": [
       {
         "question": "「莲叶何田田」中「何」的意思是？",
-        "options": ["多么", "什么", "为什么"],
+        "options": [
+          "多么",
+          "什么",
+          "为什么"
+        ],
         "answer": 0
       },
       {
         "question": "「江南可采莲」中「可」的意思是？",
-        "options": ["适宜、正好", "可以吗", "可爱"],
+        "options": [
+          "适宜、正好",
+          "可以吗",
+          "可爱"
+        ],
         "answer": 0
       },
       {
         "question": "诗中写小鱼游向了哪几个方向？",
-        "options": ["东西南北", "上下左右", "前后"],
+        "options": [
+          "东西南北",
+          "上下左右",
+          "前后"
+        ],
         "answer": 0
       }
     ],
     "audio": [
-      { "label": "跟读", "src": "audio/jiangnan.mp3", "syncLines": true },
-      { "label": "朗读解析", "src": "audio/jiangnan-jiexi.mp3" },
-      { "label": "朗读赏析", "src": "audio/jiangnan-shangxi.mp3" }
+      {
+        "label": "跟读",
+        "src": "audio/jiangnan.mp3",
+        "syncLines": true
+      },
+      {
+        "label": "朗读解析",
+        "src": "audio/jiangnan-jiexi.mp3"
+      },
+      {
+        "label": "朗读赏析",
+        "src": "audio/jiangnan-shangxi.mp3"
+      }
     ],
     "sources": [
       {
@@ -272,6 +370,3744 @@
         "name": "古诗学习网",
         "url": "https://www.gushixuexi.com/doc/771.html",
         "used": "注释、译文"
+      }
+    ]
+  },
+  {
+    "id": "yong-e",
+    "title": "咏鹅",
+    "author": "骆宾王",
+    "dynasty": "唐",
+    "titlePinyin": "yǒng é",
+    "authorPinyin": "luò bīn wáng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 1 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "1、《咏鹅》.jpg",
+    "lines": [
+      {
+        "text": "鹅，鹅，鹅，",
+        "pinyin": "é ， é ， é ，",
+        "key": "鹅",
+        "gloss": "诗人一连喊了三声**鹅**，像在招呼它们。"
+      },
+      {
+        "text": "曲项向天歌。",
+        "pinyin": "qū xiàng xiàng tiān gē 。",
+        "key": "曲项",
+        "gloss": "白鹅**弯着脖子**，抬头对天唱歌。"
+      },
+      {
+        "text": "白毛浮绿水，",
+        "pinyin": "bái máo fú lǜ shuǐ ，",
+        "key": "白毛",
+        "gloss": "**白白的羽毛**浮在绿水上。"
+      },
+      {
+        "text": "红掌拨清波。",
+        "pinyin": "hóng zhǎng bō qīng bō 。",
+        "key": "红掌",
+        "gloss": "**红脚掌**一拨，水面起了清清的波纹。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "鹅呀，鹅呀！它们弯着脖子朝天唱。白羽毛漂在碧绿的水上，红脚掌拨开一圈圈清波。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/1%E3%80%81%E3%80%8A%E5%92%8F%E9%B9%85%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "yong-liu",
+    "title": "咏柳",
+    "author": "贺知章",
+    "dynasty": "唐",
+    "titlePinyin": "yǒng liǔ",
+    "authorPinyin": "hè zhī zhāng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 2 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "2、《咏柳》.jpg",
+    "lines": [
+      {
+        "text": "碧玉妆成一树高，",
+        "pinyin": "bì yù zhuāng chéng yī shù gāo ，",
+        "key": "碧玉",
+        "gloss": "高高的柳树，像用**碧玉**打扮过。"
+      },
+      {
+        "text": "万条垂下绿丝绦。",
+        "pinyin": "wàn tiáo chuí xià lǜ sī tāo 。",
+        "key": "绿丝绦",
+        "gloss": "千万根柳条垂下来，像绿色的**丝带**。"
+      },
+      {
+        "text": "不知细叶谁裁出，",
+        "pinyin": "bù zhī xì yè shuí cái chū ，",
+        "key": "裁",
+        "gloss": "细细的叶子这么齐，是谁**裁**出来的？"
+      },
+      {
+        "text": "二月春风似剪刀。",
+        "pinyin": "èr yuè chūn fēng sì jiǎn dāo 。",
+        "key": "剪刀",
+        "gloss": "原来二月的**春风**，就像一把剪刀。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "一棵高高的柳树像碧玉妆扮过，垂下无数绿丝带。细叶这么整齐，大概是二月春风这把剪刀裁的吧。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/2%E3%80%81%E3%80%8A%E5%92%8F%E6%9F%B3%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "deng-guanquelou",
+    "title": "登鹳雀楼",
+    "author": "王之涣",
+    "dynasty": "唐",
+    "titlePinyin": "dēng guàn què lóu",
+    "authorPinyin": "wáng zhī huàn",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 3 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "3、《登鹳雀楼》.jpg",
+    "lines": [
+      {
+        "text": "白日依山尽，",
+        "pinyin": "bái rì yī shān jìn ，",
+        "key": "依山",
+        "gloss": "太阳靠着远山，慢慢**落下去**。"
+      },
+      {
+        "text": "黄河入海流。",
+        "pinyin": "huáng hé rù hǎi liú 。",
+        "key": "入海",
+        "gloss": "黄河奔腾着，流向**大海**。"
+      },
+      {
+        "text": "欲穷千里目，",
+        "pinyin": "yù qióng qiān lǐ mù ，",
+        "key": "千里",
+        "gloss": "想把**千里**远的地方都看完，"
+      },
+      {
+        "text": "更上一层楼。",
+        "pinyin": "gèng shàng yī céng lóu 。",
+        "key": "一层楼",
+        "gloss": "就要再登**高一层**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "太阳挨着山落下，黄河滚滚流入海。想看得更远，就得再往上走一层楼。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/3%E3%80%81%E3%80%8A%E7%99%BB%E9%B9%B3%E9%9B%80%E6%A5%BC%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "luchai",
+    "title": "鹿柴",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "lù zhài",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 5 首 · 柴读 zhài",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "5、《鹿柴》.jpg",
+    "lines": [
+      {
+        "text": "空山不见人，",
+        "pinyin": "kōng shān bù jiàn rén ，",
+        "key": "空山",
+        "gloss": "**空空的山**里，看不见一个人。"
+      },
+      {
+        "text": "但闻人语响。",
+        "pinyin": "dàn wén rén yǔ xiǎng 。",
+        "key": "人语",
+        "gloss": "却听见有人**说话**的声音。"
+      },
+      {
+        "text": "返景入深林，",
+        "pinyin": "fǎn yǐng rù shēn lín ，",
+        "key": "返景",
+        "gloss": "落日的光**返照**进深深的树林。"
+      },
+      {
+        "text": "复照青苔上。",
+        "pinyin": "fù zhào qīng tái shàng 。",
+        "key": "青苔",
+        "gloss": "又映在湿湿的**青苔**上。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "山里静得看不见人，却听得到说话声。夕阳的光斜进树林，又照在青苔上。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/5%E3%80%81%E3%80%8A%E9%B9%BF%E6%9F%B4%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "song-yuaner",
+    "title": "送元二使安西",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "sòng yuán èr shǐ ān xī",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 6 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "6、《送元二使安西》.jpg",
+    "lines": [
+      {
+        "text": "渭城朝雨浥轻尘，",
+        "pinyin": "wèi chéng zhāo yǔ yì qīng chén ，",
+        "key": "朝雨",
+        "gloss": "早晨的**雨**刚沾湿渭城的尘土。"
+      },
+      {
+        "text": "客舍青青柳色新。",
+        "pinyin": "kè shě qīng qīng liǔ sè xīn 。",
+        "key": "柳色",
+        "gloss": "旅店旁的**柳色**被洗得又新又绿。"
+      },
+      {
+        "text": "劝君更尽一杯酒，",
+        "pinyin": "quàn jūn gèng jìn yī bēi jiǔ ，",
+        "key": "一杯酒",
+        "gloss": "请你再喝**这一杯**吧。"
+      },
+      {
+        "text": "西出阳关无故人。",
+        "pinyin": "xī chū yáng guān wú gù rén 。",
+        "key": "阳关",
+        "gloss": "向西出了**阳关**，就难遇见老朋友了。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "清晨小雨打湿了渭城的尘土，客舍边的柳树格外青。再干一杯吧，出了阳关就难碰到故人了。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/6%E3%80%81%E3%80%8A%E9%80%81%E5%85%83%E4%BA%8C%E4%BD%BF%E5%AE%89%E8%A5%BF%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ],
+    "aliases": [
+      "渭城曲"
+    ]
+  },
+  {
+    "id": "jiuyue",
+    "title": "九月九日忆山东兄弟",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "jiǔ yuè jiǔ rì yì shān dōng xiōng dì",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 7 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "7、《九月九日忆山东兄弟》.jpg",
+    "lines": [
+      {
+        "text": "独在异乡为异客，",
+        "pinyin": "dú zài yì xiāng wéi yì kè ，",
+        "key": "异乡",
+        "gloss": "一个人在**外乡**做客，"
+      },
+      {
+        "text": "每逢佳节倍思亲。",
+        "pinyin": "měi féng jiā jié bèi sī qīn 。",
+        "key": "倍思亲",
+        "gloss": "每到节日就**加倍想念**亲人。"
+      },
+      {
+        "text": "遥知兄弟登高处，",
+        "pinyin": "yáo zhī xiōng dì dēng gāo chù ，",
+        "key": "登高",
+        "gloss": "远远想着兄弟们正在**登高**。"
+      },
+      {
+        "text": "遍插茱萸少一人。",
+        "pinyin": "biàn chā zhū yú shǎo yī rén 。",
+        "key": "少一人",
+        "gloss": "人人插着茱萸，却**少了我**一个。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "独自在外乡过节，就越发想念家里人。想来兄弟们正在登高，每个人都插着茱萸，只少了我。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/7%E3%80%81%E3%80%8A%E4%B9%9D%E6%9C%88%E4%B9%9D%E6%97%A5%E5%BF%86%E5%B1%B1%E4%B8%9C%E5%85%84%E5%BC%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "wang-lushan",
+    "title": "望庐山瀑布",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "wàng lú shān pù bù",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 9 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "9、《望庐山瀑布》.jpg",
+    "lines": [
+      {
+        "text": "日照香炉生紫烟，",
+        "pinyin": "rì zhào xiāng lú shēng zǐ yān ，",
+        "key": "紫烟",
+        "gloss": "太阳照着香炉峰，升起**紫色的烟雾**。"
+      },
+      {
+        "text": "遥看瀑布挂前川，",
+        "pinyin": "yáo kàn pù bù guà qián chuān ，",
+        "key": "挂",
+        "gloss": "远远看去，瀑布像**挂**在山前。"
+      },
+      {
+        "text": "飞流直下三千尺，",
+        "pinyin": "fēi liú zhí xià sān qiān chǐ ，",
+        "key": "三千尺",
+        "gloss": "水从高处**直直冲下**，好像有三千尺。"
+      },
+      {
+        "text": "疑是银河落九天。",
+        "pinyin": "yí shì yín hé luò jiǔ tiān 。",
+        "key": "银河",
+        "gloss": "让人疑心是**银河**从天上掉下来。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "阳光照在香炉峰上，腾起紫烟。瀑布像白布挂在山前，飞泻而下，简直像银河从天上落下来。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/9%E3%80%81%E3%80%8A%E6%9C%9B%E5%BA%90%E5%B1%B1%E7%80%91%E5%B8%83%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "zeng-wang-lun",
+    "title": "赠汪伦",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "zèng wāng lún",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 10 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "10 、《赠汪伦》.jpg",
+    "lines": [
+      {
+        "text": "李白乘舟将欲行，",
+        "pinyin": "lǐ bái chéng zhōu jiāng yù xíng ，",
+        "key": "乘舟",
+        "gloss": "李白**坐上小船**，正要离开。"
+      },
+      {
+        "text": "忽闻岸上踏歌声。",
+        "pinyin": "hū wén àn shàng tà gē shēng 。",
+        "key": "踏歌",
+        "gloss": "忽然听见岸上有人**踏着节拍**唱歌。"
+      },
+      {
+        "text": "桃花潭水深千尺，",
+        "pinyin": "táo huā tán shuǐ shēn qiān chǐ ，",
+        "key": "千尺",
+        "gloss": "桃花潭的水就算深到**千尺**，"
+      },
+      {
+        "text": "不及汪伦送我情。",
+        "pinyin": "bù jí wāng lún sòng wǒ qíng 。",
+        "key": "送我情",
+        "gloss": "也比不上**汪伦送我**的情谊。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "李白刚要乘船出发，忽然听见岸上踏歌相送。桃花潭水即便有千尺深，也没有汪伦的情谊深。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/10%20%E3%80%81%E3%80%8A%E8%B5%A0%E6%B1%AA%E4%BC%A6%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "huanghelou-song",
+    "title": "黄鹤楼送孟浩然之广陵",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "huáng hè lóu sòng mèng hào rán zhī guǎng líng",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 11 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "11 、《黄鹤楼送孟浩然之广陵》.jpg",
+    "lines": [
+      {
+        "text": "故人西辞黄鹤楼，",
+        "pinyin": "gù rén xī cí huáng hè lóu ，",
+        "key": "西辞",
+        "gloss": "老朋友在黄鹤楼向西**告别**。"
+      },
+      {
+        "text": "烟花三月下扬州。",
+        "pinyin": "yān huā sān yuè xià yáng zhōu 。",
+        "key": "烟花",
+        "gloss": "在**柳絮如烟、百花盛开**的三月去扬州。"
+      },
+      {
+        "text": "孤帆远影碧空尽，",
+        "pinyin": "gū fān yuǎn yǐng bì kōng jìn ，",
+        "key": "孤帆",
+        "gloss": "一片**孤帆**越走越远，消失在蓝天边。"
+      },
+      {
+        "text": "唯见长江天际流。",
+        "pinyin": "wéi jiàn cháng jiāng tiān jì liú 。",
+        "key": "天际",
+        "gloss": "只看见长江向**天边**流去。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "老朋友从黄鹤楼告别，在花开如烟的三月顺流去扬州。船影渐渐没入碧空，只剩长江流向天边。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/11%20%E3%80%81%E3%80%8A%E9%BB%84%E9%B9%A4%E6%A5%BC%E9%80%81%E5%AD%9F%E6%B5%A9%E7%84%B6%E4%B9%8B%E5%B9%BF%E9%99%B5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ],
+    "aliases": [
+      "送孟浩然之广陵"
+    ]
+  },
+  {
+    "id": "zaofa",
+    "title": "早发白帝城",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "zǎo fā bái dì chéng",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 12 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "12 、《早发白帝城》.jpg",
+    "lines": [
+      {
+        "text": "朝辞白帝彩云间，",
+        "pinyin": "zhāo cí bái dì cǎi yún jiān ，",
+        "key": "彩云",
+        "gloss": "清晨告别**彩云环绕**的白帝城。"
+      },
+      {
+        "text": "千里江陵一日还。",
+        "pinyin": "qiān lǐ jiāng líng yī rì huán 。",
+        "key": "一日",
+        "gloss": "千里外的江陵，**一天**就能到。"
+      },
+      {
+        "text": "两岸猿声啼不住，",
+        "pinyin": "liǎng àn yuán shēng tí bù zhù ，",
+        "key": "猿声",
+        "gloss": "两岸**猿猴**的叫声一声接一声。"
+      },
+      {
+        "text": "轻舟已过万重山。",
+        "pinyin": "qīng zhōu yǐ guò wàn chóng shān 。",
+        "key": "轻舟",
+        "gloss": "轻快的**小船**已经穿过万重青山。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "早晨离开彩云里的白帝城，一天就能回到千里外的江陵。两岸猿声还没停，小船已经飞过无数山。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/12%20%E3%80%81%E3%80%8A%E6%97%A9%E5%8F%91%E7%99%BD%E5%B8%9D%E5%9F%8E%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "feng",
+    "title": "风",
+    "author": "李峤",
+    "dynasty": "唐",
+    "titlePinyin": "fēng",
+    "authorPinyin": "lǐ qiáo",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 14 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "14 、《风》.jpg",
+    "lines": [
+      {
+        "text": "解落三秋叶，",
+        "pinyin": "jiě luò sān qiū yè ，",
+        "key": "解落",
+        "gloss": "风能**吹落**秋天的叶子。"
+      },
+      {
+        "text": "能开二月花。",
+        "pinyin": "néng kāi èr yuè huā 。",
+        "key": "二月花",
+        "gloss": "也能吹开**早春的花**。"
+      },
+      {
+        "text": "过江千尺浪，",
+        "pinyin": "guò jiāng qiān chǐ làng ，",
+        "key": "千尺浪",
+        "gloss": "刮过江面，能掀起**千尺高的浪**。"
+      },
+      {
+        "text": "入竹万竿斜。",
+        "pinyin": "rù zhú wàn gān xié 。",
+        "key": "万竿",
+        "gloss": "钻进竹林，**万根竹子**都歪了。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "风能吹落秋叶，也能吹开春花。它过江就卷起巨浪，进了竹林就把竹子吹得倾斜。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/14%20%E3%80%81%E3%80%8A%E9%A3%8E%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chang-ge-xing",
+    "title": "长歌行",
+    "author": "汉乐府",
+    "dynasty": "汉",
+    "titlePinyin": "cháng gē xíng",
+    "authorPinyin": "hàn yuè fǔ",
+    "dynastyPinyin": "hàn",
+    "tag": "图文第 15 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "15 、《长歌行》.jpg",
+    "lines": [
+      {
+        "text": "青青园中葵，",
+        "pinyin": "qīng qīng yuán zhōng kuí ，",
+        "key": "园中葵",
+        "gloss": "园子里的**葵菜**绿油油的。"
+      },
+      {
+        "text": "朝露待日晞。",
+        "pinyin": "zhāo lù dài rì xī 。",
+        "key": "朝露",
+        "gloss": "叶子上的**露珠**，等太阳一晒就干了。"
+      },
+      {
+        "text": "阳春布德泽，",
+        "pinyin": "yáng chūn bù dé zé ，",
+        "key": "阳春",
+        "gloss": "**春天**把温暖洒满大地。"
+      },
+      {
+        "text": "万物生光辉。",
+        "pinyin": "wàn wù shēng guāng huī 。",
+        "key": "光辉",
+        "gloss": "万物都亮亮地**生长**。"
+      },
+      {
+        "text": "常恐秋节至，",
+        "pinyin": "cháng kǒng qiū jié zhì ，",
+        "key": "秋节",
+        "gloss": "常常担心**秋天**会来。"
+      },
+      {
+        "text": "焜黄华叶衰。",
+        "pinyin": "kūn huáng huā yè shuāi 。",
+        "key": "华叶",
+        "gloss": "花和叶子会**变黄凋落**。"
+      },
+      {
+        "text": "百川东到海，",
+        "pinyin": "bǎi chuān dōng dào hǎi ，",
+        "key": "东到海",
+        "gloss": "条条江河向东**流进大海**。"
+      },
+      {
+        "text": "何时复西归？",
+        "pinyin": "hé shí fù xī guī ？",
+        "key": "西归",
+        "gloss": "什么时候能再**流回西边**呢？"
+      },
+      {
+        "text": "少壮不努力，",
+        "pinyin": "shào zhuàng bù nǔ lì ，",
+        "key": "少壮",
+        "gloss": "**年轻**时不抓紧用功，"
+      },
+      {
+        "text": "老大徒伤悲。",
+        "pinyin": "lǎo dà tú shāng bēi 。",
+        "key": "伤悲",
+        "gloss": "老了就只能白白**伤心**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "园里的葵菜青青的，朝露太阳一照就干。春天让万物发光，可秋天一到花叶就黄了。江河只向东流，不会倒回来。年轻时不努力，老了就只剩后悔。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/15%20%E3%80%81%E3%80%8A%E9%95%BF%E6%AD%8C%E8%A1%8C%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chi-le-ge",
+    "title": "敕勒歌",
+    "author": "北朝民歌",
+    "dynasty": "北朝",
+    "titlePinyin": "chì lè gē",
+    "authorPinyin": "běi cháo mín gē",
+    "dynastyPinyin": "běi cháo",
+    "tag": "图文第 16 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "16 、《敕勒歌》.jpg",
+    "lines": [
+      {
+        "text": "敕勒川，",
+        "pinyin": "chì lè chuān ，",
+        "key": "敕勒",
+        "gloss": "这是**敕勒**族的平原。"
+      },
+      {
+        "text": "阴山下。",
+        "pinyin": "yīn shān xià 。",
+        "key": "阴山",
+        "gloss": "它躺在**阴山**脚下。"
+      },
+      {
+        "text": "天似穹庐，",
+        "pinyin": "tiān sì qióng lú ，",
+        "key": "穹庐",
+        "gloss": "天像一座圆圆的**大帐篷**。"
+      },
+      {
+        "text": "笼盖四野。",
+        "pinyin": "lǒng gài sì yě 。",
+        "key": "四野",
+        "gloss": "把**四面的原野**都罩住。"
+      },
+      {
+        "text": "天苍苍，",
+        "pinyin": "tiān cāng cāng ，",
+        "key": "苍苍",
+        "gloss": "天色**青苍苍**的。"
+      },
+      {
+        "text": "野茫茫，",
+        "pinyin": "yě máng máng ，",
+        "key": "茫茫",
+        "gloss": "草原**望不到边**。"
+      },
+      {
+        "text": "风吹草低见牛羊。",
+        "pinyin": "fēng chuī cǎo dī xiàn niú yáng 。",
+        "key": "见牛羊",
+        "gloss": "风把草吹倒，才露出成群的**牛羊**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "敕勒川在阴山下面。天空像巨大的帐篷罩着草原，天苍苍，野茫茫，风一吹，草低下去，就看见牛羊。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/16%20%E3%80%81%E3%80%8A%E6%95%95%E5%8B%92%E6%AD%8C%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "hui-xiang",
+    "title": "回乡偶书",
+    "author": "贺知章",
+    "dynasty": "唐",
+    "titlePinyin": "huí xiāng ǒu shū",
+    "authorPinyin": "hè zhī zhāng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 17 首 · 其一",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "17 、《回乡偶书》.jpg",
+    "lines": [
+      {
+        "text": "少小离家老大回，",
+        "pinyin": "shào xiǎo lí jiā lǎo dà huí ，",
+        "key": "老大回",
+        "gloss": "**小时候**离开家，老了才回来。"
+      },
+      {
+        "text": "乡音无改鬓毛衰。",
+        "pinyin": "xiāng yīn wú gǎi bìn máo cuī 。",
+        "key": "鬓毛",
+        "gloss": "口音没变，**鬓角的头发**却白了。"
+      },
+      {
+        "text": "儿童相见不相识，",
+        "pinyin": "ér tóng xiāng jiàn bù xiāng shí ，",
+        "key": "不相识",
+        "gloss": "孩子们看见我，**认不出来**。"
+      },
+      {
+        "text": "笑问客从何处来。",
+        "pinyin": "xiào wèn kè cóng hé chù lái 。",
+        "key": "客",
+        "gloss": "还笑着问：这位**客人**从哪儿来？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "年轻时离乡，老了才回来。乡音还在，头发却白了。孩子们不认识我，笑着问客人是从哪里来的。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/17%20%E3%80%81%E3%80%8A%E5%9B%9E%E4%B9%A1%E5%81%B6%E4%B9%A6%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "gulang",
+    "title": "古朗月行",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "gǔ lǎng yuè xíng",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 18 首 · 节选",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "18 、《古朗月行》.jpg",
+    "lines": [
+      {
+        "text": "小时不识月，",
+        "pinyin": "xiǎo shí bù shí yuè ，",
+        "key": "不识月",
+        "gloss": "小时候**不认识月亮**。"
+      },
+      {
+        "text": "呼作白玉盘。",
+        "pinyin": "hū zuò bái yù pán 。",
+        "key": "白玉盘",
+        "gloss": "把它叫做**白玉做的盘子**。"
+      },
+      {
+        "text": "又疑瑶台镜，",
+        "pinyin": "yòu yí yáo tái jìng ，",
+        "key": "瑶台镜",
+        "gloss": "又怀疑它是仙宫里的**镜子**。"
+      },
+      {
+        "text": "飞在青云端。",
+        "pinyin": "fēi zài qīng yún duān 。",
+        "key": "青云",
+        "gloss": "飞在**高高的云**上面。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "小时候不认识月亮，叫它白玉盘，又猜它是神仙的镜子，挂在青云上。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/18%20%E3%80%81%E3%80%8A%E5%8F%A4%E6%9C%97%E6%9C%88%E8%A1%8C%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "wang-tianmenshan",
+    "title": "望天门山",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "wàng tiān mén shān",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 19 首",
+    "pageColor": "#efe0d6",
+    "effect": "leaf",
+    "sheet": "19 、《望天门山》.jpg",
+    "lines": [
+      {
+        "text": "天门中断楚江开，",
+        "pinyin": "tiān mén zhōng duàn chǔ jiāng kāi ，",
+        "key": "中断",
+        "gloss": "长江把天门山**从中断开**。"
+      },
+      {
+        "text": "碧水东流至此回。",
+        "pinyin": "bì shuǐ dōng liú zhì cǐ huí 。",
+        "key": "至此回",
+        "gloss": "碧绿的江水东流到这里，**打了个回旋**。"
+      },
+      {
+        "text": "两岸青山相对出，",
+        "pinyin": "liǎng àn qīng shān xiāng duì chū ，",
+        "key": "相对",
+        "gloss": "两岸青山**面对面**耸出来。"
+      },
+      {
+        "text": "孤帆一片日边来。",
+        "pinyin": "gū fān yī piàn rì biān lái 。",
+        "key": "日边",
+        "gloss": "一只小船从**太阳升起的地方**驶来。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "楚江把天门山冲开一道口，绿水到这里转了个弯。两岸青山相对而出，一片白帆从日边驶来。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/19%20%E3%80%81%E3%80%8A%E6%9C%9B%E5%A4%A9%E9%97%A8%E5%B1%B1%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "biedongda",
+    "title": "别董大",
+    "author": "高适",
+    "dynasty": "唐",
+    "titlePinyin": "bié dǒng dà",
+    "authorPinyin": "gāo shì",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 20 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "20 、《别董大》.jpg",
+    "lines": [
+      {
+        "text": "千里黄云白日曛，",
+        "pinyin": "qiān lǐ huáng yún bái rì xūn ，",
+        "key": "黄云",
+        "gloss": "千里**黄云**把太阳遮得昏黄。"
+      },
+      {
+        "text": "北风吹雁雪纷纷。",
+        "pinyin": "běi fēng chuī yàn xuě fēn fēn 。",
+        "key": "雪纷纷",
+        "gloss": "**北风**吹着大雁，雪花乱飞。"
+      },
+      {
+        "text": "莫愁前路无知己，",
+        "pinyin": "mò chóu qián lù wú zhī jǐ ，",
+        "key": "知己",
+        "gloss": "别担心前面没有**知心朋友**。"
+      },
+      {
+        "text": "天下谁人不识君。",
+        "pinyin": "tiān xià shuí rén bù shí jūn 。",
+        "key": "识君",
+        "gloss": "天下有谁会**不认识你**呢？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "黄云千里，太阳昏黄，北风吹雁，大雪纷飞。不要愁路上没有知己，谁会不认得你呢？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/20%20%E3%80%81%E3%80%8A%E5%88%AB%E8%91%A3%E5%A4%A7%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jueju-huangli",
+    "title": "绝句",
+    "author": "杜甫",
+    "dynasty": "唐",
+    "titlePinyin": "jué jù",
+    "authorPinyin": "dù fǔ",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 21 首 · 两个黄鹂",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "21 、《绝句》.jpg",
+    "lines": [
+      {
+        "text": "两个黄鹂鸣翠柳，",
+        "pinyin": "liǎng gè huáng lí míng cuì liǔ ，",
+        "key": "黄鹂",
+        "gloss": "两只**黄鹂**在绿柳间鸣叫。"
+      },
+      {
+        "text": "一行白鹭上青天。",
+        "pinyin": "yī háng bái lù shàng qīng tiān 。",
+        "key": "白鹭",
+        "gloss": "一行**白鹭**飞上青天。"
+      },
+      {
+        "text": "窗含西岭千秋雪，",
+        "pinyin": "chuāng hán xī lǐng qiān qiū xuě ，",
+        "key": "千秋雪",
+        "gloss": "窗口框住西山**千年不化的雪**。"
+      },
+      {
+        "text": "门泊东吴万里船。",
+        "pinyin": "mén bó dōng wú wàn lǐ chuán 。",
+        "key": "万里船",
+        "gloss": "门前停着从东吴来的**远方船**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "两只黄鹂在翠柳上叫，一行白鹭飞向青天。窗子里望见西岭的积雪，门口停着万里外开来的船。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/21%20%E3%80%81%E3%80%8A%E7%BB%9D%E5%8F%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chunye-xiyu",
+    "title": "春夜喜雨",
+    "author": "杜甫",
+    "dynasty": "唐",
+    "titlePinyin": "chūn yè xǐ yǔ",
+    "authorPinyin": "dù fǔ",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 22 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "22 、《春夜喜雨》.jpg",
+    "lines": [
+      {
+        "text": "好雨知时节，",
+        "pinyin": "hǎo yǔ zhī shí jié ，",
+        "key": "知时节",
+        "gloss": "这场好雨像**懂得时令**。"
+      },
+      {
+        "text": "当春乃发生。",
+        "pinyin": "dāng chūn nǎi fā shēng 。",
+        "key": "当春",
+        "gloss": "正好在**春天**降临。"
+      },
+      {
+        "text": "随风潜入夜，",
+        "pinyin": "suí fēng qián rù yè ，",
+        "key": "潜入夜",
+        "gloss": "它跟着风，**悄悄**在夜里到来。"
+      },
+      {
+        "text": "润物细无声。",
+        "pinyin": "rùn wù xì wú shēng 。",
+        "key": "细无声",
+        "gloss": "**轻轻**滋润万物，没有声响。"
+      },
+      {
+        "text": "野径云俱黑，",
+        "pinyin": "yě jìng yún jù hēi ，",
+        "key": "云俱黑",
+        "gloss": "田间小路被乌云盖得**一片黑**。"
+      },
+      {
+        "text": "江船火独明。",
+        "pinyin": "jiāng chuán huǒ dú míng 。",
+        "key": "火独明",
+        "gloss": "只有江船上的**灯火**独自亮着。"
+      },
+      {
+        "text": "晓看红湿处，",
+        "pinyin": "xiǎo kàn hóng shī chù ，",
+        "key": "红湿",
+        "gloss": "天亮再看，湿湿的地方一片**红**。"
+      },
+      {
+        "text": "花重锦官城。",
+        "pinyin": "huā zhòng jǐn guān chéng 。",
+        "key": "花重",
+        "gloss": "锦官城里，花被雨打得**沉甸甸**的。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "好雨好像知道季节，一到春天就下。它随风夜里悄悄来，细细地润湿万物。田野黑沉沉，只有江船的灯亮着。早上满城都是被雨压湿的花。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/22%20%E3%80%81%E3%80%8A%E6%98%A5%E5%A4%9C%E5%96%9C%E9%9B%A8%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jueju-chiri",
+    "title": "绝句",
+    "author": "杜甫",
+    "dynasty": "唐",
+    "titlePinyin": "jué jù",
+    "authorPinyin": "dù fǔ",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 23 首 · 迟日江山",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "23 、《绝句》.jpg",
+    "lines": [
+      {
+        "text": "迟日江山丽，",
+        "pinyin": "chí rì jiāng shān lì ，",
+        "key": "迟日",
+        "gloss": "**春日**的阳光把江山照得很美。"
+      },
+      {
+        "text": "春风花草香。",
+        "pinyin": "chūn fēng huā cǎo xiāng 。",
+        "key": "花草香",
+        "gloss": "春风里飘着**花草的香味**。"
+      },
+      {
+        "text": "泥融飞燕子，",
+        "pinyin": "ní róng fēi yàn zǐ ，",
+        "key": "燕子",
+        "gloss": "泥土变软，**燕子**忙着衔泥飞。"
+      },
+      {
+        "text": "沙暖睡鸳鸯。",
+        "pinyin": "shā nuǎn shuì yuān yāng 。",
+        "key": "鸳鸯",
+        "gloss": "沙滩暖和，**鸳鸯**正睡着。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "春光里的江山真美，风里有花草香。燕子衔着软泥飞，鸳鸯睡在暖暖的沙上。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/23%20%E3%80%81%E3%80%8A%E7%BB%9D%E5%8F%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jiangpan",
+    "title": "江畔独步寻花",
+    "author": "杜甫",
+    "dynasty": "唐",
+    "titlePinyin": "jiāng pàn dú bù xún huā",
+    "authorPinyin": "dù fǔ",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 24 首 · 其六",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "24 、《江畔独步寻花》.jpg",
+    "lines": [
+      {
+        "text": "黄四娘家花满蹊，",
+        "pinyin": "huáng sì niáng jiā huā mǎn xī ，",
+        "key": "花满蹊",
+        "gloss": "黄四娘家的**小路开满了花**。"
+      },
+      {
+        "text": "千朵万朵压枝低。",
+        "pinyin": "qiān duǒ wàn duǒ yā zhī dī 。",
+        "key": "压枝低",
+        "gloss": "千朵万朵把**枝条压弯**了。"
+      },
+      {
+        "text": "留连戏蝶时时舞，",
+        "pinyin": "liú lián xì dié shí shí wǔ ，",
+        "key": "戏蝶",
+        "gloss": "**蝴蝶**舍不得走，在花间飞舞。"
+      },
+      {
+        "text": "自在娇莺恰恰啼。",
+        "pinyin": "zì zài jiāo yīng qià qià tí 。",
+        "key": "娇莺",
+        "gloss": "黄莺自由自在，**清脆地叫**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "黄四娘家的小路上开满花，花多得把枝条压低。蝴蝶流连飞舞，黄莺也自在地啼叫。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/24%20%E3%80%81%E3%80%8A%E6%B1%9F%E7%95%94%E7%8B%AC%E6%AD%A5%E5%AF%BB%E8%8A%B1%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "fengqiao",
+    "title": "枫桥夜泊",
+    "author": "张继",
+    "dynasty": "唐",
+    "titlePinyin": "fēng qiáo yè bó",
+    "authorPinyin": "zhāng jì",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 25 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "25 、《枫桥夜泊》.jpg",
+    "lines": [
+      {
+        "text": "月落乌啼霜满天，",
+        "pinyin": "yuè luò wū tí shuāng mǎn tiān ，",
+        "key": "霜满天",
+        "gloss": "月亮落下，乌鸦叫，**霜气**布满天空。"
+      },
+      {
+        "text": "江枫渔火对愁眠。",
+        "pinyin": "jiāng fēng yú huǒ duì chóu mián 。",
+        "key": "愁眠",
+        "gloss": "对着江枫和渔火，人**愁得睡不着**。"
+      },
+      {
+        "text": "姑苏城外寒山寺，",
+        "pinyin": "gū sū chéng wài hán shān sì ，",
+        "key": "寒山寺",
+        "gloss": "姑苏城外有座**寒山寺**。"
+      },
+      {
+        "text": "夜半钟声到客船。",
+        "pinyin": "yè bàn zhōng shēng dào kè chuán 。",
+        "key": "钟声",
+        "gloss": "半夜里，**钟声**传到了客船。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "月落乌啼，霜气满天。江边的枫树和渔火对着忧愁的旅客。寒山寺的半夜钟声，一直送到船上来。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/25%20%E3%80%81%E3%80%8A%E6%9E%AB%E6%A1%A5%E5%A4%9C%E6%B3%8A%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chuzhou",
+    "title": "滁州西涧",
+    "author": "韦应物",
+    "dynasty": "唐",
+    "titlePinyin": "chú zhōu xī jiàn",
+    "authorPinyin": "wéi yìng wù",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 26 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "26 、《滁州西涧》.jpg",
+    "lines": [
+      {
+        "text": "独怜幽草涧边生，",
+        "pinyin": "dú lián yōu cǎo jiàn biān shēng ，",
+        "key": "幽草",
+        "gloss": "最喜爱涧边自在生长的**野草**。"
+      },
+      {
+        "text": "上有黄鹂深树鸣。",
+        "pinyin": "shàng yǒu huáng lí shēn shù míng 。",
+        "key": "黄鹂",
+        "gloss": "树上深处有**黄鹂**在叫。"
+      },
+      {
+        "text": "春潮带雨晚来急，",
+        "pinyin": "chūn cháo dài yǔ wǎn lái jí ，",
+        "key": "春潮",
+        "gloss": "傍晚**春潮**夹着雨，来得又急又猛。"
+      },
+      {
+        "text": "野渡无人舟自横。",
+        "pinyin": "yě dù wú rén zhōu zì héng 。",
+        "key": "舟自横",
+        "gloss": "荒野渡口没有人，**小船自己横**在水面。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "我独爱涧边的幽草，还有深树里叫的黄鹂。春潮带着雨在傍晚涨得急，渡口没人，一只船自己横着。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/26%20%E3%80%81%E3%80%8A%E6%BB%81%E5%B7%9E%E8%A5%BF%E6%B6%A7%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "youziyin",
+    "title": "游子吟",
+    "author": "孟郊",
+    "dynasty": "唐",
+    "titlePinyin": "yóu zǐ yín",
+    "authorPinyin": "mèng jiāo",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 27 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "27、 《游子吟》.jpg",
+    "lines": [
+      {
+        "text": "慈母手中线，",
+        "pinyin": "cí mǔ shǒu zhōng xiàn ，",
+        "key": "手中线",
+        "gloss": "**母亲**手里拿着针线。"
+      },
+      {
+        "text": "游子身上衣。",
+        "pinyin": "yóu zǐ shēn shàng yī 。",
+        "key": "身上衣",
+        "gloss": "缝的是远行孩子**身上的衣裳**。"
+      },
+      {
+        "text": "临行密密缝，",
+        "pinyin": "lín xíng mì mì fèng ，",
+        "key": "密密缝",
+        "gloss": "临走前一针针**缝得很密**。"
+      },
+      {
+        "text": "意恐迟迟归。",
+        "pinyin": "yì kǒng chí chí guī 。",
+        "key": "迟迟归",
+        "gloss": "怕孩子**很晚才回来**，衣服会破。"
+      },
+      {
+        "text": "谁言寸草心，",
+        "pinyin": "shuí yán cùn cǎo xīn ，",
+        "key": "寸草心",
+        "gloss": "谁说小草一样的**孝心**，"
+      },
+      {
+        "text": "报得三春晖。",
+        "pinyin": "bào dé sān chūn huī 。",
+        "key": "三春晖",
+        "gloss": "能报答春天阳光般的**母爱**？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "母亲手中的线，缝在游子的衣上。临走缝得密密的，只怕孩子回来得晚。小小的孝心，怎么报答得了春天般的母爱？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/27%E3%80%81%20%E3%80%8A%E6%B8%B8%E5%AD%90%E5%90%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "zaochun",
+    "title": "早春呈水部张十八员外",
+    "author": "韩愈",
+    "dynasty": "唐",
+    "titlePinyin": "zǎo chūn chéng shuǐ bù zhāng shí bā yuán wài",
+    "authorPinyin": "hán yù",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 28 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "28 、《早春呈水部张十八员外》.jpg",
+    "lines": [
+      {
+        "text": "天街小雨润如酥，",
+        "pinyin": "tiān jiē xiǎo yǔ rùn rú sū ，",
+        "key": "润如酥",
+        "gloss": "京城的小雨，**细腻得像酥油**。"
+      },
+      {
+        "text": "草色遥看近却无。",
+        "pinyin": "cǎo sè yáo kàn jìn què wú 。",
+        "key": "草色",
+        "gloss": "**草色**远远看有，走近却淡了。"
+      },
+      {
+        "text": "最是一年春好处，",
+        "pinyin": "zuì shì yī nián chūn hǎo chù ，",
+        "key": "春好处",
+        "gloss": "这正是一年里**春天最好**的时候。"
+      },
+      {
+        "text": "绝胜烟柳满皇都。",
+        "pinyin": "jué shèng yān liǔ mǎn huáng dū 。",
+        "key": "烟柳",
+        "gloss": "比满城**烟柳**浓时还要美。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "京城细雨润滑如酥。草色远看有一层，走近又好像没有。这才是一年中最美的早春，胜过后来柳色满城。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/28%20%E3%80%81%E3%80%8A%E6%97%A9%E6%98%A5%E5%91%88%E6%B0%B4%E9%83%A8%E5%BC%A0%E5%8D%81%E5%85%AB%E5%91%98%E5%A4%96%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "yugezi",
+    "title": "渔歌子",
+    "author": "张志和",
+    "dynasty": "唐",
+    "titlePinyin": "yú gē zǐ",
+    "authorPinyin": "zhāng zhì hé",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 29 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "29 、《渔歌子》.jpg",
+    "lines": [
+      {
+        "text": "西塞山前白鹭飞，",
+        "pinyin": "xī sāi shān qián bái lù fēi ，",
+        "key": "白鹭",
+        "gloss": "西塞山前，**白鹭**飞来飞去。"
+      },
+      {
+        "text": "桃花流水鳜鱼肥。",
+        "pinyin": "táo huā liú shuǐ guì yú féi 。",
+        "key": "鳜鱼",
+        "gloss": "桃花水涨起来，**鳜鱼**长得肥肥的。"
+      },
+      {
+        "text": "青箬笠，",
+        "pinyin": "qīng ruò lì ，",
+        "key": "箬笠",
+        "gloss": "渔翁戴着**青斗笠**，"
+      },
+      {
+        "text": "绿蓑衣，",
+        "pinyin": "lǜ suō yī ，",
+        "key": "蓑衣",
+        "gloss": "披着**绿蓑衣**。"
+      },
+      {
+        "text": "斜风细雨不须归。",
+        "pinyin": "xié fēng xì yǔ bù xū guī 。",
+        "key": "不须归",
+        "gloss": "斜风细雨里，**不必回家**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "西塞山前白鹭飞翔，桃花水里鳜鱼正肥。渔翁戴着斗笠、披着蓑衣，斜风细雨中也不想回去。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/29%20%E3%80%81%E3%80%8A%E6%B8%94%E6%AD%8C%E5%AD%90%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "saixiaqu",
+    "title": "塞下曲",
+    "author": "卢纶",
+    "dynasty": "唐",
+    "titlePinyin": "sài xià qǔ",
+    "authorPinyin": "lú lún",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 30 首 · 其三",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "30 、《塞下曲》.jpg",
+    "lines": [
+      {
+        "text": "月黑雁飞高，",
+        "pinyin": "yuè hēi yàn fēi gāo ，",
+        "key": "月黑",
+        "gloss": "**没有月光**的夜里，大雁飞得很高。"
+      },
+      {
+        "text": "单于夜遁逃。",
+        "pinyin": "chán yú yè dùn táo 。",
+        "key": "遁逃",
+        "gloss": "单于趁黑夜**偷偷逃走**。"
+      },
+      {
+        "text": "欲将轻骑逐，",
+        "pinyin": "yù jiāng qīng jì zhú ，",
+        "key": "轻骑",
+        "gloss": "正要带领**轻骑兵**去追。"
+      },
+      {
+        "text": "大雪满弓刀。",
+        "pinyin": "dà xuě mǎn gōng dāo 。",
+        "key": "弓刀",
+        "gloss": "大雪已经落满**弓和刀**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "黑夜无月，雁飞得很高，单于趁夜逃跑。将军正要率轻骑去追，大雪已经铺满弓刀。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/30%20%E3%80%81%E3%80%8A%E5%A1%9E%E4%B8%8B%E6%9B%B2%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "wang-dongting",
+    "title": "望洞庭",
+    "author": "刘禹锡",
+    "dynasty": "唐",
+    "titlePinyin": "wàng dòng tíng",
+    "authorPinyin": "liú yǔ xī",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 31 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "31 、《望洞庭》.jpg",
+    "lines": [
+      {
+        "text": "湖光秋月两相和，",
+        "pinyin": "hú guāng qiū yuè liǎng xiāng hé ，",
+        "key": "两相和",
+        "gloss": "湖光和秋月**互相映衬**。"
+      },
+      {
+        "text": "潭面无风镜未磨。",
+        "pinyin": "tán miàn wú fēng jìng wèi mó 。",
+        "key": "镜未磨",
+        "gloss": "湖面没风，像一面**还没磨亮的镜子**。"
+      },
+      {
+        "text": "遥望洞庭山水翠，",
+        "pinyin": "yáo wàng dòng tíng shān shuǐ cuì ，",
+        "key": "山水翠",
+        "gloss": "远望洞庭，**山青水绿**。"
+      },
+      {
+        "text": "白银盘里一青螺。",
+        "pinyin": "bái yín pán lǐ yī qīng luó 。",
+        "key": "青螺",
+        "gloss": "好像白银盘里托着一只**青螺**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "秋天的湖水和月光融在一起，无风的湖面像没磨过的铜镜。远看洞庭的山水，像银盘里放着一只青螺。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/31%20%E3%80%81%E3%80%8A%E6%9C%9B%E6%B4%9E%E5%BA%AD%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "langtaosha",
+    "title": "浪淘沙",
+    "author": "刘禹锡",
+    "dynasty": "唐",
+    "titlePinyin": "làng táo shā",
+    "authorPinyin": "liú yǔ xī",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 32 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "32 、《浪淘沙》.jpg",
+    "lines": [
+      {
+        "text": "九曲黄河万里沙，",
+        "pinyin": "jiǔ qū huáng hé wàn lǐ shā ，",
+        "key": "九曲",
+        "gloss": "**弯弯曲曲**的黄河卷着万里泥沙。"
+      },
+      {
+        "text": "浪淘风簸自天涯。",
+        "pinyin": "làng táo fēng bǒ zì tiān yá 。",
+        "key": "天涯",
+        "gloss": "浪涛和风好像从**天边**簸过来。"
+      },
+      {
+        "text": "如今直上银河去，",
+        "pinyin": "rú jīn zhí shàng yín hé qù ，",
+        "key": "银河",
+        "gloss": "顺着它就能**直上银河**。"
+      },
+      {
+        "text": "同到牵牛织女家。",
+        "pinyin": "tóng dào qiān niú zhī nǚ jiā 。",
+        "key": "织女",
+        "gloss": "一起去**牛郎织女**家做客。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "九曲黄河裹着泥沙，波涛像从天边滚来。沿着黄河仿佛能走到银河，去牛郎织女家里。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/32%20%E3%80%81%E3%80%8A%E6%B5%AA%E6%B7%98%E6%B2%99%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "fude",
+    "title": "赋得古原草送别",
+    "author": "白居易",
+    "dynasty": "唐",
+    "titlePinyin": "fù dé gǔ yuán cǎo sòng bié",
+    "authorPinyin": "bái jū yì",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 33 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "33 、《赋得古原草送别》.jpg",
+    "lines": [
+      {
+        "text": "离离原上草，",
+        "pinyin": "lí lí yuán shàng cǎo ，",
+        "key": "原上草",
+        "gloss": "古原上的**草**长得很茂盛。"
+      },
+      {
+        "text": "一岁一枯荣。",
+        "pinyin": "yī suì yī kū róng 。",
+        "key": "枯荣",
+        "gloss": "一年**枯一次，又绿一次**。"
+      },
+      {
+        "text": "野火烧不尽，",
+        "pinyin": "yě huǒ shāo bù jìn ，",
+        "key": "烧不尽",
+        "gloss": "野火**烧不完**它。"
+      },
+      {
+        "text": "春风吹又生。",
+        "pinyin": "chūn fēng chuī yòu shēng 。",
+        "key": "又生",
+        "gloss": "春风一吹，它**又活过来**。"
+      },
+      {
+        "text": "远芳侵古道，",
+        "pinyin": "yuǎn fāng qīn gǔ dào ，",
+        "key": "古道",
+        "gloss": "草香远远铺上**古老的道路**。"
+      },
+      {
+        "text": "晴翠接荒城。",
+        "pinyin": "qíng cuì jiē huāng chéng 。",
+        "key": "荒城",
+        "gloss": "一片晴绿连到**远处的城**。"
+      },
+      {
+        "text": "又送王孙去，",
+        "pinyin": "yòu sòng wáng sūn qù ，",
+        "key": "送",
+        "gloss": "又要**送**朋友远行。"
+      },
+      {
+        "text": "萋萋满别情。",
+        "pinyin": "qī qī mǎn bié qíng 。",
+        "key": "别情",
+        "gloss": "茂盛的草好像盛满了**离别的情**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "原上的草每年枯了又荣。野火烧不尽，春风一吹又生。芳草铺向古道，绿色连着远城。送朋友离开时，连草都像带着别情。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/33%20%E3%80%81%E3%80%8A%E8%B5%8B%E5%BE%97%E5%8F%A4%E5%8E%9F%E8%8D%89%E9%80%81%E5%88%AB%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiangsi",
+    "title": "相思",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "xiāng sī",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文补充",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "33、相思.jpg",
+    "lines": [
+      {
+        "text": "红豆生南国，",
+        "pinyin": "hóng dòu shēng nán guó ，",
+        "key": "红豆",
+        "gloss": "**红豆**长在南方。"
+      },
+      {
+        "text": "春来发几枝。",
+        "pinyin": "chūn lái fā jǐ zhī 。",
+        "key": "几枝",
+        "gloss": "春天到了，不知又抽出**多少新枝**。"
+      },
+      {
+        "text": "愿君多采撷，",
+        "pinyin": "yuàn jūn duō cǎi xié ，",
+        "key": "采撷",
+        "gloss": "希望你**多采**一些。"
+      },
+      {
+        "text": "此物最相思。",
+        "pinyin": "cǐ wù zuì xiāng sī 。",
+        "key": "相思",
+        "gloss": "因为它最能寄托**想念**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "红豆生在南方，春天又长出新枝。希望你多采几颗，这小东西最能让人想起彼此。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/33%E3%80%81%E7%9B%B8%E6%80%9D.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chi-shang",
+    "title": "池上",
+    "author": "白居易",
+    "dynasty": "唐",
+    "titlePinyin": "chí shàng",
+    "authorPinyin": "bái jū yì",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 34 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "34 、《池上》.jpg",
+    "lines": [
+      {
+        "text": "小娃撑小艇，",
+        "pinyin": "xiǎo wá chēng xiǎo tǐng ，",
+        "key": "小艇",
+        "gloss": "小孩撑着一只**小船**。"
+      },
+      {
+        "text": "偷采白莲回。",
+        "pinyin": "tōu cǎi bái lián huí 。",
+        "key": "偷采",
+        "gloss": "**偷偷**采了白莲往回划。"
+      },
+      {
+        "text": "不解藏踪迹，",
+        "pinyin": "bù jiě cáng zōng jì ，",
+        "key": "踪迹",
+        "gloss": "他不懂得**藏住自己的痕迹**。"
+      },
+      {
+        "text": "浮萍一道开。",
+        "pinyin": "fú píng yī dào kāi 。",
+        "key": "浮萍",
+        "gloss": "船过处，**浮萍**分开一道水路。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "小孩撑着小船，偷偷采了白莲回来。他不会隐藏行踪，浮萍被船分开一条线，把他出卖了。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/34%20%E3%80%81%E3%80%8A%E6%B1%A0%E4%B8%8A%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "yijiangnan",
+    "title": "忆江南",
+    "author": "白居易",
+    "dynasty": "唐",
+    "titlePinyin": "yì jiāng nán",
+    "authorPinyin": "bái jū yì",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 35 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "35 、《忆江南》.jpg",
+    "lines": [
+      {
+        "text": "江南好，",
+        "pinyin": "jiāng nán hǎo ，",
+        "key": "江南",
+        "gloss": "**江南**真好。"
+      },
+      {
+        "text": "风景旧曾谙。",
+        "pinyin": "fēng jǐng jiù céng ān 。",
+        "key": "旧曾谙",
+        "gloss": "那里的风景我**早就熟悉**。"
+      },
+      {
+        "text": "日出江花红胜火，",
+        "pinyin": "rì chū jiāng huā hóng shèng huǒ ，",
+        "key": "红胜火",
+        "gloss": "太阳出来，江边的花**比火还红**。"
+      },
+      {
+        "text": "春来江水绿如蓝。",
+        "pinyin": "chūn lái jiāng shuǐ lǜ rú lán 。",
+        "key": "绿如蓝",
+        "gloss": "春天的江水**绿得像蓝草**。"
+      },
+      {
+        "text": "能不忆江南？",
+        "pinyin": "néng bù yì jiāng nán ？",
+        "key": "忆",
+        "gloss": "这样的江南，叫人怎么能**不想念**？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "江南真好，风景我早就熟。日出时江花红过火，春天江水绿得发蓝。这样的地方，怎能不想？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/35%20%E3%80%81%E3%80%8A%E5%BF%86%E6%B1%9F%E5%8D%97%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiaoer",
+    "title": "小儿垂钓",
+    "author": "胡令能",
+    "dynasty": "唐",
+    "titlePinyin": "xiǎo ér chuí diào",
+    "authorPinyin": "hú lìng néng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 36 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "36 、《小儿垂钓》.jpg",
+    "lines": [
+      {
+        "text": "蓬头稚子学垂纶，",
+        "pinyin": "péng tóu zhì zǐ xué chuí lún ，",
+        "key": "垂纶",
+        "gloss": "头发乱乱的小孩在**学钓鱼**。"
+      },
+      {
+        "text": "侧坐莓苔草映身。",
+        "pinyin": "cè zuò méi tái cǎo yìng shēn 。",
+        "key": "侧坐",
+        "gloss": "他**侧身坐**在青苔上，草遮着身子。"
+      },
+      {
+        "text": "路人借问遥招手，",
+        "pinyin": "lù rén jiè wèn yáo zhāo shǒu ，",
+        "key": "遥招手",
+        "gloss": "过路人问路，他**远远摆手**。"
+      },
+      {
+        "text": "怕得鱼惊不应人。",
+        "pinyin": "pà dé yú jīng bù yìng rén 。",
+        "key": "不应人",
+        "gloss": "怕鱼被吓跑，**不肯答应**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "头发蓬乱的孩子在学钓鱼，侧坐在长苔的岸边，草遮着他。有人远远问路，他只招手，不敢出声，怕把鱼惊走。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/36%20%E3%80%81%E3%80%8A%E5%B0%8F%E5%84%BF%E5%9E%82%E9%92%93%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "min-nong-1",
+    "title": "悯农",
+    "author": "李绅",
+    "dynasty": "唐",
+    "titlePinyin": "mǐn nóng",
+    "authorPinyin": "lǐ shēn",
+    "dynastyPinyin": "táng",
+    "tag": "其一 · 春种",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "38 、《悯农 · 其二》.jpg",
+    "lines": [
+      {
+        "text": "春种一粒粟，",
+        "pinyin": "chūn zhòng yī lì sù ，",
+        "key": "一粒粟",
+        "gloss": "春天种下**一粒种子**。"
+      },
+      {
+        "text": "秋收万颗子。",
+        "pinyin": "qiū shōu wàn kē zǐ 。",
+        "key": "万颗",
+        "gloss": "秋天能收**很多很多**粮食。"
+      },
+      {
+        "text": "四海无闲田，",
+        "pinyin": "sì hǎi wú xián tián ，",
+        "key": "无闲田",
+        "gloss": "到处都**没有荒着的田**。"
+      },
+      {
+        "text": "农夫犹饿死。",
+        "pinyin": "nóng fū yóu è sǐ 。",
+        "key": "饿死",
+        "gloss": "辛苦的农夫**还是会饿死**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "春天种一粒，秋天收很多。田地都种满了，种田的人却还可能饿死。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/38%20%E3%80%81%E3%80%8A%E6%82%AF%E5%86%9C%20%C2%B7%20%E5%85%B6%E4%BA%8C%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "min-nong-2",
+    "title": "悯农",
+    "author": "李绅",
+    "dynasty": "唐",
+    "titlePinyin": "mǐn nóng",
+    "authorPinyin": "lǐ shēn",
+    "dynastyPinyin": "táng",
+    "tag": "其二 · 锄禾",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "37 、《悯农 · 其一》.jpg",
+    "lines": [
+      {
+        "text": "锄禾日当午，",
+        "pinyin": "chú hé rì dāng wǔ ，",
+        "key": "锄禾",
+        "gloss": "农夫**顶着中午的太阳**锄草。"
+      },
+      {
+        "text": "汗滴禾下土。",
+        "pinyin": "hàn dī hé xià tǔ 。",
+        "key": "汗滴",
+        "gloss": "**汗水**滴进禾苗下的土里。"
+      },
+      {
+        "text": "谁知盘中餐，",
+        "pinyin": "shuí zhī pán zhōng cān ，",
+        "key": "盘中餐",
+        "gloss": "谁知道碗里的**饭**，"
+      },
+      {
+        "text": "粒粒皆辛苦。",
+        "pinyin": "lì lì jiē xīn kǔ 。",
+        "key": "辛苦",
+        "gloss": "**每一粒**都是辛苦换来的。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "正午锄禾，汗水滴进土里。谁能想到盘子里的饭，粒粒都来得很辛苦？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/37%20%E3%80%81%E3%80%8A%E6%82%AF%E5%86%9C%20%C2%B7%20%E5%85%B6%E4%B8%80%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ],
+    "aliases": [
+      "锄禾"
+    ]
+  },
+  {
+    "id": "jiangxue",
+    "title": "江雪",
+    "author": "柳宗元",
+    "dynasty": "唐",
+    "titlePinyin": "jiāng xuě",
+    "authorPinyin": "liǔ zōng yuán",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 39 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "39 、《江雪》.jpg",
+    "lines": [
+      {
+        "text": "千山鸟飞绝，",
+        "pinyin": "qiān shān niǎo fēi jué ，",
+        "key": "鸟飞绝",
+        "gloss": "群山里**一只鸟也没有**。"
+      },
+      {
+        "text": "万径人踪灭。",
+        "pinyin": "wàn jìng rén zōng miè 。",
+        "key": "人踪",
+        "gloss": "所有路上都**不见人的脚印**。"
+      },
+      {
+        "text": "孤舟蓑笠翁，",
+        "pinyin": "gū zhōu suō lì wēng ，",
+        "key": "蓑笠",
+        "gloss": "只有小船上一个**披蓑戴笠**的老人。"
+      },
+      {
+        "text": "独钓寒江雪。",
+        "pinyin": "dú diào hán jiāng xuě 。",
+        "key": "独钓",
+        "gloss": "在风雪的寒江上**独自钓鱼**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "千山没有飞鸟，万径没有人迹。一只小船上，披蓑戴笠的老翁冒雪独钓。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/39%20%E3%80%81%E3%80%8A%E6%B1%9F%E9%9B%AA%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xun-yin",
+    "title": "寻隐者不遇",
+    "author": "贾岛",
+    "dynasty": "唐",
+    "titlePinyin": "xún yǐn zhě bù yù",
+    "authorPinyin": "jiǎ dǎo",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 40 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "40 、《寻隐者不遇》.jpg",
+    "lines": [
+      {
+        "text": "松下问童子，",
+        "pinyin": "sōng xià wèn tóng zǐ ，",
+        "key": "问童子",
+        "gloss": "在松树下**问小童**。"
+      },
+      {
+        "text": "言师采药去。",
+        "pinyin": "yán shī cǎi yào qù 。",
+        "key": "采药",
+        "gloss": "他说师傅**采药去了**。"
+      },
+      {
+        "text": "只在此山中，",
+        "pinyin": "zhǐ zài cǐ shān zhōng ，",
+        "key": "此山",
+        "gloss": "就在**这座山**里。"
+      },
+      {
+        "text": "云深不知处。",
+        "pinyin": "yún shēn bù zhī chù 。",
+        "key": "不知处",
+        "gloss": "云雾太深，**不知道在哪一处**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "我在松下问童子，他说师傅采药去了。人就在这座山里，可云深，说不清在哪里。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/40%20%E3%80%81%E3%80%8A%E5%AF%BB%E9%9A%90%E8%80%85%E4%B8%8D%E9%81%87%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "qingming",
+    "title": "清明",
+    "author": "杜牧",
+    "dynasty": "唐",
+    "titlePinyin": "qīng míng",
+    "authorPinyin": "dù mù",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 42 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "42 、《清明》.jpg",
+    "lines": [
+      {
+        "text": "清明时节雨纷纷，",
+        "pinyin": "qīng míng shí jié yǔ fēn fēn ，",
+        "key": "雨纷纷",
+        "gloss": "清明这天**细雨**下个不停。"
+      },
+      {
+        "text": "路上行人欲断魂。",
+        "pinyin": "lù shàng xíng rén yù duàn hún 。",
+        "key": "断魂",
+        "gloss": "赶路的人愁得**魂都要断**。"
+      },
+      {
+        "text": "借问酒家何处有，",
+        "pinyin": "jiè wèn jiǔ jiā hé chù yǒu ，",
+        "key": "酒家",
+        "gloss": "打听**哪里有酒家**。"
+      },
+      {
+        "text": "牧童遥指杏花村。",
+        "pinyin": "mù tóng yáo zhǐ xìng huā cūn 。",
+        "key": "杏花村",
+        "gloss": "牧童远远指向**杏花村**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "清明细雨纷纷，路上的人愁闷极了。问一声哪里有酒家，牧童指了指远处的杏花村。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/42%20%E3%80%81%E3%80%8A%E6%B8%85%E6%98%8E%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jiangnan-chun",
+    "title": "江南春",
+    "author": "杜牧",
+    "dynasty": "唐",
+    "titlePinyin": "jiāng nán chūn",
+    "authorPinyin": "dù mù",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 43 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "43 、《江南春》.jpg",
+    "lines": [
+      {
+        "text": "千里莺啼绿映红，",
+        "pinyin": "qiān lǐ yīng tí lǜ yìng hóng ，",
+        "key": "绿映红",
+        "gloss": "千里之内莺啼燕语，**红花绿叶**互相映衬。"
+      },
+      {
+        "text": "水村山郭酒旗风。",
+        "pinyin": "shuǐ cūn shān guō jiǔ qí fēng 。",
+        "key": "酒旗",
+        "gloss": "水边村庄、山边城郭，**酒旗**在风里飘。"
+      },
+      {
+        "text": "南朝四百八十寺，",
+        "pinyin": "nán cháo sì bǎi bā shí sì ，",
+        "key": "四百八十",
+        "gloss": "南朝留下**许许多多**寺院。"
+      },
+      {
+        "text": "多少楼台烟雨中。",
+        "pinyin": "duō shǎo lóu tái yān yǔ zhōng 。",
+        "key": "烟雨",
+        "gloss": "多少楼台都藏在**烟雨**里。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "江南千里都是莺啼和红绿相映，水村山城的酒旗随风飘。南朝建了那么多寺，楼台都隐在烟雨中。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/43%20%E3%80%81%E3%80%8A%E6%B1%9F%E5%8D%97%E6%98%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "feng-luoyin",
+    "title": "蜂",
+    "author": "罗隐",
+    "dynasty": "唐",
+    "titlePinyin": "fēng",
+    "authorPinyin": "luó yǐn",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 44 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "44 、《蜂》.jpg",
+    "lines": [
+      {
+        "text": "不论平地与山尖，",
+        "pinyin": "bù lùn píng dì yǔ shān jiān ，",
+        "key": "山尖",
+        "gloss": "不管平地还是**山顶**，"
+      },
+      {
+        "text": "无限风光尽被占。",
+        "pinyin": "wú xiàn fēng guāng jìn bèi zhàn 。",
+        "key": "尽被占",
+        "gloss": "凡是有花的地方都被蜜蜂**占满**。"
+      },
+      {
+        "text": "采得百花成蜜后，",
+        "pinyin": "cǎi dé bǎi huā chéng mì hòu ，",
+        "key": "成蜜",
+        "gloss": "采遍百花，酿成**蜜**。"
+      },
+      {
+        "text": "为谁辛苦为谁甜。",
+        "pinyin": "wèi shuí xīn kǔ wèi shuí tián 。",
+        "key": "为谁",
+        "gloss": "这辛苦和香甜，到底是**为了谁**？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "不论平地还是山头，有花处都有蜜蜂。它们采花酿蜜，到头来却不知道这甜是给谁的。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/44%20%E3%80%81%E3%80%8A%E8%9C%82%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jiangshang",
+    "title": "江上渔者",
+    "author": "范仲淹",
+    "dynasty": "宋",
+    "titlePinyin": "jiāng shàng yú zhě",
+    "authorPinyin": "fàn zhòng yān",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 45 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "45 、《江上渔者》.jpg",
+    "lines": [
+      {
+        "text": "江上往来人，",
+        "pinyin": "jiāng shàng wǎng lái rén ，",
+        "key": "往来",
+        "gloss": "江上来来往往的**人**，"
+      },
+      {
+        "text": "但爱鲈鱼美。",
+        "pinyin": "dàn ài lú yú měi 。",
+        "key": "鲈鱼",
+        "gloss": "只知道爱吃**鲈鱼**的鲜美。"
+      },
+      {
+        "text": "君看一叶舟，",
+        "pinyin": "jūn kàn yī yè zhōu ，",
+        "key": "一叶舟",
+        "gloss": "请你看看那只**小船**。"
+      },
+      {
+        "text": "出没风波里。",
+        "pinyin": "chū mò fēng bō lǐ 。",
+        "key": "风波",
+        "gloss": "它在**大风大浪**里时隐时现。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "江上来往的人只爱鲈鱼的味道。看看那叶小舟吧，打鱼的人正在风浪里出没。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/45%20%E3%80%81%E3%80%8A%E6%B1%9F%E4%B8%8A%E6%B8%94%E8%80%85%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "yuanri",
+    "title": "元日",
+    "author": "王安石",
+    "dynasty": "宋",
+    "titlePinyin": "yuán rì",
+    "authorPinyin": "wáng ān shí",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 46 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "46 、《元日》.jpg",
+    "lines": [
+      {
+        "text": "爆竹声中一岁除，",
+        "pinyin": "bào zhú shēng zhōng yī suì chú ，",
+        "key": "一岁除",
+        "gloss": "爆竹声里，**旧的一年**过去了。"
+      },
+      {
+        "text": "春风送暖入屠苏。",
+        "pinyin": "chūn fēng sòng nuǎn rù tú sū 。",
+        "key": "屠苏",
+        "gloss": "春风把暖意送进**屠苏酒**里。"
+      },
+      {
+        "text": "千门万户曈曈日，",
+        "pinyin": "qiān mén wàn hù tóng tóng rì ，",
+        "key": "曈曈",
+        "gloss": "初升的太阳照亮**千家万户**。"
+      },
+      {
+        "text": "总把新桃换旧符。",
+        "pinyin": "zǒng bǎ xīn táo huàn jiù fú 。",
+        "key": "新桃",
+        "gloss": "家家都用**新桃符**换下旧的。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "爆竹声中旧年走了，人们喝着暖暖的屠苏酒。太阳照进家家户户，大家忙着换上新桃符。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/46%20%E3%80%81%E3%80%8A%E5%85%83%E6%97%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "bochuan",
+    "title": "泊船瓜洲",
+    "author": "王安石",
+    "dynasty": "宋",
+    "titlePinyin": "bó chuán guā zhōu",
+    "authorPinyin": "wáng ān shí",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 47 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "47 、《泊船瓜洲》.jpg",
+    "lines": [
+      {
+        "text": "京口瓜洲一水间，",
+        "pinyin": "jīng kǒu guā zhōu yī shuǐ jiān ，",
+        "key": "一水间",
+        "gloss": "京口和瓜洲只隔着**一条江**。"
+      },
+      {
+        "text": "钟山只隔数重山。",
+        "pinyin": "zhōng shān zhǐ gé shù chóng shān 。",
+        "key": "钟山",
+        "gloss": "我住过的**钟山**，也只隔着几重山。"
+      },
+      {
+        "text": "春风又绿江南岸，",
+        "pinyin": "chūn fēng yòu lǜ jiāng nán àn ，",
+        "key": "绿",
+        "gloss": "春风又把江南岸**吹绿**了。"
+      },
+      {
+        "text": "明月何时照我还。",
+        "pinyin": "míng yuè hé shí zhào wǒ huán 。",
+        "key": "照我还",
+        "gloss": "明月什么时候照着我**回家**呢？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "京口和瓜洲只隔一江水，钟山也不过隔着几座山。春风又绿了江南，明月啊，何时照我回去？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/47%20%E3%80%81%E3%80%8A%E6%B3%8A%E8%88%B9%E7%93%9C%E6%B4%B2%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "shuhu",
+    "title": "书湖阴先生壁",
+    "author": "王安石",
+    "dynasty": "宋",
+    "titlePinyin": "shū hú yīn xiān shēng bì",
+    "authorPinyin": "wáng ān shí",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 48 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "48 、《书湖阴先生壁》.jpg",
+    "lines": [
+      {
+        "text": "茅檐长扫净无苔，",
+        "pinyin": "máo yán cháng sǎo jìng wú tái ，",
+        "key": "净无苔",
+        "gloss": "茅屋檐下常打扫，干净得**没有青苔**。"
+      },
+      {
+        "text": "花木成畦手自栽。",
+        "pinyin": "huā mù chéng qí shǒu zì zāi 。",
+        "key": "手自栽",
+        "gloss": "一畦畦花木，都是主人**亲手种**的。"
+      },
+      {
+        "text": "一水护田将绿绕，",
+        "pinyin": "yī shuǐ hù tián jiāng lǜ rào ，",
+        "key": "护田",
+        "gloss": "一条溪水**环绕着绿田**。"
+      },
+      {
+        "text": "两山排闼送青来。",
+        "pinyin": "liǎng shān pái tà sòng qīng lái 。",
+        "key": "送青",
+        "gloss": "两座山像推门进来，把**青色**送进屋。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "庭院打扫得很干净，花木都是主人自己栽的。一弯溪水护着绿田，两座山把青色直送进门。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/48%20%E3%80%81%E3%80%8A%E4%B9%A6%E6%B9%96%E9%98%B4%E5%85%88%E7%94%9F%E5%A3%81%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "wanghulou",
+    "title": "六月二十七日望湖楼醉书",
+    "author": "苏轼",
+    "dynasty": "宋",
+    "titlePinyin": "liù yuè èr shí qī rì wàng hú lóu zuì shū",
+    "authorPinyin": "sū shì",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 49 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "49 、《六月二十七日望湖楼醉书》.jpg",
+    "lines": [
+      {
+        "text": "黑云翻墨未遮山，",
+        "pinyin": "hēi yún fān mò wèi zhē shān ，",
+        "key": "翻墨",
+        "gloss": "乌云像**打翻的墨**，还没把山全遮住。"
+      },
+      {
+        "text": "白雨跳珠乱入船。",
+        "pinyin": "bái yǔ tiào zhū luàn rù chuán 。",
+        "key": "跳珠",
+        "gloss": "雨点像**珍珠**乱跳进船里。"
+      },
+      {
+        "text": "卷地风来忽吹散，",
+        "pinyin": "juǎn dì fēng lái hū chuī sàn ，",
+        "key": "吹散",
+        "gloss": "一阵卷地的风，忽然把云雨**吹散**。"
+      },
+      {
+        "text": "望湖楼下水如天。",
+        "pinyin": "wàng hú lóu xià shuǐ rú tiān 。",
+        "key": "水如天",
+        "gloss": "望湖楼下，水面又平得**像天**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "黑云像墨汁翻滚，还没遮住山，白雨已经像珠子跳进船。风忽然把云吹散，楼下的湖水又亮得像天空。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/49%20%E3%80%81%E3%80%8A%E5%85%AD%E6%9C%88%E4%BA%8C%E5%8D%81%E4%B8%83%E6%97%A5%E6%9C%9B%E6%B9%96%E6%A5%BC%E9%86%89%E4%B9%A6%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "yinhu",
+    "title": "饮湖上初晴后雨",
+    "author": "苏轼",
+    "dynasty": "宋",
+    "titlePinyin": "yǐn hú shàng chū qíng hòu yǔ",
+    "authorPinyin": "sū shì",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 50 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "50 、《饮湖上初晴后雨》.jpg",
+    "lines": [
+      {
+        "text": "水光潋滟晴方好，",
+        "pinyin": "shuǐ guāng liàn yàn qíng fāng hǎo ，",
+        "key": "晴方好",
+        "gloss": "晴天的西湖，**水波闪闪**，正好看。"
+      },
+      {
+        "text": "山色空蒙雨亦奇。",
+        "pinyin": "shān sè kōng méng yǔ yì qí 。",
+        "key": "雨亦奇",
+        "gloss": "下雨时山色**迷蒙**，也很奇妙。"
+      },
+      {
+        "text": "欲把西湖比西子，",
+        "pinyin": "yù bǎ xī hú bǐ xī zǐ ，",
+        "key": "西子",
+        "gloss": "要把西湖比作美人**西施**。"
+      },
+      {
+        "text": "淡妆浓抹总相宜。",
+        "pinyin": "dàn zhuāng nóng mǒ zǒng xiāng yí 。",
+        "key": "总相宜",
+        "gloss": "淡妆浓妆**都合适**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "晴天时水光闪动，雨天时山色朦胧，都好看。西湖就像西施，无论淡妆浓抹都很美。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/50%20%E3%80%81%E3%80%8A%E9%A5%AE%E6%B9%96%E4%B8%8A%E5%88%9D%E6%99%B4%E5%90%8E%E9%9B%A8%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "huichong",
+    "title": "惠崇春江晚景",
+    "author": "苏轼",
+    "dynasty": "宋",
+    "titlePinyin": "huì chóng chūn jiāng wǎn jǐng",
+    "authorPinyin": "sū shì",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 51 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "51 、《惠崇春江晚景》.jpg",
+    "lines": [
+      {
+        "text": "竹外桃花三两枝，",
+        "pinyin": "zhú wài táo huā sān liǎng zhī ，",
+        "key": "桃花",
+        "gloss": "竹林外**桃花**开了两三枝。"
+      },
+      {
+        "text": "春江水暖鸭先知。",
+        "pinyin": "chūn jiāng shuǐ nuǎn yā xiān zhī 。",
+        "key": "鸭先知",
+        "gloss": "江水回暖，**鸭子最先知道**。"
+      },
+      {
+        "text": "蒌蒿满地芦芽短，",
+        "pinyin": "lóu hāo mǎn dì lú yá duǎn ，",
+        "key": "芦芽",
+        "gloss": "地上长满蒌蒿，**芦芽**还短短的。"
+      },
+      {
+        "text": "正是河豚欲上时。",
+        "pinyin": "zhèng shì hé tún yù shàng shí 。",
+        "key": "河豚",
+        "gloss": "这正是**河豚**要逆流上来的时候。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "竹外开着几枝桃花。江水变暖，鸭子最先感觉到。蒌蒿铺地，芦芽才露头，河豚也快要上来了。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/51%20%E3%80%81%E3%80%8A%E6%83%A0%E5%B4%87%E6%98%A5%E6%B1%9F%E6%99%9A%E6%99%AF%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ],
+    "aliases": [
+      "惠崇春江晓景"
+    ]
+  },
+  {
+    "id": "tixilin",
+    "title": "题西林壁",
+    "author": "苏轼",
+    "dynasty": "宋",
+    "titlePinyin": "tí xī lín bì",
+    "authorPinyin": "sū shì",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 52 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "52 、《题西林壁》.jpg",
+    "lines": [
+      {
+        "text": "横看成岭侧成峰，",
+        "pinyin": "héng kàn chéng lǐng cè chéng fēng ，",
+        "key": "成岭",
+        "gloss": "正面看是**岭**，侧面看是峰。"
+      },
+      {
+        "text": "远近高低各不同。",
+        "pinyin": "yuǎn jìn gāo dī gè bù tóng 。",
+        "key": "各不同",
+        "gloss": "远近高低，看到的样子**都不一样**。"
+      },
+      {
+        "text": "不识庐山真面目，",
+        "pinyin": "bù shí lú shān zhēn miàn mù ，",
+        "key": "真面目",
+        "gloss": "认不清庐山**真正的样子**。"
+      },
+      {
+        "text": "只缘身在此山中。",
+        "pinyin": "zhǐ yuán shēn zài cǐ shān zhōng 。",
+        "key": "此山中",
+        "gloss": "只因为自己就**站在这座山里**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "横看是岭，侧看是峰，远近高低各不相同。看不清庐山的全貌，是因为人就在山中。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/52%20%E3%80%81%E3%80%8A%E9%A2%98%E8%A5%BF%E6%9E%97%E5%A3%81%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiari",
+    "title": "夏日绝句",
+    "author": "李清照",
+    "dynasty": "宋",
+    "titlePinyin": "xià rì jué jù",
+    "authorPinyin": "lǐ qīng zhào",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 53 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "53、 《夏日绝句》.jpg",
+    "lines": [
+      {
+        "text": "生当作人杰，",
+        "pinyin": "shēng dàng zuò rén jié ，",
+        "key": "人杰",
+        "gloss": "活着就要做**人中的豪杰**。"
+      },
+      {
+        "text": "死亦为鬼雄。",
+        "pinyin": "sǐ yì wéi guǐ xióng 。",
+        "key": "鬼雄",
+        "gloss": "死了也要做**鬼中的英雄**。"
+      },
+      {
+        "text": "至今思项羽，",
+        "pinyin": "zhì jīn sī xiàng yǔ ，",
+        "key": "项羽",
+        "gloss": "到今天人们还想念**项羽**。"
+      },
+      {
+        "text": "不肯过江东。",
+        "pinyin": "bù kěn guò jiāng dōng 。",
+        "key": "江东",
+        "gloss": "因为他**不肯**逃回江东苟活。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "活要活得杰出，死也要死得英雄。人们至今还想起项羽，因为他不肯退回江东偷生。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/53%E3%80%81%20%E3%80%8A%E5%A4%8F%E6%97%A5%E7%BB%9D%E5%8F%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "sanqu",
+    "title": "三衢道中",
+    "author": "曾几",
+    "dynasty": "宋",
+    "titlePinyin": "sān qú dào zhōng",
+    "authorPinyin": "zēng jī",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 54 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "54 、《三衢道中》.jpg",
+    "lines": [
+      {
+        "text": "梅子黄时日日晴，",
+        "pinyin": "méi zǐ huáng shí rì rì qíng ，",
+        "key": "日日晴",
+        "gloss": "梅子黄了的时节，却**天天放晴**。"
+      },
+      {
+        "text": "小溪泛尽却山行。",
+        "pinyin": "xiǎo xī fàn jìn què shān xíng 。",
+        "key": "山行",
+        "gloss": "小船走到溪水尽头，就**改走山路**。"
+      },
+      {
+        "text": "绿阴不减来时路，",
+        "pinyin": "lǜ yīn bù jiǎn lái shí lù ，",
+        "key": "绿阴",
+        "gloss": "回来时**树荫**还和来时一样浓。"
+      },
+      {
+        "text": "添得黄鹂四五声。",
+        "pinyin": "tiān dé huáng lí sì wǔ shēng 。",
+        "key": "黄鹂",
+        "gloss": "只是多了**几声黄鹂**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "梅子黄时竟天天晴。小溪走到头，再改走山路。树荫不比来时少，还添了四五声黄鹂。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/54%20%E3%80%81%E3%80%8A%E4%B8%89%E8%A1%A2%E9%81%93%E4%B8%AD%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "shier",
+    "title": "示儿",
+    "author": "陆游",
+    "dynasty": "宋",
+    "titlePinyin": "shì ér",
+    "authorPinyin": "lù yóu",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 55 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "55 、《示儿》.jpg",
+    "lines": [
+      {
+        "text": "死去元知万事空，",
+        "pinyin": "sǐ qù yuán zhī wàn shì kōng ，",
+        "key": "万事空",
+        "gloss": "本来知道人死后**什么都没有了**。"
+      },
+      {
+        "text": "但悲不见九州同。",
+        "pinyin": "dàn bēi bù jiàn jiǔ zhōu tóng 。",
+        "key": "九州同",
+        "gloss": "只悲伤没能看见**国家统一**。"
+      },
+      {
+        "text": "王师北定中原日，",
+        "pinyin": "wáng shī běi dìng zhōng yuán rì ，",
+        "key": "北定",
+        "gloss": "等到朝廷军队**收复中原**那天，"
+      },
+      {
+        "text": "家祭无忘告乃翁。",
+        "pinyin": "jiā jì wú wàng gào nǎi wēng 。",
+        "key": "告乃翁",
+        "gloss": "祭祖时别忘了**告诉你们的父亲**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "我知道死后万事皆空，只恨看不见九州统一。等到王师收复中原，家祭时一定把好消息告诉我。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/55%20%E3%80%81%E3%80%8A%E7%A4%BA%E5%84%BF%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "qiuye",
+    "title": "秋夜将晓出篱门迎凉有感",
+    "author": "陆游",
+    "dynasty": "宋",
+    "titlePinyin": "qiū yè jiāng xiǎo chū lí mén yíng liáng yǒu gǎn",
+    "authorPinyin": "lù yóu",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 56 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "56 、《秋夜将晓出篱门迎凉有感》.jpg",
+    "lines": [
+      {
+        "text": "三万里河东入海，",
+        "pinyin": "sān wàn lǐ hé dōng rù hǎi ，",
+        "key": "三万里",
+        "gloss": "**长长的黄河**向东流入海。"
+      },
+      {
+        "text": "五千仞岳上摩天。",
+        "pinyin": "wǔ qiān rèn yuè shàng mó tiān 。",
+        "key": "摩天",
+        "gloss": "五千仞高的华山**顶着天**。"
+      },
+      {
+        "text": "遗民泪尽胡尘里，",
+        "pinyin": "yí mín lèi jìn hú chén lǐ ，",
+        "key": "泪尽",
+        "gloss": "沦陷地的百姓在尘土里把**眼泪流干**。"
+      },
+      {
+        "text": "南望王师又一年。",
+        "pinyin": "nán wàng wáng shī yòu yī nián 。",
+        "key": "又一年",
+        "gloss": "向南盼官军，**又盼了一年**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "三万里黄河东流入海，五千仞高山耸入青天。沦陷区的人眼泪都干了，向南盼着官军，又是一年。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/56%20%E3%80%81%E3%80%8A%E7%A7%8B%E5%A4%9C%E5%B0%86%E6%99%93%E5%87%BA%E7%AF%B1%E9%97%A8%E8%BF%8E%E5%87%89%E6%9C%89%E6%84%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "sishi-1",
+    "title": "四时田园杂兴",
+    "author": "范成大",
+    "dynasty": "宋",
+    "titlePinyin": "sì shí tián yuán zá xìng",
+    "authorPinyin": "fàn chéng dà",
+    "dynastyPinyin": "sòng",
+    "tag": "其三十一 · 昼出耘田",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "57 、《四时田园杂兴 · 其三十一》.jpg",
+    "lines": [
+      {
+        "text": "昼出耘田夜绩麻，",
+        "pinyin": "zhòu chū yún tián yè jì má ，",
+        "key": "耘田",
+        "gloss": "白天**下田除草**，夜里搓麻线。"
+      },
+      {
+        "text": "村庄儿女各当家。",
+        "pinyin": "cūn zhuāng ér nǚ gè dāng jiā 。",
+        "key": "各当家",
+        "gloss": "村里的孩子**各干各的活**。"
+      },
+      {
+        "text": "童孙未解供耕织，",
+        "pinyin": "tóng sūn wèi jiě gòng gēng zhī ，",
+        "key": "童孙",
+        "gloss": "小孙子还**不会**耕田织布，"
+      },
+      {
+        "text": "也傍桑阴学种瓜。",
+        "pinyin": "yě bàng sāng yīn xué zhòng guā 。",
+        "key": "学种瓜",
+        "gloss": "也在桑树荫下**学着种瓜**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "白天锄地，夜里绩麻，村里人人都有自己的活。小孩子还不会耕织，也在桑荫下学着种瓜。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/57%20%E3%80%81%E3%80%8A%E5%9B%9B%E6%97%B6%E7%94%B0%E5%9B%AD%E6%9D%82%E5%85%B4%20%C2%B7%20%E5%85%B6%E4%B8%89%E5%8D%81%E4%B8%80%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "sishi-2",
+    "title": "四时田园杂兴",
+    "author": "范成大",
+    "dynasty": "宋",
+    "titlePinyin": "sì shí tián yuán zá xìng",
+    "authorPinyin": "fàn chéng dà",
+    "dynastyPinyin": "sòng",
+    "tag": "其二十五 · 梅子金黄",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "58 、《四时田园杂兴 · 其二》.jpg",
+    "lines": [
+      {
+        "text": "梅子金黄杏子肥，",
+        "pinyin": "méi zǐ jīn huáng xìng zǐ féi ，",
+        "key": "金黄",
+        "gloss": "**梅子**变金黄，杏子也长肥了。"
+      },
+      {
+        "text": "麦花雪白菜花稀。",
+        "pinyin": "mài huā xuě bái cài huā xī 。",
+        "key": "麦花",
+        "gloss": "麦花像雪一样白，**菜花**渐渐稀了。"
+      },
+      {
+        "text": "日长篱落无人过，",
+        "pinyin": "rì cháng lí luò wú rén guò ，",
+        "key": "日长",
+        "gloss": "白天变长，**篱笆**边很少有人走。"
+      },
+      {
+        "text": "惟有蜻蜓蛱蝶飞。",
+        "pinyin": "wéi yǒu qīng tíng jiá dié fēi 。",
+        "key": "蜻蜓",
+        "gloss": "只有**蜻蜓和蝴蝶**飞来飞去。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "梅子金黄，杏子饱满，麦花雪白，菜花少了。白天长了，篱边没有人经过，只有蜻蜓和蝴蝶在飞。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/58%20%E3%80%81%E3%80%8A%E5%9B%9B%E6%97%B6%E7%94%B0%E5%9B%AD%E6%9D%82%E5%85%B4%20%C2%B7%20%E5%85%B6%E4%BA%8C%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiaochi",
+    "title": "小池",
+    "author": "杨万里",
+    "dynasty": "宋",
+    "titlePinyin": "xiǎo chí",
+    "authorPinyin": "yáng wàn lǐ",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 59 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "59 、《小池》.jpg",
+    "lines": [
+      {
+        "text": "泉眼无声惜细流，",
+        "pinyin": "quán yǎn wú shēng xī xì liú ，",
+        "key": "惜细流",
+        "gloss": "泉眼不出声，像在**珍惜**细细的水流。"
+      },
+      {
+        "text": "树阴照水爱晴柔。",
+        "pinyin": "shù yīn zhào shuǐ ài qíng róu 。",
+        "key": "树阴",
+        "gloss": "**树荫**映在水里，爱这晴天的柔和。"
+      },
+      {
+        "text": "小荷才露尖尖角，",
+        "pinyin": "xiǎo hé cái lù jiān jiān jiǎo ，",
+        "key": "尖尖角",
+        "gloss": "小荷叶刚露出**一个尖角**。"
+      },
+      {
+        "text": "早有蜻蜓立上头。",
+        "pinyin": "zǎo yǒu qīng tíng lì shàng tóu 。",
+        "key": "蜻蜓",
+        "gloss": "就已经有**蜻蜓**站在上面。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "泉眼默默流出细水，树荫倒映在晴柔的池面上。荷叶才露尖角，蜻蜓早就立在上头了。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/59%20%E3%80%81%E3%80%8A%E5%B0%8F%E6%B1%A0%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiaochu",
+    "title": "晓出净慈寺送林子方",
+    "author": "杨万里",
+    "dynasty": "宋",
+    "titlePinyin": "xiǎo chū jìng cí sì sòng lín zǐ fāng",
+    "authorPinyin": "yáng wàn lǐ",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 60 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "60 、《晓出净慈寺送林子方》.jpg",
+    "lines": [
+      {
+        "text": "毕竟西湖六月中，",
+        "pinyin": "bì jìng xī hú liù yuè zhōng ，",
+        "key": "六月",
+        "gloss": "到底是**六月**的西湖。"
+      },
+      {
+        "text": "风光不与四时同。",
+        "pinyin": "fēng guāng bù yǔ sì shí tóng 。",
+        "key": "不与",
+        "gloss": "风光和**别的时节不一样**。"
+      },
+      {
+        "text": "接天莲叶无穷碧，",
+        "pinyin": "jiē tiān lián yè wú qióng bì ，",
+        "key": "无穷碧",
+        "gloss": "莲叶连到天边，**绿得没有尽头**。"
+      },
+      {
+        "text": "映日荷花别样红。",
+        "pinyin": "yìng rì hé huā bié yàng hóng 。",
+        "key": "别样红",
+        "gloss": "荷花在阳光下**红得特别**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "六月的西湖果然和其他时候不同。莲叶碧绿得接上了天，荷花被太阳照得格外红。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/60%20%E3%80%81%E3%80%8A%E6%99%93%E5%87%BA%E5%87%80%E6%85%88%E5%AF%BA%E9%80%81%E6%9E%97%E5%AD%90%E6%96%B9%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chunri",
+    "title": "春日",
+    "author": "朱熹",
+    "dynasty": "宋",
+    "titlePinyin": "chūn rì",
+    "authorPinyin": "zhū xī",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 61 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "61 、《春日》.jpg",
+    "lines": [
+      {
+        "text": "胜日寻芳泗水滨，",
+        "pinyin": "shèng rì xún fāng sì shuǐ bīn ，",
+        "key": "寻芳",
+        "gloss": "晴好的日子到泗水边**找春天**。"
+      },
+      {
+        "text": "无边光景一时新。",
+        "pinyin": "wú biān guāng jǐng yī shí xīn 。",
+        "key": "一时新",
+        "gloss": "无边的风景**一下子都新鲜**了。"
+      },
+      {
+        "text": "等闲识得东风面，",
+        "pinyin": "děng xián shí dé dōng fēng miàn ，",
+        "key": "东风",
+        "gloss": "很容易就认出**春风**的面貌。"
+      },
+      {
+        "text": "万紫千红总是春。",
+        "pinyin": "wàn zǐ qiān hóng zǒng shì chūn 。",
+        "key": "万紫千红",
+        "gloss": "因为**万紫千红**都是春天。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "好天气里到泗水边游春，眼前的景色一下子都新了。不必费力就能认出春风，万紫千红就是它的样子。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/61%20%E3%80%81%E3%80%8A%E6%98%A5%E6%97%A5%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "guan-shu",
+    "title": "观书有感",
+    "author": "朱熹",
+    "dynasty": "宋",
+    "titlePinyin": "guān shū yǒu gǎn",
+    "authorPinyin": "zhū xī",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 62 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "62 、《观书有感》.jpg",
+    "lines": [
+      {
+        "text": "半亩方塘一鉴开，",
+        "pinyin": "bàn mǔ fāng táng yī jiàn kāi ，",
+        "key": "一鉴",
+        "gloss": "半亩方塘像**一面镜子**打开。"
+      },
+      {
+        "text": "天光云影共徘徊。",
+        "pinyin": "tiān guāng yún yǐng gòng pái huái 。",
+        "key": "云影",
+        "gloss": "天光和**云影**一起在水里移动。"
+      },
+      {
+        "text": "问渠那得清如许？",
+        "pinyin": "wèn qú nǎ dé qīng rú xǔ ？",
+        "key": "清如许",
+        "gloss": "问它为什么能**这样清**。"
+      },
+      {
+        "text": "为有源头活水来。",
+        "pinyin": "wèi yǒu yuán tóu huó shuǐ lái 。",
+        "key": "活水",
+        "gloss": "因为有**源头的活水**不断流来。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "半亩方塘像打开的镜子，天光云影在里面徘徊。水为什么这么清？因为源头一直有活水流来。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/62%20%E3%80%81%E3%80%8A%E8%A7%82%E4%B9%A6%E6%9C%89%E6%84%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "tilinan",
+    "title": "题临安邸",
+    "author": "林升",
+    "dynasty": "宋",
+    "titlePinyin": "tí lín ān dǐ",
+    "authorPinyin": "lín shēng",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 63 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "63 、《题临安邸》.jpg",
+    "lines": [
+      {
+        "text": "山外青山楼外楼，",
+        "pinyin": "shān wài qīng shān lóu wài lóu ，",
+        "key": "楼外楼",
+        "gloss": "青山之外还有青山，**楼外还有楼**。"
+      },
+      {
+        "text": "西湖歌舞几时休？",
+        "pinyin": "xī hú gē wǔ jǐ shí xiū ？",
+        "key": "几时休",
+        "gloss": "西湖上的歌舞**什么时候才停**？"
+      },
+      {
+        "text": "暖风熏得游人醉，",
+        "pinyin": "nuǎn fēng xūn dé yóu rén zuì ，",
+        "key": "熏得",
+        "gloss": "暖风把游人**吹得醉了**。"
+      },
+      {
+        "text": "直把杭州作汴州。",
+        "pinyin": "zhí bǎ háng zhōu zuò biàn zhōu 。",
+        "key": "汴州",
+        "gloss": "竟把杭州当成了从前的**汴州**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "山外有山，楼外有楼。西湖的歌舞不知何时才歇。暖风把人熏醉，他们简直把杭州当成了汴州。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/63%20%E3%80%81%E3%80%8A%E9%A2%98%E4%B8%B4%E5%AE%89%E9%82%B8%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "youyuan",
+    "title": "游园不值",
+    "author": "叶绍翁",
+    "dynasty": "宋",
+    "titlePinyin": "yóu yuán bù zhí",
+    "authorPinyin": "yè shào wēng",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 64 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "64 、《游园不值》.jpg",
+    "lines": [
+      {
+        "text": "应怜屐齿印苍苔，",
+        "pinyin": "yīng lián jī chǐ yìn cāng tái ，",
+        "key": "苍苔",
+        "gloss": "大概是主人怜惜**青苔**，怕木屐踩坏它。"
+      },
+      {
+        "text": "小扣柴扉久不开。",
+        "pinyin": "xiǎo kòu chái fēi jiǔ bù kāi 。",
+        "key": "柴扉",
+        "gloss": "我轻轻敲**柴门**，好久没有人开。"
+      },
+      {
+        "text": "春色满园关不住，",
+        "pinyin": "chūn sè mǎn yuán guān bù zhù ，",
+        "key": "关不住",
+        "gloss": "满园春色**关也关不住**。"
+      },
+      {
+        "text": "一枝红杏出墙来。",
+        "pinyin": "yī zhī hóng xìng chū qiáng lái 。",
+        "key": "出墙",
+        "gloss": "一枝红杏已经**伸出墙来**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "也许主人怕我的木屐踩坏青苔，敲了很久柴门也不开。满园春色关不住，一枝红杏已经探出墙头。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/64%20%E3%80%81%E3%80%8A%E6%B8%B8%E5%9B%AD%E4%B8%8D%E5%80%BC%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "xiangcun",
+    "title": "乡村四月",
+    "author": "翁卷",
+    "dynasty": "宋",
+    "titlePinyin": "xiāng cūn sì yuè",
+    "authorPinyin": "wēng juǎn",
+    "dynastyPinyin": "sòng",
+    "tag": "图文第 65 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "sheet": "65 、《乡村四月》.jpg",
+    "lines": [
+      {
+        "text": "绿遍山原白满川，",
+        "pinyin": "lǜ biàn shān yuán bái mǎn chuān ，",
+        "key": "白满川",
+        "gloss": "山野全绿了，河面上**一片白亮**。"
+      },
+      {
+        "text": "子规声里雨如烟。",
+        "pinyin": "zǐ guī shēng lǐ yǔ rú yān 。",
+        "key": "子规",
+        "gloss": "**杜鹃**叫着，雨细得像烟。"
+      },
+      {
+        "text": "乡村四月闲人少，",
+        "pinyin": "xiāng cūn sì yuè xián rén shǎo ，",
+        "key": "闲人少",
+        "gloss": "四月的乡村**很少有人闲着**。"
+      },
+      {
+        "text": "才了蚕桑又插田。",
+        "pinyin": "cái liǎo cán sāng yòu chā tián 。",
+        "key": "插田",
+        "gloss": "刚忙完养蚕，又要**插秧**了。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "山原一片绿，河水闪着白光，杜鹃声里细雨如烟。乡村四月没什么闲人，蚕桑刚完又要插田。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/65%20%E3%80%81%E3%80%8A%E4%B9%A1%E6%9D%91%E5%9B%9B%E6%9C%88%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "momei",
+    "title": "墨梅",
+    "author": "王冕",
+    "dynasty": "元",
+    "titlePinyin": "mò méi",
+    "authorPinyin": "wáng miǎn",
+    "dynastyPinyin": "yuán",
+    "tag": "图文第 66 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "66 、《墨梅》.jpg",
+    "lines": [
+      {
+        "text": "我家洗砚池头树，",
+        "pinyin": "wǒ jiā xǐ yàn chí tóu shù ，",
+        "key": "洗砚",
+        "gloss": "我家**洗砚池**边有一棵梅树。"
+      },
+      {
+        "text": "朵朵花开淡墨痕。",
+        "pinyin": "duǒ duǒ huā kāi dàn mò hén 。",
+        "key": "淡墨",
+        "gloss": "朵朵花都带着**淡淡的墨痕**。"
+      },
+      {
+        "text": "不要人夸好颜色，",
+        "pinyin": "bù yào rén kuā hǎo yán sè ，",
+        "key": "好颜色",
+        "gloss": "不需要别人夸它**颜色好看**。"
+      },
+      {
+        "text": "只留清气满乾坤。",
+        "pinyin": "zhǐ liú qīng qì mǎn qián kūn 。",
+        "key": "清气",
+        "gloss": "只愿把**清香**留满天地。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "洗砚池边的梅树开花，每朵都染着淡墨。它不要人夸颜色，只想把清气留在天地间。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/66%20%E3%80%81%E3%80%8A%E5%A2%A8%E6%A2%85%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "shihui",
+    "title": "石灰吟",
+    "author": "于谦",
+    "dynasty": "明",
+    "titlePinyin": "shí huī yín",
+    "authorPinyin": "yú qiān",
+    "dynastyPinyin": "míng",
+    "tag": "图文第 67 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "67 、《石灰吟》.jpg",
+    "lines": [
+      {
+        "text": "千锤万凿出深山，",
+        "pinyin": "qiān chuí wàn záo chū shēn shān ，",
+        "key": "出深山",
+        "gloss": "经过无数锤凿，才**走出深山**。"
+      },
+      {
+        "text": "烈火焚烧若等闲。",
+        "pinyin": "liè huǒ fén shāo ruò děng xián 。",
+        "key": "等闲",
+        "gloss": "烈火焚烧，也只当**平常事**。"
+      },
+      {
+        "text": "粉骨碎身全不怕，",
+        "pinyin": "fěn gǔ suì shēn quán bù pà ，",
+        "key": "粉骨",
+        "gloss": "就算**粉身碎骨**也全不怕。"
+      },
+      {
+        "text": "要留清白在人间。",
+        "pinyin": "yào liú qīng bái zài rén jiān 。",
+        "key": "清白",
+        "gloss": "只想把**清白**留在人间。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "石灰石千锤万凿才离开深山，烈火焚烧也毫不在意。即便粉身碎骨也不怕，只求把清白留在世上。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/67%20%E3%80%81%E3%80%8A%E7%9F%B3%E7%81%B0%E5%90%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "zhushi",
+    "title": "竹石",
+    "author": "郑燮",
+    "dynasty": "清",
+    "titlePinyin": "zhú shí",
+    "authorPinyin": "zhèng xiè",
+    "dynastyPinyin": "qīng",
+    "tag": "图文第 68 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "68 、《竹石》.jpg",
+    "lines": [
+      {
+        "text": "咬定青山不放松，",
+        "pinyin": "yǎo dìng qīng shān bù fàng sōng ，",
+        "key": "咬定",
+        "gloss": "竹子**抓住青山**，一点不放松。"
+      },
+      {
+        "text": "立根原在破岩中。",
+        "pinyin": "lì gēn yuán zài pò yán zhōng 。",
+        "key": "破岩",
+        "gloss": "根本来就扎在**石缝**里。"
+      },
+      {
+        "text": "千磨万击还坚劲，",
+        "pinyin": "qiān mó wàn jī hái jiān jìng ，",
+        "key": "坚劲",
+        "gloss": "千磨万击，依然**又坚又硬**。"
+      },
+      {
+        "text": "任尔东西南北风。",
+        "pinyin": "rèn ěr dōng xī nán běi fēng 。",
+        "key": "东西南北",
+        "gloss": "任凭你刮来**四面的风**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "竹子咬住青山不放，根扎在破裂的岩石中。任凭千磨万击，任凭东西南北风，它还是那样坚劲。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/68%20%E3%80%81%E3%80%8A%E7%AB%B9%E7%9F%B3%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "suojian",
+    "title": "所见",
+    "author": "袁枚",
+    "dynasty": "清",
+    "titlePinyin": "suǒ jiàn",
+    "authorPinyin": "yuán méi",
+    "dynastyPinyin": "qīng",
+    "tag": "图文第 69 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "69 、《所见》.jpg",
+    "lines": [
+      {
+        "text": "牧童骑黄牛，",
+        "pinyin": "mù tóng qí huáng niú ，",
+        "key": "牧童",
+        "gloss": "**牧童**骑在黄牛背上。"
+      },
+      {
+        "text": "歌声振林樾。",
+        "pinyin": "gē shēng zhèn lín yuè 。",
+        "key": "振林樾",
+        "gloss": "歌声在**树林**里回荡。"
+      },
+      {
+        "text": "意欲捕鸣蝉，",
+        "pinyin": "yì yù bǔ míng chán ，",
+        "key": "鸣蝉",
+        "gloss": "忽然想去捉那只**鸣叫的蝉**。"
+      },
+      {
+        "text": "忽然闭口立。",
+        "pinyin": "hū rán bì kǒu lì 。",
+        "key": "闭口",
+        "gloss": "马上**闭上嘴**，站在树下。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "牧童骑着黄牛，歌声响彻林子。他忽然想捉鸣蝉，立刻闭住嘴巴，静静站住。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/69%20%E3%80%81%E3%80%8A%E6%89%80%E8%A7%81%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "cunju",
+    "title": "村居",
+    "author": "高鼎",
+    "dynasty": "清",
+    "titlePinyin": "cūn jū",
+    "authorPinyin": "gāo dǐng",
+    "dynastyPinyin": "qīng",
+    "tag": "图文第 70 首",
+    "pageColor": "#e7f0e4",
+    "effect": "petal",
+    "sheet": "70 、《村居》.jpg",
+    "lines": [
+      {
+        "text": "草长莺飞二月天，",
+        "pinyin": "cǎo zhǎng yīng fēi èr yuè tiān ，",
+        "key": "二月天",
+        "gloss": "**二月**里草长起来，黄莺飞着。"
+      },
+      {
+        "text": "拂堤杨柳醉春烟。",
+        "pinyin": "fú dī yáng liǔ zuì chūn yān 。",
+        "key": "醉春烟",
+        "gloss": "杨柳拂着堤岸，像**醉在春烟**里。"
+      },
+      {
+        "text": "儿童散学归来早，",
+        "pinyin": "ér tóng sàn xué guī lái zǎo ，",
+        "key": "散学",
+        "gloss": "孩子们**放学**回来得早。"
+      },
+      {
+        "text": "忙趁东风放纸鸢。",
+        "pinyin": "máng chèn dōng fēng fàng zhǐ yuān 。",
+        "key": "纸鸢",
+        "gloss": "忙着趁东风去**放风筝**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "二月天草长莺飞，杨柳轻拂堤岸，陶醉在春天的薄雾里。孩子们早早放学，急着趁东风放风筝。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/70%20%E3%80%81%E3%80%8A%E6%9D%91%E5%B1%85%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "jihai",
+    "title": "己亥杂诗",
+    "author": "龚自珍",
+    "dynasty": "清",
+    "titlePinyin": "jǐ hài zá shī",
+    "authorPinyin": "gōng zì zhēn",
+    "dynastyPinyin": "qīng",
+    "tag": "其二百二十",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "71 、《己亥杂诗》.jpg",
+    "lines": [
+      {
+        "text": "九州生气恃风雷，",
+        "pinyin": "jiǔ zhōu shēng qì shì fēng léi ，",
+        "key": "风雷",
+        "gloss": "中国要有生气，得靠**风雷**般的力量。"
+      },
+      {
+        "text": "万马齐喑究可哀。",
+        "pinyin": "wàn mǎ qí yīn jiū kě āi 。",
+        "key": "齐喑",
+        "gloss": "万马都不出声，终究**可悲**。"
+      },
+      {
+        "text": "我劝天公重抖擞，",
+        "pinyin": "wǒ quàn tiān gōng zhòng dǒu sǒu ，",
+        "key": "抖擞",
+        "gloss": "我劝上天重新**振作**起来。"
+      },
+      {
+        "text": "不拘一格降人材。",
+        "pinyin": "bù jū yī gé jiàng rén cái 。",
+        "key": "人材",
+        "gloss": "不要只按一个框框，多降些**人才**下来。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "大地要焕发生气，就得有风雷一样的震动。万马沉默实在可悲。上天啊，请重新振作，不拘一格降下人才。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/71%20%E3%80%81%E3%80%8A%E5%B7%B1%E4%BA%A5%E6%9D%82%E8%AF%97%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "liangzhou-wangzhihuan",
+    "title": "凉州词",
+    "author": "王之涣",
+    "dynasty": "唐",
+    "titlePinyin": "liáng zhōu cí",
+    "authorPinyin": "wáng zhī huàn",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 72 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "72 、《凉州词》.jpg",
+    "lines": [
+      {
+        "text": "黄河远上白云间，",
+        "pinyin": "huáng hé yuǎn shàng bái yún jiān ，",
+        "key": "白云间",
+        "gloss": "远远望去，黄河像从**白云中间**流来。"
+      },
+      {
+        "text": "一片孤城万仞山。",
+        "pinyin": "yī piàn gū chéng wàn rèn shān 。",
+        "key": "孤城",
+        "gloss": "万仞高山里，只剩**一座孤城**。"
+      },
+      {
+        "text": "羌笛何须怨杨柳，",
+        "pinyin": "qiāng dí hé xū yuàn yáng liǔ ，",
+        "key": "杨柳",
+        "gloss": "羌笛何必吹那首哀怨的**《折杨柳》**。"
+      },
+      {
+        "text": "春风不度玉门关。",
+        "pinyin": "chūn fēng bù dù yù mén guān 。",
+        "key": "玉门关",
+        "gloss": "春风本来就**吹不到玉门关**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "黄河远远像挂在白云间，高山之中只有一座孤城。羌笛不必埋怨杨柳不青，春风本来吹不到玉门关。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/72%20%E3%80%81%E3%80%8A%E5%87%89%E5%B7%9E%E8%AF%8D%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "liangzhou-wanghan",
+    "title": "凉州词",
+    "author": "王翰",
+    "dynasty": "唐",
+    "titlePinyin": "liáng zhōu cí",
+    "authorPinyin": "wáng hàn",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 73 首 · 其一",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "73 、《凉州词》.jpg",
+    "lines": [
+      {
+        "text": "葡萄美酒夜光杯，",
+        "pinyin": "pú táo měi jiǔ yè guāng bēi ，",
+        "key": "夜光杯",
+        "gloss": "**夜光杯**里盛着葡萄美酒。"
+      },
+      {
+        "text": "欲饮琵琶马上催。",
+        "pinyin": "yù yǐn pí pá mǎ shàng cuī 。",
+        "key": "琵琶",
+        "gloss": "刚要喝，马上的**琵琶**已经催人出发。"
+      },
+      {
+        "text": "醉卧沙场君莫笑，",
+        "pinyin": "zuì wò shā chǎng jūn mò xiào ，",
+        "key": "沙场",
+        "gloss": "要是我醉倒在**战场**上，请别笑。"
+      },
+      {
+        "text": "古来征战几人回？",
+        "pinyin": "gǔ lái zhēng zhàn jǐ rén huí ？",
+        "key": "几人回",
+        "gloss": "自古出征的人，**有几个能回来**？"
+      }
+    ],
+    "hotspots": [],
+    "translation": "葡萄美酒装在夜光杯里，正要喝，马上琵琶就催着上路。醉倒沙场你别笑，自古打仗有几个人回得来？",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/73%20%E3%80%81%E3%80%8A%E5%87%89%E5%B7%9E%E8%AF%8D%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "chusai",
+    "title": "出塞",
+    "author": "王昌龄",
+    "dynasty": "唐",
+    "titlePinyin": "chū sài",
+    "authorPinyin": "wáng chāng líng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 74 首",
+    "pageColor": "#f4e6dc",
+    "effect": "glow",
+    "sheet": "74 、《出塞》.jpg",
+    "lines": [
+      {
+        "text": "秦时明月汉时关，",
+        "pinyin": "qín shí míng yuè hàn shí guān ，",
+        "key": "汉时关",
+        "gloss": "明月还是秦汉时的月，**关塞**也还是旧关。"
+      },
+      {
+        "text": "万里长征人未还。",
+        "pinyin": "wàn lǐ cháng zhēng rén wèi huán 。",
+        "key": "未还",
+        "gloss": "远征万里的人**还没有回来**。"
+      },
+      {
+        "text": "但使龙城飞将在，",
+        "pinyin": "dàn shǐ lóng chéng fēi jiàng zài ，",
+        "key": "飞将",
+        "gloss": "只要有**飞将军**李广在，"
+      },
+      {
+        "text": "不教胡马度阴山。",
+        "pinyin": "bù jiào hú mǎ dù yīn shān 。",
+        "key": "阴山",
+        "gloss": "就不会让敌骑越过**阴山**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "秦汉时的明月仍照着边关，出征万里的人还未归来。倘若飞将军还在，胡马就过不了阴山。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/74%20%E3%80%81%E3%80%8A%E5%87%BA%E5%A1%9E%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "furonglou",
+    "title": "芙蓉楼送辛渐",
+    "author": "王昌龄",
+    "dynasty": "唐",
+    "titlePinyin": "fú róng lóu sòng xīn jiàn",
+    "authorPinyin": "wáng chāng líng",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 75 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "75 、《芙蓉楼送辛渐》.jpg",
+    "lines": [
+      {
+        "text": "寒雨连江夜入吴，",
+        "pinyin": "hán yǔ lián jiāng yè rù wú ，",
+        "key": "寒雨",
+        "gloss": "**冷雨**洒满江面，夜里来到吴地。"
+      },
+      {
+        "text": "平明送客楚山孤。",
+        "pinyin": "píng míng sòng kè chǔ shān gū 。",
+        "key": "楚山孤",
+        "gloss": "天亮送走客人，连**楚山**都显得孤单。"
+      },
+      {
+        "text": "洛阳亲友如相问，",
+        "pinyin": "luò yáng qīn yǒu rú xiāng wèn ，",
+        "key": "相问",
+        "gloss": "洛阳的亲友**如果问起我**，"
+      },
+      {
+        "text": "一片冰心在玉壶。",
+        "pinyin": "yī piàn bīng xīn zài yù hú 。",
+        "key": "冰心",
+        "gloss": "就说我的心还像**玉壶里的冰**一样干净。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "冷雨连江，夜里进入吴地。清晨送客之后，楚山也显得孤单。洛阳亲友若问起，请告诉他们：我的心仍如玉壶中的冰。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/75%20%E3%80%81%E3%80%8A%E8%8A%99%E8%93%89%E6%A5%BC%E9%80%81%E8%BE%9B%E6%B8%90%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "leyouyuan",
+    "title": "乐游原",
+    "author": "李商隐",
+    "dynasty": "唐",
+    "titlePinyin": "lè yóu yuán",
+    "authorPinyin": "lǐ shāng yǐn",
+    "dynastyPinyin": "táng",
+    "tag": "图文第 76 首",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "76、《乐游原》.jpg",
+    "lines": [
+      {
+        "text": "向晚意不适，",
+        "pinyin": "xiàng wǎn yì bù shì ，",
+        "key": "不适",
+        "gloss": "傍晚时心情**闷闷的**。"
+      },
+      {
+        "text": "驱车登古原。",
+        "pinyin": "qū chē dēng gǔ yuán 。",
+        "key": "古原",
+        "gloss": "驾车登上古老的**乐游原**。"
+      },
+      {
+        "text": "夕阳无限好，",
+        "pinyin": "xī yáng wú xiàn hǎo ，",
+        "key": "夕阳",
+        "gloss": "**夕阳**下的景色无限美好。"
+      },
+      {
+        "text": "只是近黄昏。",
+        "pinyin": "zhǐ shì jìn huáng hūn 。",
+        "key": "黄昏",
+        "gloss": "只可惜已经**临近黄昏**。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "傍晚心里不痛快，便驾车登上乐游原。夕阳真美，只是黄昏已经近了。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/76%E3%80%81%E3%80%8A%E4%B9%90%E6%B8%B8%E5%8E%9F%E3%80%8B.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "zhuliguan",
+    "title": "竹里馆",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "zhú lǐ guǎn",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文补充",
+    "pageColor": "#f7eed9",
+    "effect": "leaf",
+    "sheet": "竹里馆.jpg",
+    "lines": [
+      {
+        "text": "独坐幽篁里，",
+        "pinyin": "dú zuò yōu huáng lǐ ，",
+        "key": "幽篁",
+        "gloss": "独自坐在**幽静的竹林**里。"
+      },
+      {
+        "text": "弹琴复长啸。",
+        "pinyin": "tán qín fù cháng xiào 。",
+        "key": "长啸",
+        "gloss": "一会儿**弹琴**，一会儿长声吟啸。"
+      },
+      {
+        "text": "深林人不知，",
+        "pinyin": "shēn lín rén bù zhī ，",
+        "key": "人不知",
+        "gloss": "林子很深，**没有人知道**我在这儿。"
+      },
+      {
+        "text": "明月来相照。",
+        "pinyin": "míng yuè lái xiāng zhào 。",
+        "key": "明月",
+        "gloss": "只有**明月**来照着我。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "一个人坐在幽深的竹林里，弹琴，又长啸。密林中没人知道，只有明月来相照。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/%E7%AB%B9%E9%87%8C%E9%A6%86.jpg",
+        "used": "核对正文、拼音和译文"
+      }
+    ]
+  },
+  {
+    "id": "niaomingjian",
+    "title": "鸟鸣涧",
+    "author": "王维",
+    "dynasty": "唐",
+    "titlePinyin": "niǎo míng jiàn",
+    "authorPinyin": "wáng wéi",
+    "dynastyPinyin": "táng",
+    "tag": "图文补充",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "sheet": "鸟鸣涧.jpg",
+    "lines": [
+      {
+        "text": "人闲桂花落，",
+        "pinyin": "rén xián guì huā luò ，",
+        "key": "桂花",
+        "gloss": "人闲下来，才察觉**桂花**落下。"
+      },
+      {
+        "text": "夜静春山空。",
+        "pinyin": "yè jìng chūn shān kōng 。",
+        "key": "春山空",
+        "gloss": "夜这么静，**春山**显得空空的。"
+      },
+      {
+        "text": "月出惊山鸟，",
+        "pinyin": "yuè chū jīng shān niǎo ，",
+        "key": "惊",
+        "gloss": "月亮出来，**惊动**了山里的鸟。"
+      },
+      {
+        "text": "时鸣春涧中。",
+        "pinyin": "shí míng chūn jiàn zhōng 。",
+        "key": "春涧",
+        "gloss": "它们不时在**春天的山涧**里叫。"
+      }
+    ],
+    "hotspots": [],
+    "translation": "心闲才看见桂花飘落，夜静时春山更空。月亮升起，惊起山鸟，叫声一阵阵回荡在春涧里。",
+    "sources": [
+      {
+        "name": "图文打印稿",
+        "url": "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/%E9%B8%9F%E9%B8%A3%E6%B6%A7.jpg",
+        "used": "核对正文、拼音和译文"
       }
     ]
   }

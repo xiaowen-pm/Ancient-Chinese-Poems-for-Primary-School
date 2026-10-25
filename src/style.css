@@ -320,6 +320,64 @@ header {
 
 .scene img.show { opacity: 1; transform: scale(1); }
 
+.scene.plain img { display: none; }
+
+.scene-plate {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 36px 120px;
+  text-align: center;
+  color: #2c2824;
+  pointer-events: none;
+}
+
+.scene-plate[hidden] { display: none; }
+
+.scene-plate .mark {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent);
+  font-style: normal;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.scene-plate strong {
+  max-width: 14em;
+  font-size: clamp(32px, 4.4vw, 60px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.12em;
+  text-wrap: balance;
+}
+
+.scene-plate .by {
+  color: var(--soft);
+  font-size: 15px;
+  letter-spacing: 4px;
+}
+
+.scene.plain {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.72), transparent 42%),
+    radial-gradient(circle at 86% 84%, rgba(80, 60, 30, 0.08), transparent 46%),
+    var(--plate, #efe8da);
+}
+
+.scene.plain::after {
+  background: linear-gradient(90deg, transparent 72%, rgba(246, 241, 231, 0.28));
+}
+
 .scene.missing-img::before {
   content: "画卷还在路上";
   position: absolute;
@@ -666,6 +724,20 @@ ruby { ruby-align: center; }
 
 .pdfbtn:hover { filter: brightness(1.06); }
 
+.sheetlink {
+  display: block;
+  margin-top: 10px;
+  color: var(--soft);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.sheetlink:hover { color: var(--accent); }
+
+.sheetlink[hidden] { display: none; }
+
 .stamp {
   position: absolute;
   top: 118px;
@@ -725,11 +797,26 @@ ruby { ruby-align: center; }
   transition: transform 0.3s ease;
 }
 
-.card img {
+.card img,
+.card-plate {
   display: block;
   width: 100%;
   height: 150px;
   object-fit: cover;
+}
+
+.card-plate {
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.7), transparent 52%),
+    var(--plate, #efe8da);
+  color: #2c2824;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-align: center;
 }
 
 .card span { display: block; padding: 12px 16px 14px; }

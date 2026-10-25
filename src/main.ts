@@ -1,5 +1,5 @@
 import "./style.css";
-import { asset, findPoem, findSoon, poems, soonPoems } from "./data.ts";
+import { asset, findPoem, findSoon, poems, sheetUrl, soonPoems } from "./data.ts";
 import { startEffects } from "./effects.ts";
 import { escapeHtml, rich } from "./html.ts";
 import { ReaderAudio } from "./player.ts";
@@ -14,6 +14,9 @@ const $ = <T extends HTMLElement>(id: string) => {
 
 const scene = $<HTMLElement>("scene");
 const sceneImg = $<HTMLImageElement>("scene-img");
+const scenePlate = $<HTMLElement>("scene-plate");
+const fx = $<HTMLCanvasElement>("fx");
+const sheetLink = $<HTMLAnchorElement>("sheet-link");
 const hots = $<HTMLElement>("hots");
 const lines = $<HTMLElement>("lines");
 const tabs = $<HTMLElement>("tabs");
@@ -65,14 +68,13 @@ function current(): Poem {
 type TabSpec = { id: string; label: string };
 
 function tabsFor(poem: Poem): TabSpec[] {
-  const richPanels = Boolean(
-    poem.translation ||
-      poem.appreciation?.length ||
+  const commentary = Boolean(
+    poem.appreciation?.length ||
       poem.background ||
       poem.quizzes?.length ||
       poem.lines.some((item) => item.note),
   );
-  if (richPanels) {
+  if (commentary) {
     return [
       { id: "notes", label: "注释" },
       { id: "translation", label: "译文" },
@@ -81,11 +83,18 @@ function tabsFor(poem: Poem): TabSpec[] {
       { id: "quizzes", label: "小测" },
     ];
   }
-  return [
-    { id: "gloss", label: "逐句画境" },
-    { id: "story", label: "诗人小剧场" },
-    { id: "quiz", label: "看画猜诗 · 盖章" },
-  ];
+  const tabs: TabSpec[] = [{ id: "gloss", label: "逐句画境" }];
+  if (poem.translation) tabs.push({ id: "translation", label: "译文" });
+  if (poem.story || poem.sceneQuiz || !poem.translation) {
+    tabs.push({ id: "story", label: "诗人小剧场" });
+    tabs.push({ id: "quiz", label: "看画猜诗 · 盖章" });
+  }
+  return tabs;
+}
+
+function plateText(title: string): string {
+  const chars = [...title];
+  return chars.length <= 4 ? title : chars.slice(0, 2).join("");
 }
 
 function rubyLine(text: string, pinyin: string, key?: string): string {
@@ -112,8 +121,21 @@ function mark(text: string, span: Span | null): string {
 
 function showImage(poem: Poem): void {
   const token = ++imgToken;
-  scene.classList.remove("missing-img");
+  scene.classList.remove("missing-img", "plain");
   sceneImg.classList.remove("show");
+  fx.dataset.plain = poem.image ? "0" : "1";
+  if (!poem.image) {
+    scene.classList.add("plain");
+    scene.style.setProperty("--plate", poem.pageColor);
+    sceneImg.removeAttribute("src");
+    sceneImg.alt = "";
+    scenePlate.hidden = false;
+    scenePlate.innerHTML = `<i class="mark">${escapeHtml(poem.dynasty)}</i><strong>${escapeHtml(poem.title)}</strong><span class="by">${escapeHtml(poem.dynasty)} · ${escapeHtml(poem.author)}</span>`;
+    return;
+  }
+  scenePlate.hidden = true;
+  scenePlate.innerHTML = "";
+  scene.style.removeProperty("--plate");
   sceneImg.alt = `${poem.title}诗意图，${poem.author}`;
   const src = asset(poem.image);
   const reveal = () => {
@@ -261,12 +283,21 @@ function renderIdentity(): void {
   $<HTMLElement>("author").innerHTML = `<em>${escapeHtml(poem.dynasty)}</em>${escapeHtml(poem.author)}`;
   document.title = `${poem.title} · 必背诗笺`;
   document.body.style.background = poem.pageColor;
+  if (poem.sheet) {
+    sheetLink.hidden = false;
+    sheetLink.href = sheetUrl(poem.sheet);
+  } else {
+    sheetLink.hidden = true;
+    sheetLink.removeAttribute("href");
+  }
 }
 
 function renderSources(): void {
   const poem = current();
   if (!poem.sources?.length) {
-    sources.textContent = "这一首的注释还没逐条注明出处。画境和诗人小剧场是给孩子改写的，不是课本原文。";
+    sources.textContent = poem.story
+      ? "这一首的注释还没逐条注明出处。画境和诗人小剧场是给孩子改写的，不是课本原文。"
+      : "这一首的注释还没逐条注明出处。画境和译文是给孩子改写的，不是课本原文。";
     return;
   }
   const links = poem.sources
@@ -278,12 +309,17 @@ function renderSources(): void {
   sources.innerHTML = `《${escapeHtml(poem.title)}》的注释、译文和赏析根据公开资料改写成儿童读法，核对过：${links}。`;
 }
 
+function cardFace(poem: Poem): string {
+  if (poem.image) return `<img src="${asset(poem.image)}" alt="${escapeHtml(poem.title)}诗意图">`;
+  return `<div class="card-plate" style="--plate:${escapeHtml(poem.pageColor)}">${escapeHtml(plateText(poem.title))}</div>`;
+}
+
 function renderGallery(): void {
   cards.innerHTML = poems
     .map((poem, index) => {
       const first = poem.lines[0]?.text ?? "";
       const currentClass = index === poemIndex ? " is-current" : "";
-      return `<button type="button" class="card${currentClass}" data-poem="${index}"><img src="${asset(poem.image)}" alt="${escapeHtml(poem.title)}诗意图"><span><b>${escapeHtml(poem.title)}</b><small>${escapeHtml(poem.dynasty)} · ${escapeHtml(poem.author)} ｜ ${escapeHtml(first)}</small></span></button>`;
+      return `<button type="button" class="card${currentClass}" data-poem="${index}">${cardFace(poem)}<span><b>${escapeHtml(poem.title)}</b><small>${escapeHtml(poem.dynasty)} · ${escapeHtml(poem.author)} ｜ ${escapeHtml(first)}</small></span></button>`;
     })
     .join("");
 }
@@ -314,8 +350,9 @@ function renderSoonList(): void {
 }
 
 function renderLeads(): void {
+  const painted = poems.filter((poem) => poem.image).length;
   $<HTMLElement>("gallery-lead").textContent =
-    `一诗一画。这 ${poems.length} 首可以读、可以看；目标是 75 + 80 首，其余正文和画卷还在补。`;
+    `这 ${poems.length} 首可以读。其中 ${painted} 首有诗意画，其余先用底色页，画卷还在补。目标仍是 75 + 80 首。`;
   $<HTMLElement>("soon-lead").textContent =
     `下面 ${soonPoems.length} 首已经能搜到篇名和首句。点开不会假装有全文。拼音、注释、朗读和画卷还没做。这不是官方 155 首的完整目录。`;
 }
@@ -599,12 +636,18 @@ function paintSel(): void {
   else if (bottom > dd.scrollTop + dd.clientHeight) dd.scrollTop = bottom - dd.clientHeight;
 }
 
+function readyThumb(poem: Poem): string {
+  if (poem.image) return `<img src="${asset(poem.image)}" alt="">`;
+  const label = [...poem.title].slice(0, 2).join("");
+  return `<div class="ph" style="background:${escapeHtml(poem.pageColor)}">${escapeHtml(label)}</div>`;
+}
+
 function readyRow(hit: ReadyHit, index: number): string {
   const poem = findPoem(hit.poemId);
   if (!poem) return "";
   const text = poem.lines[hit.lineIndex]?.text ?? "";
   const on = index === sel;
-  return `<div class="rs${on ? " sel" : ""}" id="opt-${index}" role="option" data-row="${index}" aria-selected="${on ? "true" : "false"}"><img src="${asset(poem.image)}" alt=""><div><b>${mark(poem.title, hit.titleSpan)}</b><small>${mark(poem.dynasty, hit.dynastySpan)} · ${mark(poem.author, hit.authorSpan)}</small><div class="ml">${mark(text, hit.lineSpan)}</div></div></div>`;
+  return `<div class="rs${on ? " sel" : ""}" id="opt-${index}" role="option" data-row="${index}" aria-selected="${on ? "true" : "false"}">${readyThumb(poem)}<div><b>${mark(poem.title, hit.titleSpan)}</b><small>${mark(poem.dynasty, hit.dynastySpan)} · ${mark(poem.author, hit.authorSpan)}</small><div class="ml">${mark(text, hit.lineSpan)}</div></div></div>`;
 }
 
 function soonRow(hit: SoonHit, index: number): string {

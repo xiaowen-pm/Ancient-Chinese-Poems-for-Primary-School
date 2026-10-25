@@ -1,0 +1,278 @@
+[
+  {
+    "id": "jingye",
+    "title": "静夜思",
+    "author": "李白",
+    "dynasty": "唐",
+    "titlePinyin": "jìng yè sī",
+    "authorPinyin": "lǐ bái",
+    "dynastyPinyin": "táng",
+    "tag": "一年级下 · 必背第 08 首",
+    "pageColor": "#dfe3ea",
+    "effect": "glow",
+    "image": "images/jingye.webp",
+    "lines": [
+      {
+        "text": "床前明月光，",
+        "pinyin": "chuáng qián míng yuè guāng ，",
+        "key": "明月光",
+        "gloss": "月光洒在床前的地上，亮亮的、白白的。"
+      },
+      {
+        "text": "疑是地上霜。",
+        "pinyin": "yí shì dì shàng shuāng 。",
+        "key": "霜",
+        "gloss": "诗人以为是地上结了一层**霜**，这是把月光比作霜。"
+      },
+      {
+        "text": "举头望明月，",
+        "pinyin": "jǔ tóu wàng míng yuè ，",
+        "key": "举头",
+        "gloss": "他抬起头，看见天上又大又圆的**明月**。"
+      },
+      {
+        "text": "低头思故乡。",
+        "pinyin": "dī tóu sī gù xiāng 。",
+        "key": "故乡",
+        "gloss": "低下头，忽然很想念远方的**家乡**。"
+      }
+    ],
+    "hotspots": [
+      { "x": 22, "y": 18, "label": "皎洁明月", "line": 0 },
+      { "x": 62, "y": 82, "label": "满地银霜", "line": 1 },
+      { "x": 70, "y": 42, "label": "望月诗人", "line": 2 }
+    ],
+    "story": "我是李白。那年我二十六岁，一个人离家很远很远。秋天的晚上睡不着，月光照进屋里，白得像霜。我抬头看月亮，想起家乡的月亮也是这样圆……",
+    "sceneQuiz": {
+      "question": "画面里地上白白亮亮的，诗人以为是什么？",
+      "options": ["霜", "雪", "水"],
+      "answer": 0
+    }
+  },
+  {
+    "id": "chunxiao",
+    "title": "春晓",
+    "author": "孟浩然",
+    "dynasty": "唐",
+    "titlePinyin": "chūn xiǎo",
+    "authorPinyin": "mèng hào rán",
+    "dynastyPinyin": "táng",
+    "tag": "一年级下 · 必背第 05 首",
+    "pageColor": "#e3ead9",
+    "effect": "petal",
+    "image": "images/chunxiao.webp",
+    "lines": [
+      {
+        "text": "春眠不觉晓，",
+        "pinyin": "chūn mián bù jué xiǎo ，",
+        "key": "不觉晓",
+        "gloss": "春天睡得真香，**不知不觉**天就亮了。"
+      },
+      {
+        "text": "处处闻啼鸟。",
+        "pinyin": "chù chù wén tí niǎo 。",
+        "key": "啼鸟",
+        "gloss": "到处都能听到小鸟叽叽喳喳地**叫**。"
+      },
+      {
+        "text": "夜来风雨声，",
+        "pinyin": "yè lái fēng yǔ shēng ，",
+        "key": "风雨声",
+        "gloss": "想起昨天夜里，有呼呼的风声和沙沙的雨声。"
+      },
+      {
+        "text": "花落知多少。",
+        "pinyin": "huā luò zhī duō shǎo 。",
+        "key": "知多少",
+        "gloss": "不知道又有**多少花瓣**被吹落了呢？"
+      }
+    ],
+    "hotspots": [
+      { "x": 48, "y": 34, "label": "枝头啼鸟", "line": 1 },
+      { "x": 58, "y": 84, "label": "满阶落花", "line": 3 },
+      { "x": 14, "y": 55, "label": "推窗晨起", "line": 0 }
+    ],
+    "story": "我是孟浩然，住在山里。那天早上我睡了个大懒觉，一睁眼窗外全是鸟叫声。我想起昨夜下了一场春雨，赶紧推开门——台阶上落满了花瓣。",
+    "sceneQuiz": {
+      "question": "画面里枝头唱歌的是什么？",
+      "options": ["啼鸟", "蝴蝶", "蜜蜂"],
+      "answer": 0
+    }
+  },
+  {
+    "id": "shanxing",
+    "title": "山行",
+    "author": "杜牧",
+    "dynasty": "唐",
+    "titlePinyin": "shān xíng",
+    "authorPinyin": "dù mù",
+    "dynastyPinyin": "táng",
+    "tag": "三年级上 · 必背第 21 首",
+    "pageColor": "#efe0d6",
+    "effect": "leaf",
+    "image": "images/shanxing.webp",
+    "lines": [
+      {
+        "text": "远上寒山石径斜，",
+        "pinyin": "yuǎn shàng hán shān shí jìng xié ，",
+        "key": "石径斜",
+        "gloss": "一条弯弯曲曲的**石头小路**，一直通到秋天的山上。"
+      },
+      {
+        "text": "白云生处有人家。",
+        "pinyin": "bái yún shēng chù yǒu rén jiā 。",
+        "key": "白云生处",
+        "gloss": "在**白云飘起的地方**，住着几户人家。"
+      },
+      {
+        "text": "停车坐爱枫林晚，",
+        "pinyin": "tíng chē zuò ài fēng lín wǎn ，",
+        "key": "坐爱",
+        "gloss": "我停下马车，是因为**喜爱**傍晚的枫树林。"
+      },
+      {
+        "text": "霜叶红于二月花。",
+        "pinyin": "shuāng yè hóng yú èr yuè huā 。",
+        "key": "霜叶",
+        "gloss": "经霜的枫叶，比二月的春花还要**红**。"
+      }
+    ],
+    "hotspots": [
+      { "x": 50, "y": 62, "label": "蜿蜒石径", "line": 0 },
+      { "x": 46, "y": 30, "label": "云中人家", "line": 1 },
+      { "x": 78, "y": 40, "label": "霜叶红枫", "line": 3 }
+    ],
+    "story": "我是杜牧。那天我坐着马车上山，路弯弯的。太阳快落山了，满山枫叶红得像火。我忍不住喊车夫：「停一停！」就坐在那儿看了好久好久。",
+    "sceneQuiz": {
+      "question": "诗人为什么停下马车？",
+      "options": ["喜爱枫林", "车坏了", "迷路了"],
+      "answer": 0
+    }
+  },
+  {
+    "id": "jiangnan",
+    "title": "江南",
+    "author": "汉乐府",
+    "dynasty": "汉",
+    "titlePinyin": "jiāng nán",
+    "authorPinyin": "hàn yuè fǔ",
+    "dynastyPinyin": "hàn",
+    "tag": "一年级上 · 必背第 01 首",
+    "pageColor": "#dcebe6",
+    "effect": "ripple",
+    "image": "images/jiangnan.webp",
+    "lines": [
+      {
+        "text": "江南可采莲，",
+        "pinyin": "jiāng nán kě cǎi lián ，",
+        "key": "采莲",
+        "gloss": "江南又到了**采莲**的好时节。",
+        "note": "**江南**：长江以南的地方。**可**：适宜、正好。**采莲**：采摘莲蓬。"
+      },
+      {
+        "text": "莲叶何田田。",
+        "pinyin": "lián yè hé tián tián 。",
+        "key": "田田",
+        "gloss": "莲叶又大又圆，**密密地**挤在一起。",
+        "note": "**何**：多么。**田田**：莲叶又圆又绿、一片连着一片、长得茂盛的样子。"
+      },
+      {
+        "text": "鱼戏莲叶间。",
+        "pinyin": "yú xì lián yè jiān 。",
+        "key": "鱼戏",
+        "gloss": "小鱼在莲叶中间**游来游去**做游戏。",
+        "note": "**戏**：嬉戏，游来游去地玩耍。**间**：中间。"
+      },
+      {
+        "text": "鱼戏莲叶东，",
+        "pinyin": "yú xì lián yè dōng ，",
+        "key": "东",
+        "gloss": "一会儿游到莲叶的**东边**，",
+        "note": "**东**：东边。这一句和下面三句是「反复」，一句接一句地唱。"
+      },
+      {
+        "text": "鱼戏莲叶西，",
+        "pinyin": "yú xì lián yè xī ，",
+        "key": "西",
+        "gloss": "一会儿又游到**西边**，",
+        "note": "**西**：西边。"
+      },
+      {
+        "text": "鱼戏莲叶南，",
+        "pinyin": "yú xì lián yè nán ，",
+        "key": "南",
+        "gloss": "一会儿游到**南边**，",
+        "note": "**南**：南边。"
+      },
+      {
+        "text": "鱼戏莲叶北。",
+        "pinyin": "yú xì lián yè běi 。",
+        "key": "北",
+        "gloss": "一会儿又游到**北边**，真快活！",
+        "note": "**北**：北边。东、西、南、北四个方向一起写，好像到处都是快活的小鱼。"
+      }
+    ],
+    "hotspots": [
+      { "x": 22, "y": 30, "label": "田田莲叶", "line": 1 },
+      { "x": 62, "y": 66, "label": "嬉戏锦鲤", "line": 2 },
+      { "x": 80, "y": 18, "label": "采莲小舟", "line": 0 }
+    ],
+    "story": "我们是江南采莲的姑娘。夏天划着小船进荷塘，荷叶比伞还大，鱼儿就在叶子底下钻来钻去，东边一下、西边一下，我们一边采莲一边唱歌。",
+    "sceneQuiz": {
+      "question": "小鱼在哪里做游戏？",
+      "options": ["莲叶间", "石头下", "天空中"],
+      "answer": 0
+    },
+    "translation": "江南又到了适合采莲的季节，莲叶浮出水面，挨挨挤挤，一片连着一片，多么茂盛啊！欢快的小鱼在莲叶中间游来游去。一会儿游到莲叶东边，一会儿游到西边，一会儿游到南边，一会儿又游到北边。",
+    "appreciation": [
+      "🌿 **只写叶，不写花**：诗里只夸莲叶「田田」，可叶子这么美，荷花一定更美，留给我们去想象。",
+      "🐟 **用鱼写人**：没有一个字说采莲人开心，可小鱼游得这么快活，采莲人划着小船穿来穿去，心情也一样快活。",
+      "🧭 **东西南北·反复**：「鱼戏莲叶」连说五次，只换了方向，读起来像唱儿歌，一唱一和，越读越有趣。"
+    ],
+    "background": "这是一首**汉代乐府民歌**，作者已经不知道是谁了。汉代有个叫「乐府」的官署，专门收集老百姓唱的歌。江南水多、湖多，夏秋时荷叶飘香、莲蓬结子，青年男女就划着小船去**采莲**，一边采一边唱歌——这首就是采莲时唱的歌。它属于「相和歌」：可能是一人领唱、大家跟着和，后面东西南北四句就是大家一起和唱的部分。",
+    "quizzes": [
+      {
+        "question": "「莲叶何田田」中「何」的意思是？",
+        "options": ["多么", "什么", "为什么"],
+        "answer": 0
+      },
+      {
+        "question": "「江南可采莲」中「可」的意思是？",
+        "options": ["适宜、正好", "可以吗", "可爱"],
+        "answer": 0
+      },
+      {
+        "question": "诗中写小鱼游向了哪几个方向？",
+        "options": ["东西南北", "上下左右", "前后"],
+        "answer": 0
+      }
+    ],
+    "audio": [
+      { "label": "跟读", "src": "audio/jiangnan.mp3", "syncLines": true },
+      { "label": "朗读解析", "src": "audio/jiangnan-jiexi.mp3" },
+      { "label": "朗读赏析", "src": "audio/jiangnan-shangxi.mp3" }
+    ],
+    "sources": [
+      {
+        "name": "古诗文网",
+        "url": "https://www.gushiwen.cn/shiwenv_ef9cd9ba44bb.aspx",
+        "used": "译文、注释、创作背景、鉴赏"
+      },
+      {
+        "name": "香港教育局小学积累篇章",
+        "url": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei_shi_pdf/jilei_shi_002.pdf",
+        "used": "注释、背景、相和歌"
+      },
+      {
+        "name": "品诗文",
+        "url": "https://www.pinshiwen.com/gsdq/qhsg/20190618110036.html",
+        "used": "注释、出处"
+      },
+      {
+        "name": "古诗学习网",
+        "url": "https://www.gushixuexi.com/doc/771.html",
+        "used": "注释、译文"
+      }
+    ]
+  }
+]

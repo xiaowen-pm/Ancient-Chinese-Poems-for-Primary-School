@@ -64,7 +64,15 @@ export type Poem = {
   tag: string;
   pageColor: string;
   effect: EffectName;
-  image: string;
+  /** Illustrated scene under `public/`. Omitted until a painting is ready. */
+  image?: string;
+  /**
+   * Filename in `assets/01-图文版/图片版-带注音+译文/`.
+   * The site links to it on GitHub; the JPG is not copied into the build.
+   */
+  sheet?: string;
+  /** Extra titles a reader might type, such as 渭城曲 or 锄禾. */
+  aliases?: string[];
   lines: PoemLine[];
   hotspots: Hotspot[];
   story?: string;

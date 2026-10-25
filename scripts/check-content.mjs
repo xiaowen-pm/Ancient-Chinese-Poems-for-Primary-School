@@ -39,7 +39,10 @@ for (const poem of poems) {
     fail(`${poem.id} 朝代拼音 ≠ 汉字`);
   }
   if (!poem.lines?.length) fail(`${poem.id} 没有诗句`);
-  if (!existsSync(join(root, "public", poem.image))) fail(`缺少图片 ${poem.image}`);
+  if (poem.image && !existsSync(join(root, "public", poem.image))) fail(`缺少图片 ${poem.image}`);
+  if (poem.sheet && !existsSync(join(root, "assets/01-图文版/图片版-带注音+译文", poem.sheet))) {
+    fail(`缺少图文打印稿 ${poem.sheet}`);
+  }
   poem.lines.forEach((line, index) => {
     const tokens = line.pinyin.split(/\s+/).filter(Boolean);
     if (tokens.length !== [...line.text].length) {
@@ -76,6 +79,27 @@ for (const poem of soon) {
 const jiangnan = poems.find((poem) => poem.id === "jiangnan");
 if (!jiangnan?.audio || jiangnan.audio.length !== 3) fail("《江南》应有跟读、解析、赏析三条音频");
 if (!jiangnan?.audio?.[0]?.syncLines) fail("《江南》跟读应打开逐句高亮");
+if (jiangnan.image !== "images/jiangnan.webp") fail("《江南》插画被换掉了");
+
+for (const id of ["jingye", "chunxiao", "shanxing"]) {
+  const poem = poems.find((item) => item.id === id);
+  if (!poem?.image?.endsWith(`${id}.webp`)) fail(`${id} 应保留原来的插画`);
+  if (poem.sheet) fail(`${id} 不应改成图文底稿页`);
+}
+
+const illustrated = new Set(["jingye", "chunxiao", "shanxing", "jiangnan"]);
+const readableNew = poems.filter((poem) => !illustrated.has(poem.id));
+if (readableNew.length < 70) fail(`图文版新入库太少：${readableNew.length}`);
+for (const poem of readableNew) {
+  if (poem.image) fail(`${poem.id} 还没有新插画，不要占一个图片路径`);
+  if (!poem.sheet) fail(`${poem.id} 缺少图文打印稿文件名`);
+  if (!poem.translation) fail(`${poem.id} 缺少译文`);
+}
+
+const soonIds = new Set(soon.map((poem) => poem.id));
+for (const poem of poems) {
+  if (soonIds.has(poem.id)) fail(`${poem.id} 同时出现在可读目录和即将上线`);
+}
 
 if (failures.length) {
   console.error(failures.join("\n"));

@@ -22,9 +22,11 @@ assert.equal(normalizeQuery("，。"), null);
 assert.equal(normalizeQuery("  ｊｎ "), "jn");
 
 const jn = ids("jn");
-assert.deepEqual(jn.ready, ["jiangnan"]);
-assert.ok(jn.soon.includes("jiangnan-chun"));
-assert.ok(jn.soon.includes("yijiangnan"));
+assert.equal(jn.ready[0], "jiangnan");
+assert.ok(jn.ready.includes("jiangnan-chun"));
+assert.ok(jn.ready.includes("yijiangnan"));
+assert.ok(!jn.soon.includes("jiangnan-chun"));
+assert.ok(!jn.soon.includes("yijiangnan"));
 assert.ok(!jn.ready.includes("jingye"));
 assert.ok(!jn.soon.includes("jingye"));
 
@@ -39,14 +41,20 @@ assert.equal(search("chuangqian", poems, soon).ready[0]?.lineIndex, 0);
 
 const libai = ids("lb");
 assert.ok(libai.ready.includes("jingye"));
-assert.ok(libai.soon.includes("zeng-wang-lun"));
+assert.ok(libai.ready.includes("zeng-wang-lun"));
+assert.ok(!libai.soon.includes("zeng-wang-lun"));
 assert.ok(!libai.ready.includes("jiangnan"));
 
-assert.ok(ids("鹅鹅鹅").soon.includes("yong-e"));
-assert.ok(ids("锄禾").soon.includes("min-nong-2"));
-assert.ok(ids("渭城曲").soon.includes("song-yuaner"));
-assert.deepEqual(ids("luzhai").soon, ["luchai"]);
+assert.ok(ids("鹅鹅鹅").ready.includes("yong-e"));
+assert.ok(!ids("鹅鹅鹅").soon.includes("yong-e"));
+assert.ok(ids("锄禾").ready.includes("min-nong-2"));
+assert.ok(ids("渭城曲").ready.includes("song-yuaner"));
+assert.deepEqual(ids("luzhai").ready, ["luchai"]);
+assert.deepEqual(ids("luzhai").soon, []);
 assert.deepEqual(ids("luchai").soon, []);
+assert.deepEqual(ids("luchai").ready, []);
+assert.ok(ids("关雎").soon.includes("guan-ju"));
+assert.ok(ids("春夜喜雨").ready.includes("chunye-xiyu"));
 
 const tang = ids("唐");
 assert.ok(tang.ready.includes("jingye"));

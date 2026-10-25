@@ -11,6 +11,14 @@ export function asset(path: string): string {
   return base.endsWith("/") ? `${base}${clean}` : `${base}/${clean}`;
 }
 
+/** Print sheets stay in the git tree and are not bundled into `dist/`. */
+const SHEET_BASE =
+  "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/";
+
+export function sheetUrl(file: string): string {
+  return SHEET_BASE + encodeURIComponent(file);
+}
+
 export function findPoem(id: string): Poem | undefined {
   return poems.find((poem) => poem.id === id);
 }

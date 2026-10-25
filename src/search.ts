@@ -220,6 +220,11 @@ function searchReady(poem: Poem, order: number, query: string, latin: string): R
       lineScore = found.score;
     }
   });
+  for (const name of poem.aliases ?? []) {
+    const found = scoreField("alias", name, undefined, query, latin);
+    if (!found) continue;
+    best = Math.max(best, found.score);
+  }
   if (best <= 0) return null;
   return {
     poemId: poem.id,

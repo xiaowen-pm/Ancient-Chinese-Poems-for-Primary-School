@@ -1,15 +1,16 @@
 # 必背诗笺
 
-免费的小学生必背古诗词读本。横排、一句一行、拼音，配水墨诗意画。目标是把课内 75 首和拓展 80 首都收进来。现在先把《静夜思》《春晓》《山行》《江南》做成能读的一页，《江南》有真正的跟读、解析和赏析录音。
+免费的小学生必背古诗词读本。横排、一句一行、拼音。图文版里的诗已经能读全文；《静夜思》《春晓》《山行》《江南》仍用原来的诗意画，《江南》有真正的跟读、解析和赏析录音。其余新入库的诗先用底色页，画卷以后再补。
 
-A free reader for the classical poems Chinese primary students memorize. Horizontal lines, pinyin, and illustrated scenes. Four poems are readable today. 《江南》plays real audio. The rest of the 75 + 80 list can be searched by title, but the full text is not in yet.
+A free reader for the classical poems Chinese primary students memorize. Horizontal lines, one sentence each, with pinyin. The illustrated-sheet poems are readable. 《静夜思》《春晓》《山行》《江南》 keep their paintings, and 《江南》plays real audio. Poems not on those sheets can still be searched by title.
 
 ## 素材 / Assets
 
 `assets/` 目录存放整理用的原始素材：75 首古诗的图像版（79 张 JPG）、PDF 版（76 页）、10 个版本的朗读音频和 34 个跟读视频。
 
 - 图片、PDF、文档体积小（约 58 MB），直接提交在 [assets/](assets/)，一首一页，可打印。
-- 音频（980 MB）、视频（1.64 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。
+- 音频（980 MB）、视频（1.64 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。本轮**不把音频推进仓库**，也**不做视频播放**。音频只保留《江南》已有的三条例子，其余版本下轮再接。
+- 站点读的是 `src/data/poems.json` 里的正文。图文 JPG 不打进 `dist/`：新诗的「看图文打印稿」链接到 [raw.githubusercontent.com](https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/) 上的原文件，避免 Cloudflare Pages 把约 40 MB 的 JPG 再打包一遍。本地素材仍在 `assets/01-图文版/图片版-带注音+译文/`。
 - 清单、体积和版权说明见 [assets/README.md](assets/README.md)。
 
 ## 本地运行 / Run locally
@@ -35,15 +36,20 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 
 | | |
 | --- | --- |
-| 四首诗的原文、拼音、画卷、逐句画境 | 真。文字来自原型，画是原型里的插画 |
-| 《江南》跟读 / 朗读解析 / 朗读赏析 | 真。文件在 `public/audio/` |
+| 图文版覆盖的诗：原文、对齐的拼音、逐句画境、白话译文 | 真。正文、拼音、译文对照 `assets/` 里的图文页核对；画境和译文改写成儿童读法，不整段抄页面 |
+| 《静夜思》《春晓》《山行》的画卷、热点、诗人小剧场、看画猜诗 | 真，保持原样 |
+| 《江南》画卷、注释、译文、赏析、小测、三条录音 | 真，保持原样。录音在 `public/audio/` |
 | 《江南》跟读时的逐句高亮 | 真，但按整段时长平均切开，还不是逐句打点 |
-| 搜索（诗名、作者、朝代、诗句、拼音、声母） | 真。另外约几十首只有篇名和首句 |
-| 其余正文、注释、朗读、画卷 | 还没有。搜到了会写明「即将上线」 |
+| 新诗的诗意画、注释、赏析、朗读 | 还没有。页面留空态：「还在整理」「朗读还在录制」。底色和动效先顶上 |
+| 新诗的图文打印稿 | 真的链接，打开仓库里的 JPG，不进构建产物 |
+| 搜索（诗名、作者、朝代、诗句、拼音、声母、别名） | 真。图文版没有的拓展篇目仍只有篇名和首句，点开写明「即将上线」 |
 | 邮箱领取 PDF、打卡单打印 | 演示。不会发信，不会保存邮箱，也不会弹出打印 |
 | 视频 | 不做 |
+| Releases 里的朗读音频 | 下轮再接。这一轮不下载、不提交 |
 
-《江南》的注释、译文、赏析是根据公开网页改写的儿童读法，页脚有出处。没有把教材或网站原文整段搬过来。
+《江南》的注释、译文、赏析是根据公开网页改写的儿童读法，页脚有出处。新诗的页脚注明对照了哪一张图文稿。没有把教材或网站原文整段搬过来。
+
+两张《悯农》的文件名和页眉编号对不上：名为「其一」的那张印的是「锄禾日当午」，名为「其二」的那张页眉写着「其一」、正文是「春种一粒粟」。站内按页上的文字编号，打印链接指向真正印着那首诗的 JPG。
 
 ## 加一首诗 / Add a poem
 
@@ -85,6 +91,8 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 
 只有篇名、还没有正文的，写在 `src/data/soon.json`。搜索能找到，点开会说明还没做完。
 
+还没有诗意画时，可以不写 `image`。若仓库里有对应的图文 JPG，把文件名写进 `sheet`（只写 `图片版-带注音+译文/` 下的文件名）。页面会链到 GitHub 上的原图，构建时不会把它复制进 `dist/`。
+
 图片放 `public/images/`，录音放 `public/audio/`。改完跑 `npm run check`。若某个字变成了另一种字体，再跑一次 `python3 scripts/subset-font.py`（需要本机有 Noto Serif SC 可变字体，脚本里写的是 `/tmp/NotoSerifSC-vf.ttf`）。
 
 ## 部署 / Deploy
@@ -115,8 +123,8 @@ npm run build
 
 ## 下一步 / Next
 
-- 把 75 + 80 首的正文补进 `poems.json`。`soon.json` 只是方便检索的起步目录，不是官方全表。
-- 注释、译文、赏析从公开网页整理，改写成儿童能读的话，并在 `sources` 里写上出处。
-- 给《江南》跟读补上真实的逐句时间点；另外三首的朗读还没录。
+- 图文版里能对上的诗，正文已经在 `poems.json`。`soon.json` 只留图文页没有的拓展篇目，不是官方全表。
+- 给新诗补注释、赏析，并从公开网页改写成儿童读法，写进 `sources`。现在的页脚只说明对照过哪张图文稿。
+- 给《江南》跟读补上真实的逐句时间点。其余朗读下轮再从 Releases 做映射，仍然不要把整包音频提交进仓库。
 - 接上真正的邮件和 PDF。
 - 继续不做视频。

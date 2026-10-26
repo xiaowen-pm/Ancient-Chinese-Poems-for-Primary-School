@@ -126,6 +126,42 @@ for (const poem of readableNew) {
   else unmatchedAudio.push(`${poem.title}（${poem.id}）`);
 }
 
+const gradeOk = /^(?:[1-6]-[12]|extra)$/;
+const gradeAnchors = {
+  "yong-e": "1-1",
+  "jiangnan": "1-1",
+  "min-nong-2": "1-1",
+  jingye: "1-2",
+  "zeng-wang-lun": "1-2",
+  "jueju-huangli": "2-2",
+  "min-nong-1": "2-2",
+  shanxing: "3-1",
+  "jueju-chiri": "3-2",
+  "liangzhou-wanghan": "4-1",
+  "sishi-2": "4-2",
+  "sishi-1": "5-2",
+  "liangzhou-wangzhihuan": "5-2",
+  "jiangnan-chun": "6-1",
+  "chunye-xiyu": "6-2",
+  youziyin: "extra",
+  xiangsi: "extra",
+  jiangpan: "extra",
+  leyouyuan: "extra",
+  zhuliguan: "extra",
+};
+for (const poem of poems) {
+  if (!gradeOk.test(poem.grade ?? "")) fail(`${poem.id} 缺少部编版册次`);
+  if (gradeAnchors[poem.id] && poem.grade !== gradeAnchors[poem.id]) {
+    fail(`${poem.id} 册次应为 ${gradeAnchors[poem.id]}，现在是 ${poem.grade}`);
+  }
+}
+const extraIds = poems.filter((poem) => poem.grade === "extra").map((poem) => poem.id).sort();
+const expectedExtra = Object.entries(gradeAnchors)
+  .filter(([, grade]) => grade === "extra")
+  .map(([id]) => id)
+  .sort();
+if (extraIds.join() !== expectedExtra.join()) fail(`课外篇目不对：${extraIds.join("、")}`);
+
 for (const poem of poems) {
   if (!poem.audio?.length) fail(`${poem.id} 没有朗读`);
 }

@@ -46,6 +46,21 @@ export class ReaderAudio {
     this.audio.src = src;
   }
 
+  /** Start playback. Returns false when the browser blocks it, without treating that as a broken file. */
+  async play(): Promise<boolean> {
+    if (!this.audio.src) return false;
+    try {
+      await this.audio.play();
+      this.playing = true;
+      this.handlers.onPlayState(true);
+      return true;
+    } catch {
+      this.playing = false;
+      this.handlers.onPlayState(false);
+      return false;
+    }
+  }
+
   async toggle(): Promise<void> {
     if (!this.audio.src) {
       this.handlers.onError();

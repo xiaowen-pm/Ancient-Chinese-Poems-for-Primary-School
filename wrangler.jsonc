@@ -12,18 +12,18 @@
   "vars": {
     "RESEND_FROM": "必背诗笺 <pdf@example.com>"
   },
-  // SIGNUPS is intentionally not bound yet. A KV entry without an id makes
-  // Workers Builds try to create the namespace, and that token cannot.
-  // After the namespace exists, add the same block at the top level and under previews:
-  // "kv_namespaces": [{ "binding": "SIGNUPS", "id": "<namespace id from the dashboard>" }]
-  // The Worker reads env.SIGNUPS. Until that id is filled in, the page still
-  // returns the PDF link and does not persist the address on Cloudflare.
+  "kv_namespaces": [
+    { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
+  ],
   // Required by `npx wrangler preview` on non-production branches.
-  // Previews do not inherit vars, so the sender is repeated here.
+  // Previews do not inherit vars or KV, so both are repeated here.
   // Assets and the Worker name stay at the top level and are shared.
   "previews": {
     "vars": {
       "RESEND_FROM": "必背诗笺 <pdf@example.com>"
-    }
+    },
+    "kv_namespaces": [
+      { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
+    ]
   }
 }

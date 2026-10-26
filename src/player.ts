@@ -14,6 +14,10 @@ export class ReaderAudio {
     this.handlers = handlers;
     this.audio.preload = "none";
     this.audio.setAttribute("playsinline", "true");
+    this.audio.setAttribute("webkit-playsinline", "true");
+    this.audio.controls = false;
+    this.audio.style.display = "none";
+    document.body.appendChild(this.audio);
     this.audio.ontimeupdate = () => {
       this.handlers.onTime(this.audio.currentTime, Number.isFinite(this.audio.duration) ? this.audio.duration : 0);
     };
@@ -24,6 +28,8 @@ export class ReaderAudio {
     };
     this.audio.onerror = () => {
       if (!this.audio.getAttribute("src")) return;
+      // Changing tracks aborts the previous fetch. That is not a broken file.
+      if (this.audio.error?.code === 1) return;
       this.playing = false;
       this.handlers.onPlayState(false);
       this.handlers.onError();
@@ -65,7 +71,13 @@ export class ReaderAudio {
   stop(): void {
     this.audio.pause();
     this.playing = false;
-    if (this.audio.src) this.audio.currentTime = 0;
+    if (this.audio.src && this.audio.readyState > 0) {
+      try {
+        this.audio.currentTime = 0;
+      } catch {
+        // Metadata is not in yet. The next load replaces the source.
+      }
+    }
     this.handlers.onPlayState(false);
   }
 

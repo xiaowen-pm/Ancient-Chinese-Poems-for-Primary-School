@@ -1,8 +1,8 @@
 # 必背诗笺
 
-免费的小学生必背古诗词读本。横排、一句一行、拼音。图文版里的诗已经能读全文；《静夜思》《春晓》《山行》《江南》仍用原来的诗意画，《江南》有真正的跟读、解析和赏析录音。其余新入库的诗先用底色页，画卷以后再补。
+免费的小学生必背古诗词读本。横排、一句一行、拼音。图文版里的诗已经能读全文，每首都有一幅诗意画。《静夜思》《春晓》《山行》《江南》仍用原来的画，《江南》的三条录音仍是本地文件。
 
-A free reader for the classical poems Chinese primary students memorize. Horizontal lines, one sentence each, with pinyin. The illustrated-sheet poems are readable. 《静夜思》《春晓》《山行》《江南》 keep their paintings, and 《江南》plays real audio. Poems not on those sheets can still be searched by title.
+A free reader for the classical poems Chinese primary students memorize. Horizontal lines, one sentence each, with pinyin. Every readable poem has a scene painting. 《静夜思》《春晓》《山行》《江南》 keep their original paintings, and 《江南》keeps its three local recordings.
 
 ## 素材 / Assets
 
@@ -41,7 +41,7 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 | 《江南》画卷、注释、译文、赏析、小测、三条录音 | 真，保持原样。录音在 `public/audio/` |
 | 《江南》跟读时的逐句高亮 | 真，但按整段时长平均切开，还不是逐句打点 |
 | 新诗的注释、赏析 | 真。75 首按公开网页改写成儿童读法，页脚写明出处。背景和小测仍是「还在整理」 |
-| 新诗的诗意画 | 还没有。底色和动效先顶上 |
+| 新诗的诗意画 | 真。75 幅水墨设色画卷在 `public/images/`，约 1040×780 的 webp，原来的四幅没有换 |
 | 新诗的朗读 | 真，从 GitHub Release 的压缩包里按需取出，不打进 `dist/`。能对上几条就放几条 |
 | 新诗的图文打印稿 | 真的链接，打开仓库里的 JPG，不进构建产物 |
 | 搜索（诗名、作者、朝代、诗句、拼音、声母、别名） | 真。图文版没有的拓展篇目仍只有篇名和首句，点开写明「即将上线」 |
@@ -51,7 +51,7 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 
 《江南》和后来补上的 75 首，注释、译文、赏析都是根据公开网页改写的儿童读法，页脚有出处。新诗还注明对照了哪一张图文稿。没有把教材或网站原文整段搬过来。出处用的是能打开诗文的百度汉语详情页。古诗文网的检索现在会跳到登录，旧的 `view_` 链接会跳到下载 App，所以没有拿那些地址当出处。
 
-朗读来自 Release `assets-audio` 的 10 个 zip（大约 1153 条 MP3），索引在 `src/data/audio-index.json`。压缩包里的 MP3 是「存储」方式，字节连在一起。GitHub 的下载地址会跳到一份没有 CORS 的短时链接，而且不接受 `bytes=-N` 这种从末尾倒数的范围请求，浏览器不能自己把某一首切出来。`/audio-pack?zip=audio-05.zip&file=…` 在同源上用明确的 `bytes=开始-结束` 读出那一首，按 `audio/mpeg` 返回。开发服务器和 `npm run preview` 走 Vite 中间件；线上要靠 `wrangler.jsonc` 里的 Worker（`run_worker_first`）先处理这个地址，其余页面仍用 `dist/`。如果部署只上传 `dist/`、不跑这个 Worker，朗读地址会 404，页面其余部分不受影响。
+朗读来自 Release `assets-audio` 的 10 个 zip（大约 1153 条 MP3），索引在 `src/data/audio-index.json`。压缩包里的 MP3 是「存储」方式，字节连在一起。GitHub 的下载地址会跳到一份没有 CORS 的短时链接，而且不接受 `bytes=-N` 这种从末尾倒数的范围请求，浏览器不能自己把某一首切出来。`/audio-pack.mp3?zip=audio-05.zip&file=…` 在同源上用明确的 `bytes=开始-结束` 读出那一首，按 `audio/mpeg` 返回。路径以 `.mp3` 结尾，手机浏览器才会把它当成音频。浏览器若请求整首（`bytes=0-`），一次只返回约 512KB，剩下的由播放器接着要。整段都能放进这一窗时，回答 200 而不是「整首文件的 206」，否则 Safari 会拒绝播放。开发服务器和 `npm run preview` 走 Vite 中间件；线上要靠 `wrangler.jsonc` 里的 Worker（`run_worker_first`）先处理这个地址，其余页面仍用 `dist/`。如果部署只上传 `dist/`、不跑这个 Worker，朗读地址会 404，页面其余部分不受影响。
 
 多数诗有五条：童声跟读、跟读、朗读、朗读解析、朗读赏析。跟读两条会按整段时长平均跳句，还不是逐句打点。《江畔独步寻花》站内正文是「黄四娘家花满蹊」，只接了写明其六或听写对得上的录音；不少压缩包里的「江畔独步寻花」其实是「黄师塔前」，没有接上。《相思》《乐游原》《竹里馆》《鸟鸣涧》不在每一包的 75 首里，所以版本少一些。
 

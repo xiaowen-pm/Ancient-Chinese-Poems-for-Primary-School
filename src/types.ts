@@ -27,7 +27,8 @@ export type AudioTrack = {
   label: string;
   /**
    * Site path. Local files live under `public/`, e.g. `audio/jiangnan.mp3`.
-   * Release recordings use `audio-pack?zip=audio-09.zip&file=…` and are streamed, not bundled.
+   * Release recordings use `audio-pack.mp3?zip=audio-09.zip&file=…` and are streamed, not bundled.
+   * The `.mp3` suffix is on the path so phones treat the response as audio.
    */
   src: string;
   /** Highlight lines while this track plays. 解析 / 赏析 stay on the current line. */

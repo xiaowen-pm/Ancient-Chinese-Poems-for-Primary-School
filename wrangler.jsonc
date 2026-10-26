@@ -1,0 +1,13 @@
+{
+  "name": "ancient-chinese-poems-for-primary-school",
+  "compatibility_date": "2026-10-26",
+  "main": "worker/index.ts",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  // Required by `npx wrangler preview` on non-production branches.
+  // Left empty so previews use the same Worker, assets, and name as production.
+  "previews": {}
+}

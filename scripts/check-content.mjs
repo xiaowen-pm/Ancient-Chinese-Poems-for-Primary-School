@@ -2,6 +2,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+const audioIndex = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../src/data/audio-index.json"), "utf8"));
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const poems = JSON.parse(readFileSync(join(root, "src/data/poems.json"), "utf8"));
 const soon = JSON.parse(readFileSync(join(root, "src/data/soon.json"), "utf8"));
@@ -55,7 +57,15 @@ for (const poem of poems) {
     if (hot.line < 0 || hot.line >= poem.lines.length) fail(`${poem.id} 热点行号越界`);
   }
   for (const track of poem.audio ?? []) {
-    if (!existsSync(join(root, "public", track.src))) fail(`缺少音频 ${track.src}`);
+    if (track.src.startsWith("audio-pack?")) {
+      const packed = new URL(track.src, "https://pack.local/");
+      const zip = packed.searchParams.get("zip") ?? "";
+      const file = packed.searchParams.get("file") ?? "";
+      const names = audioIndex[zip];
+      if (!names?.includes(file)) fail(`${poem.id} 音频不在发布包索引里：${zip} / ${file}`);
+    } else if (!existsSync(join(root, "public", track.src))) {
+      fail(`缺少音频 ${track.src}`);
+    }
     if (track.cues && track.cues.length !== poem.lines.length) fail(`${poem.id} 音频 cues 数量不对`);
   }
   const quizzes = [...(poem.quizzes ?? []), ...(poem.sceneQuiz ? [poem.sceneQuiz] : [])];
@@ -90,10 +100,23 @@ for (const id of ["jingye", "chunxiao", "shanxing"]) {
 const illustrated = new Set(["jingye", "chunxiao", "shanxing", "jiangnan"]);
 const readableNew = poems.filter((poem) => !illustrated.has(poem.id));
 if (readableNew.length < 70) fail(`图文版新入库太少：${readableNew.length}`);
+let noted = 0;
+let appreciated = 0;
+let withAudio = 0;
+const unmatchedAudio = [];
 for (const poem of readableNew) {
   if (poem.image) fail(`${poem.id} 还没有新插画，不要占一个图片路径`);
   if (!poem.sheet) fail(`${poem.id} 缺少图文打印稿文件名`);
   if (!poem.translation) fail(`${poem.id} 缺少译文`);
+  const notesReady = poem.lines.every((line) => line.note && line.note.includes("**"));
+  if (notesReady) noted += 1;
+  else fail(`${poem.id} 还有诗句没有改写注释`);
+  if (poem.appreciation?.length) appreciated += 1;
+  else fail(`${poem.id} 缺少赏析`);
+  const cited = (poem.sources ?? []).some((item) => /hanyu\.baidu\.com|gushiwen\.cn/.test(item.url));
+  if (!cited) fail(`${poem.id} 注释来源还没写上公开网页`);
+  if (poem.audio?.length) withAudio += 1;
+  else unmatchedAudio.push(`${poem.title}（${poem.id}）`);
 }
 
 const soonIds = new Set(soon.map((poem) => poem.id));
@@ -106,4 +129,7 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`content ok · ${poems.length} readable · ${soon.length} coming soon`);
+console.log(
+  `content ok · ${poems.length} readable · ${soon.length} coming soon · notes ${noted}/${readableNew.length} · appreciation ${appreciated}/${readableNew.length} · audio ${withAudio}/${readableNew.length}`,
+);
+if (unmatchedAudio.length) console.log(`no release audio: ${unmatchedAudio.join("、")}`);

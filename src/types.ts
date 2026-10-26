@@ -25,7 +25,10 @@ export type Quiz = {
 
 export type AudioTrack = {
   label: string;
-  /** Path under the site base, e.g. `audio/jiangnan.mp3`. */
+  /**
+   * Site path. Local files live under `public/`, e.g. `audio/jiangnan.mp3`.
+   * Release recordings use `audio-pack?zip=audio-09.zip&file=…` and are streamed, not bundled.
+   */
   src: string;
   /** Highlight lines while this track plays. 解析 / 赏析 stay on the current line. */
   syncLines?: boolean;

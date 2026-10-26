@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { Connect } from "vite";
 import { defineConfig } from "vite";
-import { audioPackResponse } from "./src/releaseAudio.ts";
+import { audioPackResponse, isAudioPackPath } from "./src/releaseAudio.ts";
 
 // Relative base so `dist/` can be hosted at a domain root or a project subpath
 // (GitHub Pages) without rewriting asset URLs.
@@ -32,7 +32,7 @@ export default defineConfig({
 
 function serveAudioPack(request: IncomingMessage, response: ServerResponse, next: Connect.NextFunction): void {
   const url = new URL(request.url ?? "/", "http://127.0.0.1");
-  if (url.pathname !== "/audio-pack") {
+  if (!isAudioPackPath(url.pathname)) {
     next();
     return;
   }

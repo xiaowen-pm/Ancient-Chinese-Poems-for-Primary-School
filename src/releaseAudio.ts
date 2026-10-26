@@ -31,8 +31,13 @@ type Catalog = {
 
 const catalogs = new Map<string, Catalog>();
 
+/** Safari only treats a URL as audio when the path itself ends in .mp3. */
+export function isAudioPackPath(pathname: string): boolean {
+  return pathname === "/audio-pack" || pathname === "/audio-pack.mp3";
+}
+
 export function parsePack(url: URL): { zip: string; file: string } | null {
-  if (url.pathname !== "/audio-pack") return null;
+  if (!isAudioPackPath(url.pathname)) return null;
   const zip = url.searchParams.get("zip") ?? "";
   const file = url.searchParams.get("file") ?? "";
   if (!ALLOWED_ZIPS.has(zip)) return null;
@@ -41,7 +46,7 @@ export function parsePack(url: URL): { zip: string; file: string } | null {
 }
 
 function packUrl(zip: string, file: string): string {
-  return `audio-pack?zip=${encodeURIComponent(zip)}&file=${encodeURIComponent(file)}`;
+  return `audio-pack.mp3?zip=${encodeURIComponent(zip)}&file=${encodeURIComponent(file)}`;
 }
 
 export { packUrl };
@@ -121,6 +126,9 @@ async function dataStart(catalog: Catalog, entry: ZipEntry): Promise<number> {
   return entry.dataStart;
 }
 
+/** One upstream read stays small. Browsers ask for `bytes=0-` and will request the next window. */
+const RANGE_WINDOW = 512 * 1024;
+
 function parseRange(header: string | null, size: number): { start: number; end: number } | null {
   if (!header) return null;
   const match = header.match(/bytes=(\d*)-(\d*)/);
@@ -134,6 +142,11 @@ function parseRange(header: string | null, size: number): { start: number; end: 
   const end = match[2] === "" ? size - 1 : Math.min(size - 1, Number(match[2]));
   if (start > end || start >= size) return { start: size, end: size - 1 };
   return { start, end };
+}
+
+function windowed(start: number, end: number): { start: number; end: number } {
+  if (end - start + 1 <= RANGE_WINDOW) return { start, end };
+  return { start, end: start + RANGE_WINDOW - 1 };
 }
 
 export async function audioPackResponse(url: URL, rangeHeader: string | null): Promise<Response> {
@@ -151,18 +164,23 @@ export async function audioPackResponse(url: URL, rangeHeader: string | null): P
     if (entry.method !== 0) return text(415, "这一条录音不是直接存放的，暂时不能分段播放");
     const start0 = await dataStart(catalog, entry);
     const slice = parseRange(rangeHeader, entry.size);
-    const start = slice ? slice.start : 0;
-    const end = slice ? slice.end : entry.size - 1;
-    if (start >= entry.size || end < start) return text(416, "超出录音长度");
-    const upstream = await readSlice(catalog, start0 + start, start0 + end);
+    // No Range header means the whole file. A Range header is capped so a browser's
+    // open `bytes=0-` does not pull a multi-megabyte GitHub read before the first note.
+    // A range that already covers the whole file is answered as 200: Safari rejects a
+    // 206 whose Content-Range is the entire resource.
+    const bounded = slice ? windowed(slice.start, slice.end) : { start: 0, end: entry.size - 1 };
+    if (bounded.start >= entry.size || bounded.end < bounded.start) return text(416, "超出录音长度");
+    const entire = bounded.start === 0 && bounded.end === entry.size - 1;
+    const upstream = await readSlice(catalog, start0 + bounded.start, start0 + bounded.end);
     const headers = new Headers({
       "Content-Type": "audio/mpeg",
       "Accept-Ranges": "bytes",
       "Cache-Control": "public, max-age=86400",
-      "Content-Length": String(end - start + 1),
+      Vary: "Range",
+      "Content-Length": String(bounded.end - bounded.start + 1),
     });
-    if (slice) {
-      headers.set("Content-Range", `bytes ${start}-${end}/${entry.size}`);
+    if (!entire) {
+      headers.set("Content-Range", `bytes ${bounded.start}-${bounded.end}/${entry.size}`);
       return new Response(upstream, { status: 206, headers });
     }
     return new Response(upstream, { status: 200, headers });

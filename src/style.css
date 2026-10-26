@@ -473,6 +473,11 @@ header {
   cursor: pointer;
 }
 
+.player.is-silent .pbtn,
+.player.is-silent .bar {
+  display: none;
+}
+
 .tname {
   flex: 0 1 168px;
   min-width: 0;

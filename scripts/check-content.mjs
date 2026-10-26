@@ -57,7 +57,7 @@ for (const poem of poems) {
     if (hot.line < 0 || hot.line >= poem.lines.length) fail(`${poem.id} 热点行号越界`);
   }
   for (const track of poem.audio ?? []) {
-    if (track.src.startsWith("audio-pack?")) {
+    if (track.src.startsWith("audio-pack.mp3?") || track.src.startsWith("audio-pack?")) {
       const packed = new URL(track.src, "https://pack.local/");
       const zip = packed.searchParams.get("zip") ?? "";
       const file = packed.searchParams.get("file") ?? "";
@@ -95,6 +95,12 @@ for (const id of ["jingye", "chunxiao", "shanxing"]) {
   const poem = poems.find((item) => item.id === id);
   if (!poem?.image?.endsWith(`${id}.webp`)) fail(`${id} 应保留原来的插画`);
   if (poem.sheet) fail(`${id} 不应改成图文底稿页`);
+  if (!poem.lines.every((line) => line.note && line.note.includes("**"))) fail(`${id} 缺少注释`);
+  if (!poem.appreciation?.length) fail(`${id} 缺少赏析`);
+  if (!(poem.sources ?? []).some((item) => /hanyu\.baidu\.com|gushiwen\.cn/.test(item.url))) {
+    fail(`${id} 注释来源还没写上公开网页`);
+  }
+  if (!poem.audio?.length) fail(`${id} 缺少朗读`);
 }
 
 const illustrated = new Set(["jingye", "chunxiao", "shanxing", "jiangnan"]);
@@ -105,7 +111,8 @@ let appreciated = 0;
 let withAudio = 0;
 const unmatchedAudio = [];
 for (const poem of readableNew) {
-  if (poem.image) fail(`${poem.id} 还没有新插画，不要占一个图片路径`);
+  if (poem.image !== `images/${poem.id}.webp`) fail(`${poem.id} 缺少画卷`);
+  if (poem.image && !existsSync(join(root, "public", poem.image))) fail(`${poem.id} 画卷文件不在 public/`);
   if (!poem.sheet) fail(`${poem.id} 缺少图文打印稿文件名`);
   if (!poem.translation) fail(`${poem.id} 缺少译文`);
   const notesReady = poem.lines.every((line) => line.note && line.note.includes("**"));
@@ -117,6 +124,10 @@ for (const poem of readableNew) {
   if (!cited) fail(`${poem.id} 注释来源还没写上公开网页`);
   if (poem.audio?.length) withAudio += 1;
   else unmatchedAudio.push(`${poem.title}（${poem.id}）`);
+}
+
+for (const poem of poems) {
+  if (!poem.audio?.length) fail(`${poem.id} 没有朗读`);
 }
 
 const soonIds = new Set(soon.map((poem) => poem.id));

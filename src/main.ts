@@ -22,6 +22,7 @@ const lines = $<HTMLElement>("lines");
 const tabs = $<HTMLElement>("tabs");
 const panel = $<HTMLElement>("panel");
 const mode = $<HTMLElement>("mode");
+const player = $<HTMLElement>("player");
 const tname = $<HTMLElement>("tname");
 const playBtn = $<HTMLButtonElement>("play");
 const seek = $<HTMLElement>("seek");
@@ -68,12 +69,20 @@ function current(): Poem {
 type TabSpec = { id: string; label: string };
 
 function tabsFor(poem: Poem): TabSpec[] {
-  const commentary = Boolean(
-    poem.appreciation?.length ||
-      poem.background ||
-      poem.quizzes?.length ||
-      poem.lines.some((item) => item.note),
-  );
+  const hasNote = poem.lines.some((item) => item.note);
+  const commentary = Boolean(hasNote || poem.appreciation?.length || poem.background || poem.quizzes?.length);
+  // 静夜思、春晓、山行既有注释，也要留下原来的画境、小剧场和看画猜诗。
+  const keepsGallery = Boolean(poem.story || poem.sceneQuiz) && !poem.quizzes?.length;
+  if (commentary && keepsGallery) {
+    const tabs: TabSpec[] = [];
+    if (poem.lines.some((item) => item.gloss)) tabs.push({ id: "gloss", label: "逐句画境" });
+    if (hasNote) tabs.push({ id: "notes", label: "注释" });
+    if (poem.translation) tabs.push({ id: "translation", label: "译文" });
+    if (poem.appreciation?.length) tabs.push({ id: "appreciation", label: "赏析" });
+    if (poem.story) tabs.push({ id: "story", label: "诗人小剧场" });
+    if (poem.sceneQuiz) tabs.push({ id: "quiz", label: "看画猜诗 · 盖章" });
+    return tabs;
+  }
   if (commentary) {
     return [
       { id: "notes", label: "注释" },
@@ -164,8 +173,17 @@ function paintProgress(percent: number): void {
   seek.setAttribute("aria-valuenow", String(Math.round(clamped)));
 }
 
+function paintTransport(): void {
+  const ready = Boolean(current().audio?.length);
+  player.classList.toggle("is-silent", !ready);
+  playBtn.disabled = !ready;
+  playBtn.tabIndex = ready ? 0 : -1;
+  playBtn.setAttribute("aria-hidden", ready ? "false" : "true");
+}
+
 function paintTrackName(override?: string): void {
   const poem = current();
+  paintTransport();
   if (override) {
     tname.textContent = `${poem.title} · ${override}`;
     return;

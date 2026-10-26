@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { TEXTBOOK_ORDER, nextAutoplayId } from "./grades.ts";
 import { normalizeQuery, search } from "./search.ts";
 import type { Poem, SoonPoem } from "./types.ts";
 
@@ -74,6 +75,7 @@ const green: Poem = {
   authorPinyin: "shì",
   dynastyPinyin: "táng",
   tag: "",
+  grade: "extra",
   pageColor: "#fff",
   effect: "leaf",
   image: "",
@@ -85,5 +87,22 @@ for (const query of ["lv", "lu", "lǜ", "lü"]) {
 }
 
 assert.equal(search("<img onerror=alert(1)>", poems, soon).ready.length + search("<img onerror=alert(1)>", poems, soon).soon.length, 0);
+
+for (const poem of poems) {
+  if (poem.grade === "extra") {
+    for (const ids of Object.values(TEXTBOOK_ORDER)) assert.ok(!ids.includes(poem.id), poem.id);
+  } else {
+    const listed = TEXTBOOK_ORDER[poem.grade];
+    assert.ok(listed?.includes(poem.id), `${poem.id} 不在 ${poem.grade}`);
+  }
+}
+const sample = [
+  { id: "a", labels: ["朗读"] },
+  { id: "b", labels: ["跟读"] },
+  { id: "c", labels: ["朗读", "跟读"] },
+];
+assert.equal(nextAutoplayId(sample, "a", "朗读"), "c");
+assert.equal(nextAutoplayId(sample, "c", "朗读"), null);
+assert.equal(nextAutoplayId(sample, "missing", "朗读"), null);
 
 console.log(`search ok · ${poems.length} poems · ${soon.length} coming soon`);

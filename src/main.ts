@@ -2,6 +2,7 @@ import "./style.css";
 import { asset, findPoem, findSoon, poems, sheetUrl, soonPoems } from "./data.ts";
 import { startEffects } from "./effects.ts";
 import { escapeHtml, rich } from "./html.ts";
+import { GRADE_CHIPS, TEXTBOOK_ORDER, gradeLabel, isGradeFilter, nextAutoplayId, type GradeFilter } from "./grades.ts";
 import { ReaderAudio } from "./player.ts";
 import { normalizeQuery, search, type ReadyHit, type SoonHit, type Span } from "./search.ts";
 import type { AudioTrack, Poem, Quiz, SoonPoem } from "./types.ts";
@@ -12,6 +13,9 @@ const $ = <T extends HTMLElement>(id: string) => {
   return node as T;
 };
 
+const gradesNav = $<HTMLElement>("grades");
+const autoplayBtn = $<HTMLButtonElement>("autoplay");
+const AUTOPLAY_KEY = "bibei-autoplay-next";
 const scene = $<HTMLElement>("scene");
 const sceneImg = $<HTMLImageElement>("scene-img");
 const scenePlate = $<HTMLElement>("scene-plate");
@@ -41,6 +45,8 @@ const sheet = $<HTMLElement>("sheet");
 const CIRCLED = "①②③④⑤⑥⑦⑧⑨⑩";
 const DYNASTY_ORDER = ["先秦", "汉", "三国", "北朝", "唐", "宋", "元", "明", "清"];
 
+let gradeFilter: GradeFilter = "all";
+let autoplayNext = readStoredAutoplay();
 let poemIndex = 0;
 let line = 0;
 let tab = 0;
@@ -62,8 +68,60 @@ const reader = new ReaderAudio({
   },
 });
 
+function readStoredAutoplay(): boolean {
+  try {
+    return localStorage.getItem(AUTOPLAY_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 function current(): Poem {
   return poems[poemIndex] ?? poems[0]!;
+}
+
+function visiblePoems(): Poem[] {
+  if (gradeFilter === "all") return poems;
+  if (gradeFilter === "extra") return poems.filter((poem) => poem.grade === "extra");
+  const order = TEXTBOOK_ORDER[gradeFilter];
+  return order.flatMap((id) => {
+    const poem = poems.find((item) => item.id === id);
+    return poem ? [poem] : [];
+  });
+}
+
+function paintGrades(): void {
+  gradesNav.innerHTML = `<div class="grade-row">${GRADE_CHIPS.map(
+    (chip) =>
+      `<button type="button" data-grade="${chip.id}" class="${chip.id === gradeFilter ? "on" : ""}" aria-pressed="${chip.id === gradeFilter ? "true" : "false"}">${chip.label}</button>`,
+  ).join("")}</div>`;
+  const row = gradesNav.querySelector<HTMLElement>(".grade-row");
+  const selected = gradesNav.querySelector<HTMLElement>(".on");
+  if (!row || !selected) return;
+  const rowRect = row.getBoundingClientRect();
+  const selectedRect = selected.getBoundingClientRect();
+  row.scrollLeft += selectedRect.left - rowRect.left - rowRect.width / 2 + selectedRect.width / 2;
+}
+
+function paintAutoplay(): void {
+  autoplayBtn.classList.toggle("on", autoplayNext);
+  autoplayBtn.setAttribute("aria-pressed", autoplayNext ? "true" : "false");
+  autoplayBtn.setAttribute("aria-label", autoplayNext ? "连播已开，播完自动下一首" : "连播已关");
+}
+
+function setGrade(next: GradeFilter): void {
+  gradeFilter = next;
+  paintGrades();
+  const list = visiblePoems();
+  if (!list.some((poem) => poem.id === current().id) && list[0]) {
+    const index = poems.findIndex((poem) => poem.id === list[0]?.id);
+    if (index >= 0) {
+      goTo(index, 0);
+      return;
+    }
+  }
+  renderGallery();
+  writeUrl();
 }
 
 type TabSpec = { id: string; label: string };
@@ -333,13 +391,22 @@ function cardFace(poem: Poem): string {
 }
 
 function renderGallery(): void {
-  cards.innerHTML = poems
-    .map((poem, index) => {
+  const list = visiblePoems();
+  cards.innerHTML = list
+    .map((poem) => {
+      const index = poems.findIndex((item) => item.id === poem.id);
       const first = poem.lines[0]?.text ?? "";
       const currentClass = index === poemIndex ? " is-current" : "";
       return `<button type="button" class="card${currentClass}" data-poem="${index}">${cardFace(poem)}<span><b>${escapeHtml(poem.title)}</b><small>${escapeHtml(poem.dynasty)} · ${escapeHtml(poem.author)} ｜ ${escapeHtml(first)}</small></span></button>`;
     })
     .join("");
+  const label = gradeLabel(gradeFilter);
+  $<HTMLElement>("gallery-lead").textContent =
+    gradeFilter === "all"
+      ? `这 ${poems.length} 首可以读，都能点开看画卷。上面的年级按部编版小学语文分成上下册，课外是课本里没有的拓展。`
+      : gradeFilter === "extra"
+        ? `课外 / 拓展 ${list.length} 首。这几首不在部编版小学课本里。`
+        : `${label} · 部编版这一册 ${list.length} 首。连播会按这个顺序往下听。`;
 }
 
 function renderSoonList(): void {
@@ -368,9 +435,6 @@ function renderSoonList(): void {
 }
 
 function renderLeads(): void {
-  const painted = poems.filter((poem) => poem.image).length;
-  $<HTMLElement>("gallery-lead").textContent =
-    `这 ${poems.length} 首可以读。其中 ${painted} 首有诗意画，其余先用底色页，画卷还在补。目标仍是 75 + 80 首。`;
   $<HTMLElement>("soon-lead").textContent =
     `下面 ${soonPoems.length} 首已经能搜到篇名和首句。点开不会假装有全文。拼音、注释、朗读和画卷还没做。这不是官方 155 首的完整目录。`;
 }
@@ -439,6 +503,24 @@ function onAudioEnd(): void {
   paintPlay(false);
   const active = tabsFor(current())[tab];
   if (active && (active.id === "notes" || active.id === "gloss")) renderPanel();
+  if (!autoplayNext) return;
+  const label = current().audio?.[trackIndex]?.label;
+  if (!label) return;
+  const nextId = nextAutoplayId(
+    visiblePoems().map((poem) => ({ id: poem.id, labels: (poem.audio ?? []).map((track) => track.label) })),
+    current().id,
+    label,
+  );
+  if (!nextId) {
+    paintTrackName("这一册听完了");
+    return;
+  }
+  const index = poems.findIndex((poem) => poem.id === nextId);
+  if (index < 0) return;
+  goTo(index, 0, { keepLabel: label });
+  void reader.play().then((started) => {
+    if (!started) paintTrackName("点一下播放，接着听下一首");
+  });
 }
 
 function onAudioError(): void {
@@ -465,6 +547,7 @@ function writeUrl(): void {
   url.search = "";
   url.hash = "";
   url.searchParams.set("p", current().id);
+  if (gradeFilter !== "all") url.searchParams.set("g", gradeFilter);
   if (line > 0) url.searchParams.set("line", String(line));
   const next = `${url.pathname}${url.search}`;
   if (`${window.location.pathname}${window.location.search}` !== next) {
@@ -486,7 +569,7 @@ function flashLine(index: number): void {
   }
 }
 
-function goTo(index: number, nextLine: number, options?: { flash?: boolean; scroll?: boolean }): void {
+function goTo(index: number, nextLine: number, options?: { flash?: boolean; scroll?: boolean; keepLabel?: string }): void {
   const changed = index !== poemIndex;
   poemIndex = Math.min(Math.max(index, 0), poems.length - 1);
   const poem = current();
@@ -494,7 +577,10 @@ function goTo(index: number, nextLine: number, options?: { flash?: boolean; scro
   tab = 0;
   stamp.classList.remove("on");
   if (changed) {
-    trackIndex = 0;
+    const kept = options?.keepLabel
+      ? (poem.audio?.findIndex((item) => item.label === options.keepLabel) ?? -1)
+      : -1;
+    trackIndex = kept >= 0 ? kept : 0;
     exitQuiet();
     showImage(poem);
     loadTrack();
@@ -721,7 +807,14 @@ function activate(index: number): void {
     const next = poems.findIndex((poem) => poem.id === hit.poemId);
     closeSearch();
     queryInput.blur();
-    if (next >= 0) goTo(next, hit.lineIndex, { flash: true });
+    if (next >= 0) {
+      const poem = poems[next];
+      if (poem && gradeFilter !== "all" && poem.grade !== gradeFilter) {
+        gradeFilter = "all";
+        paintGrades();
+      }
+      goTo(next, hit.lineIndex, { flash: true });
+    }
     return;
   }
   const hit = soonHits[index - readyHits.length];
@@ -741,8 +834,10 @@ function isTypingTarget(target: EventTarget | null): boolean {
   return tag === "INPUT" || tag === "TEXTAREA" || target.isContentEditable;
 }
 
-function readInitial(): { pdf: boolean; query: string | null; flash: boolean } {
+function readInitial(): { pdf: boolean; query: string | null; flash: boolean; grade: GradeFilter } {
   const params = new URLSearchParams(window.location.search);
+  const requestedGrade = params.get("g");
+  const grade = isGradeFilter(requestedGrade) ? requestedGrade : "all";
   const requested = params.get("p");
   if (requested) {
     const byId = poems.findIndex((poem) => poem.id === requested || poem.title === requested);
@@ -762,7 +857,7 @@ function readInitial(): { pdf: boolean; query: string | null; flash: boolean } {
     const numeric = Number(tabParam);
     if (numeric >= 0 && numeric < tabsFor(current()).length) tab = numeric;
   }
-  return { pdf: params.get("modal") === "pdf", query: params.get("q"), flash: line > 0 };
+  return { pdf: params.get("modal") === "pdf", query: params.get("q"), flash: line > 0, grade };
 }
 
 function bind(): void {
@@ -845,7 +940,26 @@ function bind(): void {
   });
   $<HTMLButtonElement>("print-open").addEventListener("click", openPrint);
   $<HTMLButtonElement>("pdf-open").addEventListener("click", openPdf);
-  $<HTMLButtonElement>("home").addEventListener("click", () => goTo(poems.findIndex((poem) => poem.id === "jingye") || 0, 0));
+  $<HTMLButtonElement>("home").addEventListener("click", () => {
+    gradeFilter = "all";
+    paintGrades();
+    goTo(Math.max(0, poems.findIndex((poem) => poem.id === "jingye")), 0);
+  });
+  gradesNav.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLElement>("[data-grade]");
+    const next = button?.dataset.grade ?? "";
+    if (!isGradeFilter(next) || next === gradeFilter) return;
+    setGrade(next);
+  });
+  autoplayBtn.addEventListener("click", () => {
+    autoplayNext = !autoplayNext;
+    try {
+      localStorage.setItem(AUTOPLAY_KEY, autoplayNext ? "1" : "0");
+    } catch {
+      // Private mode can refuse storage. The toggle still works for this visit.
+    }
+    paintAutoplay();
+  });
   $<HTMLButtonElement>("sico").addEventListener("click", openSearch);
   queryInput.addEventListener("input", runSearch);
   queryInput.addEventListener("focus", runSearch);
@@ -936,6 +1050,10 @@ function boot(): void {
     return;
   }
   const initial = readInitial();
+  gradeFilter = initial.grade;
+  if (gradeFilter !== "all" && current().grade !== gradeFilter) gradeFilter = "all";
+  paintGrades();
+  paintAutoplay();
   renderLeads();
   renderSoonList();
   showImage(current());

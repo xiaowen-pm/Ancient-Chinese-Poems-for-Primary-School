@@ -1,3 +1,5 @@
+import type { GradeId } from "./grades.ts";
+
 /** A line of a poem. Pinyin tokens line up with every character, including punctuation. */
 export type PoemLine = {
   text: string;
@@ -66,6 +68,11 @@ export type Poem = {
   authorPinyin: string;
   dynastyPinyin: string;
   tag: string;
+  /**
+   * 部编版册次。`1-1` 是一年级上，`6-2` 是六年级下。
+   * `extra` 是课本没有、来自 75+80 拓展的篇目。
+   */
+  grade: GradeId;
   pageColor: string;
   effect: EffectName;
   /** Illustrated scene under `public/`. Omitted until a painting is ready. */

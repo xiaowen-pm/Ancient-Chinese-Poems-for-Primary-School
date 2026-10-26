@@ -36,6 +36,8 @@
       </button>
     </header>
 
+    <nav class="grades" id="grades" aria-label="按年级和学期筛选"></nav>
+
     <main>
       <section class="stage" id="stage">
         <div class="scene" id="scene">
@@ -50,6 +52,7 @@
             <div class="bar" id="seek" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="朗读进度">
               <div id="pr"></div>
             </div>
+            <button class="autoplay" id="autoplay" type="button" aria-pressed="false" title="播完这一首，自动播当前筛选里的下一首，仍用同一条朗读">连播</button>
             <div class="mode" id="mode"></div>
           </div>
         </div>

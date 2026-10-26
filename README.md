@@ -45,7 +45,7 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 | 新诗的朗读 | 真，从 GitHub Release 的压缩包里按需取出，不打进 `dist/`。能对上几条就放几条 |
 | 新诗的图文打印稿 | 真的链接，打开仓库里的 JPG，不进构建产物 |
 | 搜索（诗名、作者、朝代、诗句、拼音、声母、别名） | 真。图文版没有的拓展篇目仍只有篇名和首句，点开写明「即将上线」 |
-| 邮箱领取可打印 PDF | 真。`POST /api/pdf-request` 校验邮箱，记到 Cloudflare KV（绑定名 `SIGNUPS`），并用 Resend 寄下载链接。没配 `RESEND_API_KEY`，或发件人还是 `pdf@example.com` 时，不发信，页面上直接给出链接。PDF 仍在仓库的 `assets/`，不打进 `dist/` |
+| 邮箱领取可打印 PDF | 真。`POST /api/pdf-request` 校验邮箱。KV 绑定 `SIGNUPS` 填上命名空间 id 之后会记下邮箱；还没填时不在 Cloudflare 保存，页面仍给出链接。配好 `RESEND_API_KEY` 和已验证的 `RESEND_FROM` 后用 Resend 寄下载链接。PDF 仍在仓库的 `assets/`，不打进 `dist/` |
 | 打卡单打印 | 演示。不会生成卷子，也不会弹出打印 |
 | 视频 | 不做 |
 | Releases 里的朗读音频 | 不提交 MP3。站点用同一来源的 `/audio-pack` 读压缩包里的一首 |
@@ -112,14 +112,14 @@ npm run build
 
 - **Netlify**：仓库里有 `netlify.toml`，发布目录是 `dist`。
 - **Vercel**：有 `vercel.json`，框架选 Vite 即可。
-- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。Worker 先回答 `/api/pdf-request` 和 `/audio-pack`，其余请求交给 `dist/`。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的 `previews` 块；预览不继承变量和 KV，所以领取 PDF 的绑定在顶层和 `previews` 里各写一次。资源和 Worker 名仍只写在顶层。
+- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。Worker 先回答 `/api/pdf-request` 和 `/audio-pack`，其余请求交给 `dist/`。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的 `previews` 块；预览不继承变量，所以 `RESEND_FROM` 在顶层和 `previews` 里各写一次。KV 绑定 `SIGNUPS` 要等命名空间建好，把 id 填进这两处之后才会生效。资源和 Worker 名仍只写在顶层。
 - **GitHub Pages**：把 `dist/` 里的文件作为站点根目录发布。不要把整个仓库根目录当站点，那里没有构建后的脚本。Pages 上没有这个 Worker，朗读地址不可用。
 
 本地先看构建结果：`npm run preview`。
 
 ## 邮箱领取 PDF / Printable PDF
 
-诗页上的「免费领取可打印 PDF」把家长邮箱交给同源的 `POST /api/pdf-request`。Worker 校验邮箱，用隐藏字段和按 IP 的次数限制挡住简单的灌水，再把邮箱、时间和来源（`web` 或 `web:诗的 id`）写进 KV 绑定 `SIGNUPS`。同一个邮箱只保留一条，后一次会更新时间。邮件里只有下载链接：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`。
+诗页上的「免费领取可打印 PDF」把家长邮箱交给同源的 `POST /api/pdf-request`。Worker 校验邮箱，用隐藏字段和按 IP 的次数限制挡住简单的灌水。`wrangler.jsonc` 里填上 KV `SIGNUPS` 的命名空间 id 之后，邮箱、时间和来源（`web` 或 `web:诗的 id`）会写进去，同一个邮箱只保留一条。邮件里只有下载链接：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`。id 还没填时，线上不保存邮箱，页面仍给出下载链接。没有 id 的 KV 绑定会让 Workers Builds 在部署时新建命名空间并失败，所以先不写进配置。
 
 发信走 Resend 的 HTTP API。密钥是 `RESEND_API_KEY`，发件人是 `RESEND_FROM`。发件人仍是 `pdf@example.com`，或还没有密钥时，不发信，页面直接显示链接。本地 `npm run dev` / `npm run preview` 用内存名册，重启就没了。只上传 `dist/`、不跑 Worker 时，这个接口不存在。
 

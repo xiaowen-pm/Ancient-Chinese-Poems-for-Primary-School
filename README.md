@@ -112,7 +112,7 @@ npm run build
 
 - **Netlify**：仓库里有 `netlify.toml`，发布目录是 `dist`。
 - **Vercel**：有 `vercel.json`，框架选 Vite 即可。
-- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。Worker 先回答 `/audio-pack`，其余请求交给 `dist/`。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的空 `previews` 块；资源和 Worker 仍写在顶层，生产和预览用同一套。
+- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。Worker 先回答 `/api/pdf-request` 和 `/audio-pack`，其余请求交给 `dist/`。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的 `previews` 块；预览不继承变量和 KV，所以领取 PDF 的绑定在顶层和 `previews` 里各写一次。资源和 Worker 名仍只写在顶层。
 - **GitHub Pages**：把 `dist/` 里的文件作为站点根目录发布。不要把整个仓库根目录当站点，那里没有构建后的脚本。Pages 上没有这个 Worker，朗读地址不可用。
 
 本地先看构建结果：`npm run preview`。

@@ -7,7 +7,23 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
+  // Replace example.com with a Resend-verified sender before mail will send.
+  // The API key is a secret, not a var: `npx wrangler secret put RESEND_API_KEY`.
+  "vars": {
+    "RESEND_FROM": "必背诗笺 <pdf@example.com>"
+  },
+  "kv_namespaces": [
+    { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
+  ],
   // Required by `npx wrangler preview` on non-production branches.
-  // Left empty so previews use the same Worker, assets, and name as production.
-  "previews": {}
+  // Previews do not inherit vars or KV, so both are repeated here.
+  // Assets and the Worker name stay at the top level and are shared.
+  "previews": {
+    "vars": {
+      "RESEND_FROM": "必背诗笺 <pdf@example.com>"
+    },
+    "kv_namespaces": [
+      { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
+    ]
+  }
 }

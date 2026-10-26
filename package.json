@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "check": "node scripts/check-content.mjs && node --experimental-strip-types src/search.test.ts"
+    "check": "node scripts/check-content.mjs && node --experimental-strip-types src/search.test.ts && node --experimental-strip-types src/pdfSignup.test.ts"
   },
   "devDependencies": {
     "typescript": "~6.0.3",

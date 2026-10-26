@@ -45,7 +45,8 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 | 新诗的朗读 | 真，从 GitHub Release 的压缩包里按需取出，不打进 `dist/`。能对上几条就放几条 |
 | 新诗的图文打印稿 | 真的链接，打开仓库里的 JPG，不进构建产物 |
 | 搜索（诗名、作者、朝代、诗句、拼音、声母、别名） | 真。图文版没有的拓展篇目仍只有篇名和首句，点开写明「即将上线」 |
-| 邮箱领取 PDF、打卡单打印 | 演示。不会发信，不会保存邮箱，也不会弹出打印 |
+| 邮箱领取可打印 PDF | 真。`POST /api/pdf-request` 校验邮箱，记到 Cloudflare KV（绑定名 `SIGNUPS`），并用 Resend 寄下载链接。没配 `RESEND_API_KEY`，或发件人还是 `pdf@example.com` 时，不发信，页面上直接给出链接。PDF 仍在仓库的 `assets/`，不打进 `dist/` |
+| 打卡单打印 | 演示。不会生成卷子，也不会弹出打印 |
 | 视频 | 不做 |
 | Releases 里的朗读音频 | 不提交 MP3。站点用同一来源的 `/audio-pack` 读压缩包里的一首 |
 
@@ -116,17 +117,13 @@ npm run build
 
 本地先看构建结果：`npm run preview`。
 
-## 以后的 PDF 邮件 / Email later
+## 邮箱领取 PDF / Printable PDF
 
-现在的邮箱窗口只在浏览器里确认，不发请求。以后可以保持这个静态站，另加一个很小的接口：
+诗页上的「免费领取可打印 PDF」把家长邮箱交给同源的 `POST /api/pdf-request`。Worker 校验邮箱，用隐藏字段和按 IP 的次数限制挡住简单的灌水，再把邮箱、时间和来源（`web` 或 `web:诗的 id`）写进 KV 绑定 `SIGNUPS`。同一个邮箱只保留一条，后一次会更新时间。邮件里只有下载链接：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`。
 
-1. `POST /api/pdf-request`，正文 `{ "email": "name@example.com", "poemId": "jiangnan" }`。
-2. 校验邮箱，把请求记在数据库或一张表里。
-3. PDF 事先做好，放在对象存储。邮件里只放下载链接，不把文件塞进仓库。
-4. 用 Resend、Amazon SES 或同类服务发信。
-5. 静态页面仍由 Netlify / Vercel / GitHub Pages 托管，只有这个接口是服务器。
+发信走 Resend 的 HTTP API。密钥是 `RESEND_API_KEY`，发件人是 `RESEND_FROM`。发件人仍是 `pdf@example.com`，或还没有密钥时，不发信，页面直接显示链接。本地 `npm run dev` / `npm run preview` 用内存名册，重启就没了。只上传 `dist/`、不跑 Worker 时，这个接口不存在。
 
-没有接上之前，不要把成功提示写成「已经发送」。
+打卡单仍然是说明，不会生成卷子。
 
 ## 下一步 / Next
 
@@ -134,5 +131,4 @@ npm run build
 - 新诗的注释、赏析和能对上的朗读已经接上。背景、小测、诗意画还没有。
 - 给《江南》和跟读两条补上真实的逐句时间点。仍然不要把整包音频提交进仓库。
 - 线上朗读依赖 Worker。只发布 `dist/` 时，`/audio-pack` 不会出现。
-- 接上真正的邮件和 PDF。
 - 继续不做视频。

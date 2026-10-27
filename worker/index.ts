@@ -29,6 +29,7 @@ export default {
     const url = new URL(request.url);
     const api = await routeApi(request, {
       env: stringVars(env),
+      envKeys: Object.keys(env).sort(),
       store: env.SIGNUPS ? kvStore(env.SIGNUPS) : null,
     });
     if (api) return api;
@@ -43,6 +44,13 @@ export default {
 function stringVars(env: Env): Record<string, string | undefined> {
   const vars: Record<string, string | undefined> = {};
   for (const [name, value] of Object.entries(env)) {
+    if (typeof value === "string") vars[name] = value;
+  }
+  // Bindings can be exposed as non-enumerable getters, so read the names we
+  // care about directly instead of trusting `Object.entries` alone.
+  for (const name of ["RESEND_API_KEY", "resend", "RESEND_KEY", "resend_api_key", "RESEND_FROM", "MAIL_FROM"]) {
+    if (vars[name] !== undefined) continue;
+    const value = env[name];
     if (typeof value === "string") vars[name] = value;
   }
   return vars;

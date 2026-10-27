@@ -452,6 +452,8 @@ function textResponse(status: number, message: string): Response {
 export type ApiContext = {
   /** Cloudflare vars and secrets, or the local `.dev.vars` values. */
   env?: Record<string, string | undefined>;
+  /** Raw binding names, for the diagnostics endpoint. */
+  envKeys?: string[];
   store?: SignupStore | null;
   resendApiKey?: string | null;
   resendFrom?: string | null;
@@ -492,7 +494,13 @@ export async function routeApi(request: Request, context: ApiContext = {}): Prom
     // `envKeys` lists binding names only, so a missing secret can be told apart
     // from a rejected key without ever printing the value.
     return Response.json(
-      { ok: true, ...status, hint: senderHint(status), envKeys: Object.keys(env).sort() } satisfies MailStatus & { envKeys: string[] },
+      {
+        ok: true,
+        ...status,
+        hint: senderHint(status),
+        envKeys: context.envKeys ?? Object.keys(env).sort(),
+        stringKeys: Object.keys(env).sort(),
+      } satisfies MailStatus & { envKeys: string[]; stringKeys: string[] },
       {
         headers: { "cache-control": "no-store" },
       },

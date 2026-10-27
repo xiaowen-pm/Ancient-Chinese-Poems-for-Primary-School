@@ -1,6 +1,9 @@
 # 必背诗笺
 
-免费的小学生必背古诗词读本。横排、一句一行、拼音。图文版里的诗已经能读全文，每首都有一幅诗意画。《静夜思》《春晓》《山行》《江南》仍用原来的画，《江南》的三条录音仍是本地文件。
+免费的小学生必背古诗词读本。横排、一句一行、拼音。
+配以优美的画面，支持跟读，朗读解析，自动播放下一首，
+
+可以直接访问：https://ancient-chinese-poems-for-primary-school.iamgengxiaowen.workers.dev/?p=jingye
 
 A free reader for the classical poems Chinese primary students memorize. Horizontal lines, one sentence each, with pinyin. Every readable poem has a scene painting. 《静夜思》《春晓》《山行》《江南》 keep their original paintings, and 《江南》keeps its three local recordings.
 

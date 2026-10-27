@@ -3,6 +3,7 @@ import { asset, findPoem, findSoon, poems, sheetUrl, soonPoems } from "./data.ts
 import { startEffects } from "./effects.ts";
 import { escapeHtml, rich } from "./html.ts";
 import { GRADE_CHIPS, TEXTBOOK_ORDER, gradeLabel, isGradeFilter, nextAutoplayId, type GradeFilter } from "./grades.ts";
+import { isParentEmail } from "./pdfSignup.ts";
 import { ReaderAudio } from "./player.ts";
 import { normalizeQuery, search, type ReadyHit, type SoonHit, type Span } from "./search.ts";
 import type { AudioTrack, Poem, Quiz, SoonPoem } from "./types.ts";
@@ -615,18 +616,21 @@ function closeModal(): void {
 }
 
 function openPdf(): void {
-  const poem = current();
   openModal(
     `<p class="sheet-kicker">打印稿</p>
-     <h3>免费领取《${escapeHtml(poem.title)}》</h3>
-     <p>A4 一页，带拼音和这一页上已有的注释、译文，方便贴在书桌前。正式版会把下载链接寄到家长邮箱。</p>
+     <h3>免费领取可打印 PDF</h3>
+     <p>一整本 75 首，A4，带拼音和译文，适合打印；还有这一首的单页稿。留下邮箱后，下载链接会寄到邮箱，这一页也会直接给出按钮。</p>
      <form id="pdf-form">
        <label class="field" for="email">家长邮箱</label>
        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
+       <div class="hp" aria-hidden="true">
+         <label for="company">公司</label>
+         <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+       </div>
        <p class="form-error" id="email-error"></p>
-       <button class="print" type="submit">免费领取</button>
+       <button class="print" id="pdf-submit" type="submit">免费领取</button>
      </form>
-     <p class="fine">这是演示：不会发信，也不会把邮箱存下来。</p>`,
+     <p class="fine">邮箱只用来寄这份打印稿，和领取时间一起记在 Cloudflare 上。不会给别人，也不会用来推销。</p>`,
     "#email",
   );
 }
@@ -635,20 +639,86 @@ function submitPdf(): void {
   const input = sheet.querySelector<HTMLInputElement>("#email");
   const error = sheet.querySelector<HTMLElement>("#email-error");
   const value = input?.value.trim() ?? "";
-  const ok = value.length <= 254 && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]{2,}$/.test(value);
-  if (!ok) {
+  if (!isParentEmail(value)) {
     if (error) error.textContent = "请填写一个能用的邮箱，例如 name@example.com";
     input?.focus();
     return;
   }
+  const button = sheet.querySelector<HTMLButtonElement>("#pdf-submit");
+  if (button) {
+    button.disabled = true;
+    button.textContent = "正在领取…";
+  }
   const poem = current();
-  openModal(
-    `<p class="sheet-kicker">演示</p>
-     <h3>先替你记下了</h3>
-     <p>没有发出邮件。正式版会把《${escapeHtml(poem.title)}》打印稿的下载链接寄到：</p>
-     <p class="sheet-email">${escapeHtml(value)}</p>
-     <button type="button" class="print" data-action="close">好</button>`,
-  );
+  const company = sheet.querySelector<HTMLInputElement>("#company")?.value ?? "";
+  const base = import.meta.env.BASE_URL || "./";
+  const endpoint = `${base.endsWith("/") ? base : `${base}/`}api/pdf-request`;
+  void fetch(endpoint, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: value, company, poemId: poem.id, sheet: poem.sheet ?? "", title: poem.title }),
+  })
+    .then(async (response) => {
+      const payload = (await response.json()) as {
+        ok?: boolean;
+        emailed?: boolean;
+        message?: string;
+        detail?: string;
+        links?: { title?: string; href?: string }[];
+      };
+      if (!response.ok || !payload.ok) {
+        if (error) error.textContent = payload.message || "领取没有成功，请再试一次。";
+        if (button) {
+          button.disabled = false;
+          button.textContent = "免费领取";
+        }
+        return;
+      }
+      const links = (payload.links ?? [])
+        .map((link) => {
+          const href = typeof link.href === "string" ? safePdfHref(link.href) : null;
+          const title = typeof link.title === "string" ? link.title : "";
+          return href && title ? { href, title } : null;
+        })
+        .filter((link): link is { href: string; title: string } => Boolean(link));
+      const detail = typeof payload.detail === "string" && payload.detail ? payload.detail : "";
+      const detailHtml = detail
+        ? `<p class="fine">服务端提示：${escapeHtml(detail)}</p>`
+        : `<p class="fine">没收到邮件时，看一眼垃圾邮件，也可以直接点上面的按钮下载。</p>`;
+      openModal(
+        `<p class="sheet-kicker">打印稿</p>
+         <h3>${payload.emailed ? "PDF 已经寄出" : "先下载吧"}</h3>
+         <p>${escapeHtml(payload.message || "请用下面的按钮下载。")}</p>
+         <p class="sheet-email">${escapeHtml(value)}</p>
+         <ul class="pdf-links">${links
+           .map(
+             (link) =>
+               `<li><a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a></li>`,
+           )
+           .join("")}</ul>
+         ${detailHtml}
+         <button type="button" class="print" data-action="close">好</button>`,
+      );
+    })
+    .catch(() => {
+      if (error) error.textContent = "网络没连上，请再试一次。";
+      if (button) {
+        button.disabled = false;
+        button.textContent = "免费领取";
+      }
+    });
+}
+
+function safePdfHref(href: string): string | null {
+  try {
+    // Downloads are served by this site itself, never by a third-party host.
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin) return null;
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return `${url.pathname}${url.search}`;
+  } catch {
+    return null;
+  }
 }
 
 function openPrint(): void {

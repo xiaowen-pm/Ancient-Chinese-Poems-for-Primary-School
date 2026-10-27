@@ -1,22 +1,50 @@
 # 必背诗笺
 
-免费的小学生必背古诗词读本。横排、一句一行、拼音。
-配以优美的画面，支持跟读，朗读解析，自动播放下一首，
+**小学生必背古诗词的免费在线读本。** 每一句都有拼音、有画境，一首诗配一幅水墨诗意图；能听童声跟读和朗读解析，也能一键下载打印版 PDF。
 
-可以直接访问：https://ancient-chinese-poems-for-primary-school.iamgengxiaowen.workers.dev/?p=jingye
+在线使用 → **https://ancient-chinese-poems-for-primary-school.iamgengxiaowen.workers.dev/?p=jingye**
 
-A free reader for the classical poems Chinese primary students memorize. Horizontal lines, one sentence each, with pinyin. Every readable poem has a scene painting. 《静夜思》《春晓》《山行》《江南》 keep their original paintings, and 《江南》keeps its three local recordings.
+![必背诗笺：左边是《静夜思》的诗意图，右边是带拼音的正文、注释和朗读](docs/preview.jpg)
 
-## 素材 / Assets
+A free web reader for the classical poems Chinese primary students memorize — pinyin on every line, a child-friendly paraphrase, a scene painting for each poem, read-aloud audio, and a printable PDF.
 
-`assets/` 目录存放整理用的原始素材：75 首古诗的图像版（79 张 JPG）、PDF 版（76 页）、10 个版本的朗读音频和 34 个跟读视频。
+## 这是什么
 
-- 图片、PDF、文档体积小（约 58 MB），直接提交在 [assets/](assets/)，一首一页，可打印。
-- 音频（约 1.0 GB）、视频（约 1.7 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。本轮**不把音频推进仓库**，也**不做视频播放**。音频只保留《江南》已有的三条例子，其余版本下轮再接。
-- 站点读的是 `src/data/poems.json` 里的正文。图文 JPG 不打进 `dist/`：新诗的「看图文打印稿」链接到 [raw.githubusercontent.com](https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/) 上的原文件，避免 Cloudflare Pages 把约 40 MB 的 JPG 再打包一遍。本地素材仍在 `assets/01-图文版/图片版-带注音+译文/`。
-- 清单、体积和版权说明见 [assets/README.md](assets/README.md)。
+给小学生和家长用的古诗词读本站。课本要求背的诗，在这里一句一行、拼音对字、配一幅画和一句白话解释；不想读的时候可以听，听完可以打印出来贴在书桌前。
 
-## 本地运行 / Run locally
+- **79 首**可以读全文，按部编版小学语文上下册分好年级；另有一组课外拓展篇目（还有 21 首只有篇名和首句，正在补）
+- **75 幅**水墨设色诗意图，每首一幅
+- **10 个版本、1153 条**朗读录音，按需从 Release 的压缩包里取出，不进构建产物
+- 纯静态站点：没有登录、没有广告、不收集个人信息
+
+## 能做什么
+
+**读**
+
+- 逐句拼音，和每个字对齐，可以「隐藏拼音自测」
+- 逐句画境：每句一条白话解释
+- 注释、译文、赏析、诗人小剧场
+- 诗意图上带热点，点一下跳到对应的句子
+- 「看画猜诗」小测
+
+**听**
+
+- 每首最多五条：童声跟读、跟读、朗读、朗读解析、朗读赏析
+- 跟读时逐句高亮，可以连播下一首
+- 手机上也能播：音频按字节范围从 GitHub Release 的压缩包里读出来
+
+**找**
+
+- 搜诗名、作者、朝代、诗句、拼音、声母、别名（输入 `jn` 也能找到《江南》）
+- 按年级筛选，搜索里也能看到「即将上线」的篇目
+
+**打印**
+
+- 整本 75 首的 PDF，带拼音和译文
+- 当前这一首的单页 A4 图文稿
+- 打卡单还在做，现在只是选样式的说明
+
+## 本地运行
 
 需要 Node.js 22 或更新。不要直接双击打开 `index.html`，朗读和模块脚本需要一个本地服务器。
 
@@ -28,14 +56,44 @@ npm run dev
 浏览器打开 [http://127.0.0.1:4731](http://127.0.0.1:4731)。
 
 ```bash
-npm run check    # 校对诗句拼音是否对齐，并跑搜索测试
+npm run check    # 校对诗句拼音是否对齐，并跑搜索和下载接口的测试
 npm run build    # 生成 dist/
 npm run preview  # 预览 dist/，同样是 4731 端口
 ```
 
-地址可以带参数：`?p=jiangnan` 打开《江南》，`?p=0` 仍是《静夜思》（和旧原型的序号一样），`?q=jn` 打开搜索，`?modal=pdf` 打开领取打印稿的窗口。
+地址可以带参数：`?p=jiangnan` 打开《江南》，`?p=0` 仍是《静夜思》（和旧原型的序号一样），`?q=jn` 打开搜索，`?modal=pdf` 打开下载打印稿的窗口。
 
-## 现在是真的，现在是演示 / What is real
+## 目录结构
+
+```
+index.html              页面骨架
+src/
+  main.ts               渲染、交互、URL 参数
+  data/poems.json       79 首的正文、拼音、注释、赏析
+  data/soon.json        还只有篇名的拓展篇目
+  data/audio-index.json 1153 条录音的索引
+  releaseAudio.ts       从 Release 压缩包里按范围读出一首
+  pdfSignup.ts          下载接口；邮箱领取的代码保留，页面未启用
+  resend.ts             Resend 发信封装
+  style.css             样式
+worker/index.ts         Cloudflare Worker：下载、朗读、静态站点
+scripts/                拼音对齐检查、字体子集化
+public/images/          79 幅诗意图
+public/audio/           《江南》的三条本地录音
+docs/preview.jpg        README 用的截图
+assets/                 整理用的原始素材（图文 JPG、整本 PDF、文档）
+```
+
+## 素材 / Assets
+
+`assets/` 存放整理用的原始素材：75 首古诗的图像版（79 张 JPG）、PDF 版（76 页）、10 个版本的朗读音频和 34 个跟读视频。
+
+- 图片、PDF、文档体积小（约 58 MB），直接提交在 [assets/](assets/)，一首一页，可打印。
+- 音频（约 1.0 GB）、视频（约 1.7 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。音频**不推进仓库**，也**不做视频播放**：《江南》的三条例子在 `public/audio/`，其余从 Release 里按需读。
+- 站点读的是 `src/data/poems.json` 里的正文。图文 JPG 不打进 `dist/`：新诗的「看图文打印稿」链接到 [raw.githubusercontent.com](https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/) 上的原文件，避免把约 40 MB 的 JPG 再打包一遍。
+- 清单、体积和版权说明见 [assets/README.md](assets/README.md)。
+
+## 哪些是真的 / What is real
 
 | | |
 | --- | --- |
@@ -55,7 +113,7 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 
 《江南》和后来补上的 75 首，注释、译文、赏析都是根据公开网页改写的儿童读法，页脚有出处。新诗还注明对照了哪一张图文稿。没有把教材或网站原文整段搬过来。出处用的是能打开诗文的百度汉语详情页。古诗文网的检索现在会跳到登录，旧的 `view_` 链接会跳到下载 App，所以没有拿那些地址当出处。
 
-朗读来自 Release `assets-audio` 的 10 个 zip（大约 1153 条 MP3），索引在 `src/data/audio-index.json`。压缩包里的 MP3 是「存储」方式，字节连在一起。GitHub 的下载地址会跳到一份没有 CORS 的短时链接，而且不接受 `bytes=-N` 这种从末尾倒数的范围请求，浏览器不能自己把某一首切出来。`/audio-pack.mp3?zip=audio-05.zip&file=…` 在同源上用明确的 `bytes=开始-结束` 读出那一首，按 `audio/mpeg` 返回。路径以 `.mp3` 结尾，手机浏览器才会把它当成音频。浏览器若请求整首（`bytes=0-`），一次只返回约 512KB，剩下的由播放器接着要。整段都能放进这一窗时，回答 200 而不是「整首文件的 206」，否则 Safari 会拒绝播放。开发服务器和 `npm run preview` 走 Vite 中间件；线上要靠 `wrangler.jsonc` 里的 Worker（`run_worker_first`）先处理这个地址，其余页面仍用 `dist/`。如果部署只上传 `dist/`、不跑这个 Worker，朗读地址会 404，页面其余部分不受影响。
+朗读来自 Release `assets-audio` 的 10 个 zip（大约 1153 条 MP3），索引在 `src/data/audio-index.json`。压缩包里的 MP3 是「存储」方式，字节连在一起。GitHub 的下载地址会跳到一份没有 CORS 的短时链接，而且不接受 `bytes=-N` 这种从末尾倒数的范围请求，浏览器不能自己把某一首切出来。`/audio-pack.mp3?zip=audio-05.zip&file=…` 在同源上用明确的 `bytes=开始-结束` 读出那一首，按 `audio/mpeg` 返回。路径以 `.mp3` 结尾，手机浏览器才会把它当成音频。浏览器若请求整首（`bytes=0-`），一次只返回约 512KB，剩下的由播放器接着要。整段都能放进这一窗时，回答 200 而不是「整首文件的 206」，否则 Safari 会拒绝播放。开发服务器和 `npm run preview` 走 Vite 中间件；线上由 `wrangler.jsonc` 里的 Worker 处理这个地址，其余页面走静态资源。
 
 多数诗有五条：童声跟读、跟读、朗读、朗读解析、朗读赏析。跟读两条会按整段时长平均跳句，还不是逐句打点。《江畔独步寻花》站内正文是「黄四娘家花满蹊」，只接了写明其六或听写对得上的录音；不少压缩包里的「江畔独步寻花」其实是「黄师塔前」，没有接上。《相思》《乐游原》《竹里馆》《鸟鸣涧》不在每一包的 75 首里，所以版本少一些。
 

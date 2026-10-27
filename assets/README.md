@@ -30,8 +30,8 @@ assets/
 
 | 资源 | 内容 | 体积 |
 | --- | --- | --- |
-| [音频 · 10 个朗读版本](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-audio) | 10 个 zip，共 1153 个 MP3 | 约 980 MB |
-| [视频 · 跟读动画](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-video) | 34 个 MP4（第 1–3、10–40 首） | 约 1.64 GB |
+| [音频 · 10 个朗读版本](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-audio) | 10 个 zip，共 1153 个 MP3 | 约 1.0 GB |
+| [视频 · 跟读动画](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-video) | 34 个 MP4（第 1–3、10–40 首） | 约 1.7 GB |
 | [文档 · 75+80 首 Word 合集](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-docs) | `小学生必背古诗词75+80首.docx`（257 MB） | 257 MB |
 
 ## 说明

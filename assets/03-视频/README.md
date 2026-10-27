@@ -1,6 +1,6 @@
 # 跟读视频 · 75 首古诗
 
-共 34 个 MP4，约 1.64 GB。视频本体放在 Releases：
+共 34 个 MP4，约 1.7 GB。视频本体放在 Releases：
 
 **下载：<https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-video>**
 

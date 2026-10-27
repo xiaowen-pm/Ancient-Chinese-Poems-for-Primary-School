@@ -9,7 +9,7 @@ A free reader for the classical poems Chinese primary students memorize. Horizon
 `assets/` 目录存放整理用的原始素材：75 首古诗的图像版（79 张 JPG）、PDF 版（76 页）、10 个版本的朗读音频和 34 个跟读视频。
 
 - 图片、PDF、文档体积小（约 58 MB），直接提交在 [assets/](assets/)，一首一页，可打印。
-- 音频（980 MB）、视频（1.64 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。本轮**不把音频推进仓库**，也**不做视频播放**。音频只保留《江南》已有的三条例子，其余版本下轮再接。
+- 音频（约 1.0 GB）、视频（约 1.7 GB）和 257 MB 的 Word 合集超出 GitHub 单文件 100 MB 的限制，放在 [Releases](https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases) 下载。本轮**不把音频推进仓库**，也**不做视频播放**。音频只保留《江南》已有的三条例子，其余版本下轮再接。
 - 站点读的是 `src/data/poems.json` 里的正文。图文 JPG 不打进 `dist/`：新诗的「看图文打印稿」链接到 [raw.githubusercontent.com](https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets/01-%E5%9B%BE%E6%96%87%E7%89%88/%E5%9B%BE%E7%89%87%E7%89%88-%E5%B8%A6%E6%B3%A8%E9%9F%B3%2B%E8%AF%91%E6%96%87/) 上的原文件，避免 Cloudflare Pages 把约 40 MB 的 JPG 再打包一遍。本地素材仍在 `assets/01-图文版/图片版-带注音+译文/`。
 - 清单、体积和版权说明见 [assets/README.md](assets/README.md)。
 

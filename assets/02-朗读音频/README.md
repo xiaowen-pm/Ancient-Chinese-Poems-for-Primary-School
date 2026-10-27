@@ -1,6 +1,6 @@
 # 朗读音频 · 10 个版本
 
-共 1153 个 MP3，约 980 MB。因为数量多、体积大，音频本体放在 Releases：
+共 1153 个 MP3，约 1.0 GB。因为数量多、体积大，音频本体放在 Releases：
 
 **下载：<https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/releases/tag/assets-audio>**
 

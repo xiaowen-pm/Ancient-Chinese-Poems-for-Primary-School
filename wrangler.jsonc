@@ -7,21 +7,17 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
-  // Replace example.com with a Resend-verified sender before mail will send.
-  // The API key is a secret, not a var: `npx wrangler secret put RESEND_API_KEY`.
-  "vars": {
-    "RESEND_FROM": "必背诗笺 <pdf@example.com>"
-  },
+  // The Resend key is a secret, not a var: `npx wrangler secret put RESEND_API_KEY`.
+  // The dashboard name `resend` works too. The sender is taken from RESEND_FROM
+  // when it is set, otherwise from the first verified domain in the account,
+  // so no placeholder address is shipped here.
   "kv_namespaces": [
     { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
   ],
   // Required by `npx wrangler preview` on non-production branches.
-  // Previews do not inherit vars or KV, so both are repeated here.
+  // Previews do not inherit KV, so the binding is repeated here.
   // Assets and the Worker name stay at the top level and are shared.
   "previews": {
-    "vars": {
-      "RESEND_FROM": "必背诗笺 <pdf@example.com>"
-    },
     "kv_namespaces": [
       { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
     ]

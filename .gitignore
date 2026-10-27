@@ -5,3 +5,4 @@ dist-ssr
 .DS_Store
 uploads
 .vite
+.dev.vars

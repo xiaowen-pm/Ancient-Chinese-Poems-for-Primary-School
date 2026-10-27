@@ -1,8 +1,11 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { Readable } from "node:stream";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { Connect } from "vite";
 import { defineConfig } from "vite";
 import { audioPackResponse, isAudioPackPath } from "./src/releaseAudio.ts";
-import { handlePdfHttp, memorySignupStore } from "./src/pdfSignup.ts";
+import { memorySignupStore, routeApi } from "./src/pdfSignup.ts";
 
 // Relative base so `dist/` can be hosted at a domain root or a project subpath
 // (GitHub Pages) without rewriting asset URLs.
@@ -20,76 +23,111 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: "release-audio-pack",
+      name: "local-worker-routes",
       configureServer(server) {
-        server.middlewares.use(servePdfSignup);
+        server.middlewares.use(serveApi);
         server.middlewares.use(serveAudioPack);
       },
       configurePreviewServer(server) {
-        server.middlewares.use(servePdfSignup);
+        server.middlewares.use(serveApi);
         server.middlewares.use(serveAudioPack);
       },
     },
   ],
 });
 
-const devSignups = memorySignupStore();
+/** Same checks and the same in-memory KV as the Worker, kept for one dev process. */
+const devStore = memorySignupStore();
 
-function servePdfSignup(request: IncomingMessage, response: ServerResponse, next: Connect.NextFunction): void {
-  const hostHeader = typeof request.headers.host === "string" ? request.headers.host : "127.0.0.1:4731";
-  const url = new URL(request.url ?? "/", `http://${hostHeader}`);
-  if (url.pathname !== "/api/pdf-request") {
+function serveApi(request: IncomingMessage, response: ServerResponse, next: Connect.NextFunction): void {
+  const host = typeof request.headers.host === "string" ? request.headers.host : "127.0.0.1:4731";
+  const url = new URL(request.url ?? "/", `http://${host}`);
+  if (!url.pathname.startsWith("/api/")) {
     next();
     return;
   }
-  void readRaw(request)
-    .then(async (raw) => {
-      const headers = new Headers();
-      for (const [key, value] of Object.entries(request.headers)) {
-        if (key === "host" || key === "connection" || key === "content-length" || key === "transfer-encoding") continue;
-        if (typeof value === "string") headers.set(key, value);
-        else if (Array.isArray(value)) headers.set(key, value.join(", "));
-      }
-      const packed = await handlePdfHttp(
-        new Request(url, {
-          method: request.method,
-          headers,
-          body: request.method === "GET" || request.method === "HEAD" ? undefined : raw,
-        }),
-        {
-          store: devSignups,
-          resendApiKey: process.env.RESEND_API_KEY,
-          resendFrom: process.env.RESEND_FROM,
-        },
-      );
-      response.statusCode = packed.status;
-      packed.headers.forEach((value, key) => response.setHeader(key, value));
-      response.end(Buffer.from(await packed.arrayBuffer()));
-    })
-    .catch((error: unknown) => {
-      const tooLarge = error instanceof Error && error.message === "too-large";
-      response.statusCode = tooLarge ? 413 : 400;
-      response.setHeader("content-type", "application/json; charset=utf-8");
-      response.end(JSON.stringify({ ok: false, message: tooLarge ? "内容太长。" : "请再填写一次。" }));
-    });
+  void (async () => {
+    const headers = new Headers();
+    for (const [key, value] of Object.entries(request.headers)) {
+      if (typeof value !== "string") continue;
+      if (key === "host" || key === "connection" || key === "content-length" || key === "transfer-encoding") continue;
+      headers.set(key, value);
+    }
+    const method = request.method ?? "GET";
+    const body = method === "GET" || method === "HEAD" ? undefined : await readBody(request);
+    const answer = await routeApi(new Request(url, { method, headers, body }), { env: localEnv(), store: devStore });
+    if (!answer) {
+      response.statusCode = 404;
+      response.setHeader("content-type", "text/plain; charset=utf-8");
+      response.end("没有这个接口。\n");
+      return;
+    }
+    response.statusCode = answer.status;
+    answer.headers.forEach((value, key) => response.setHeader(key, value));
+    if (!answer.body || method === "HEAD") {
+      response.end();
+      return;
+    }
+    // Streaming a fetch body in Node can abort mid-transfer when the upstream
+    // (GitHub) times out; swallow that error instead of crashing the server.
+    const stream = Readable.fromWeb(answer.body as unknown as Parameters<typeof Readable.fromWeb>[0]);
+    stream.on("error", () => response.destroy());
+    response.on("close", () => stream.destroy());
+    stream.pipe(response);
+  })().catch((error: unknown) => {
+    const tooLarge = error instanceof Error && error.message === "too-large";
+    response.statusCode = tooLarge ? 413 : 502;
+    response.setHeader("content-type", "application/json; charset=utf-8");
+    response.end(JSON.stringify({ ok: false, message: tooLarge ? "内容太长。" : "本地接口出错了，请看终端日志。" }));
+  });
 }
 
-function readRaw(request: IncomingMessage): Promise<string> {
+function readBody(request: IncomingMessage): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = [];
     let size = 0;
     request.on("data", (chunk: Buffer) => {
       size += chunk.length;
-      if (size > 4096) {
+      if (size > 1_000_000) {
         reject(new Error("too-large"));
         request.destroy();
         return;
       }
       chunks.push(chunk);
     });
-    request.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+    request.on("end", () => resolve(new Uint8Array(Buffer.concat(chunks))));
     request.on("error", reject);
   });
+}
+
+/**
+ * Local stand-in for the Worker's bindings: `.dev.vars` first, then the
+ * process environment. `npm run dev` with `RESEND_API_KEY` in either place
+ * sends real mail, so keep the key out of git.
+ */
+function localEnv(): Record<string, string | undefined> {
+  return { ...readDevVars(), ...process.env };
+}
+
+let devVarsCache: { at: number; vars: Record<string, string> } | null = null;
+
+function readDevVars(): Record<string, string> {
+  const now = Date.now();
+  if (devVarsCache && now - devVarsCache.at < 2000) return devVarsCache.vars;
+  const vars: Record<string, string> = {};
+  try {
+    const raw = readFileSync(join(process.cwd(), ".dev.vars"), "utf8");
+    for (const line of raw.split(/\r?\n/)) {
+      const match = /^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/.exec(line);
+      if (!match || !match[1]) continue;
+      const value = (match[2] ?? "").replace(/^['"]|['"]$/g, "");
+      if (value) vars[match[1]] = value;
+    }
+  } catch {
+    // No .dev.vars is the normal case for `npm run dev`.
+  }
+  devVarsCache = { at: now, vars };
+  return vars;
 }
 
 function serveAudioPack(request: IncomingMessage, response: ServerResponse, next: Connect.NextFunction): void {

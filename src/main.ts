@@ -619,7 +619,7 @@ function openPdf(): void {
   openModal(
     `<p class="sheet-kicker">打印稿</p>
      <h3>免费领取可打印 PDF</h3>
-     <p>一整本 75 首，A4，带拼音和译文，适合打印。留下邮箱后，下载链接会寄到邮箱；邮件还没接通时，链接直接出现在这里。</p>
+     <p>一整本 75 首，A4，带拼音和译文，适合打印；还有这一首的单页稿。留下邮箱后，下载链接会寄到邮箱，这一页也会直接给出按钮。</p>
      <form id="pdf-form">
        <label class="field" for="email">家长邮箱</label>
        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
@@ -656,12 +656,14 @@ function submitPdf(): void {
   void fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email: value, company, poemId: poem.id, sheet: poem.sheet ?? "" }),
+    body: JSON.stringify({ email: value, company, poemId: poem.id, sheet: poem.sheet ?? "", title: poem.title }),
   })
     .then(async (response) => {
       const payload = (await response.json()) as {
         ok?: boolean;
+        emailed?: boolean;
         message?: string;
+        detail?: string;
         links?: { title?: string; href?: string }[];
       };
       if (!response.ok || !payload.ok) {
@@ -679,10 +681,14 @@ function submitPdf(): void {
           return href && title ? { href, title } : null;
         })
         .filter((link): link is { href: string; title: string } => Boolean(link));
+      const detail = typeof payload.detail === "string" && payload.detail ? payload.detail : "";
+      const detailHtml = detail
+        ? `<p class="fine">服务端提示：${escapeHtml(detail)}</p>`
+        : `<p class="fine">没收到邮件时，看一眼垃圾邮件，也可以直接点上面的按钮下载。</p>`;
       openModal(
         `<p class="sheet-kicker">打印稿</p>
-         <h3>可以下载了</h3>
-         <p>${escapeHtml(payload.message || "请用下面的链接下载。")}</p>
+         <h3>${payload.emailed ? "PDF 已经寄出" : "先下载吧"}</h3>
+         <p>${escapeHtml(payload.message || "请用下面的按钮下载。")}</p>
          <p class="sheet-email">${escapeHtml(value)}</p>
          <ul class="pdf-links">${links
            .map(
@@ -690,7 +696,7 @@ function submitPdf(): void {
                `<li><a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a></li>`,
            )
            .join("")}</ul>
-         <p class="fine">邮箱只用来寄这份打印稿，不会给别人，也不会用来推销。</p>
+         ${detailHtml}
          <button type="button" class="print" data-action="close">好</button>`,
       );
     })
@@ -705,10 +711,11 @@ function submitPdf(): void {
 
 function safePdfHref(href: string): string | null {
   try {
-    const url = new URL(href);
-    if (url.protocol !== "https:") return null;
-    if (url.hostname !== "raw.githubusercontent.com" && url.hostname !== "github.com") return null;
-    return url.href;
+    // Downloads are served by this site itself, never by a third-party host.
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin) return null;
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return `${url.pathname}${url.search}`;
   } catch {
     return null;
   }

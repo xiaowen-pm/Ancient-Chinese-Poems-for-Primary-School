@@ -1,22 +1,44 @@
 /**
  * Parent signup for the printable pinyin-and-translation PDF.
- * The Worker stores the address; Vite uses the same checks with a memory store.
- * The PDF itself stays in the git tree and is never attached to the mail.
+ * The Worker stores the address and mails a download link through Resend;
+ * Vite uses the same checks with a memory store. The PDF stays in the git
+ * tree and is served on the site's own origin, so the link works even where
+ * raw.githubusercontent.com is slow or blocked.
  */
+
+import {
+  mailStatus,
+  pickApiKey,
+  pickSender,
+  resolveSender,
+  sendViaResend,
+  type DomainRow,
+  type MailMessage,
+  type SenderSource,
+} from "./resend.ts";
 
 const REPO_RAW = "https://raw.githubusercontent.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School/main/assets";
 
 const PDF_PARTS = ["01-图文版", "PDF版-带注音+译文", "02必背古诗词75首-PDF版.pdf"];
 
 /** Same prefix as `sheetUrl` in data.ts. Kept here so the Worker does not import poems.json. */
-const SHEET_BASE = `${REPO_RAW}/${encodeURIComponent("01-图文版")}/${encodeURIComponent("图片版-带注音+译文")}/`;
+export const SHEET_BASE = `${REPO_RAW}/${encodeURIComponent("01-图文版")}/${encodeURIComponent("图片版-带注音+译文")}/`;
 
 export const FULL_PDF_URL = `${REPO_RAW}/${PDF_PARTS.map((part) => encodeURIComponent(part)).join("/")}`;
+
+/** Paths the site answers itself, so one link works on every deployment. */
+export const FULL_PDF_PATH = "/api/pdf/full.pdf";
+export const PAGE_IMAGE_PATH = "/api/pdf/page.jpg";
+
+const FULL_PDF_NAME = "必背古诗词75首-带拼音和译文.pdf";
+const FULL_PDF_ASCII = "bibei-poems-75.pdf";
+const PAGE_IMAGE_ASCII = "bibei-poem-page.jpg";
 
 const IP_LIMIT = 8;
 const MAIL_LIMIT = 3;
 const WINDOW_SECONDS = 60 * 60;
 const MAX_BODY = 4096;
+const DEFAULT_BASE = "https://bibei.example";
 
 export type PdfLink = { title: string; href: string };
 
@@ -38,6 +60,8 @@ export type PdfSignupResult = {
   stored: boolean;
   emailed: boolean;
   message: string;
+  /** Technical reason from Resend or the mail setup, shown in small print. */
+  detail: string;
   links: PdfLink[];
 };
 
@@ -91,19 +115,25 @@ export function printableSheetName(value: unknown): string | null {
   return name;
 }
 
-export function pdfLinks(sheet: string | null): PdfLink[] {
-  const links: PdfLink[] = [{ title: "75 首必背古诗词 PDF（拼音和译文）", href: FULL_PDF_URL }];
-  if (sheet) links.push({ title: "当前这一首的单页图文稿", href: SHEET_BASE + encodeURIComponent(sheet) });
-  return links;
+/** The poem name is only used in the subject line; strip anything header-like. */
+export function poemTitle(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return value
+    .replace(/[<>\u0000-\u001f\u007f]/g, "")
+    .trim()
+    .slice(0, 24);
 }
 
-export function mailIsConfigured(apiKey: string | undefined, from: string | undefined): boolean {
-  const key = apiKey?.trim() ?? "";
-  const sender = from?.trim() ?? "";
-  if (!key || !sender) return false;
-  // The placeholder in wrangler.jsonc must not send.
-  if (/@example\.com>?$/.test(sender)) return false;
-  return true;
+export function pdfLinks(sheet: string | null, base: string = DEFAULT_BASE): PdfLink[] {
+  const root = base.replace(/\/+$/, "");
+  const links: PdfLink[] = [{ title: "整本 75 首 · PDF（带拼音和译文）", href: `${root}${FULL_PDF_PATH}` }];
+  if (sheet) {
+    links.push({
+      title: "这一首的单页 · A4 图文稿",
+      href: `${root}${PAGE_IMAGE_PATH}?name=${encodeURIComponent(sheet)}`,
+    });
+  }
+  return links;
 }
 
 type SignupInput = {
@@ -111,15 +141,17 @@ type SignupInput = {
   company: unknown;
   poemId: unknown;
   sheet: unknown;
+  title?: unknown;
   ip: string;
   origin: string | null;
   host: string;
+  base?: string;
 };
 
 type SignupDeps = {
   store: SignupStore | null;
-  resendApiKey?: string;
-  resendFrom?: string;
+  resendApiKey?: string | null;
+  resendFrom?: string | null;
   fetchImpl?: typeof fetch;
   now?: () => Date;
 };
@@ -128,21 +160,21 @@ const fallbackRates = memorySignupStore();
 
 export async function submitPdfSignup(input: SignupInput, deps: SignupDeps): Promise<PdfSignupResult> {
   if (!originAllowed(input.origin, input.host)) {
-    return result(403, false, false, false, "这个页面不能提交。", []);
+    return result(403, false, false, false, "这个页面不能提交。", "", []);
   }
   if (typeof input.email !== "string" || !isParentEmail(input.email)) {
-    return result(400, false, false, false, "请填写一个能用的邮箱，例如 name@example.com", []);
+    return result(400, false, false, false, "请填写一个能用的邮箱，例如 name@example.com", "", []);
   }
   const email = input.email.trim().toLowerCase();
-  const links = pdfLinks(printableSheetName(input.sheet));
+  const links = pdfLinks(printableSheetName(input.sheet), input.base ?? DEFAULT_BASE);
   const rates = deps.store ?? fallbackRates;
   const allowed = await bump(rates, `rate:${input.ip || "unknown"}`, IP_LIMIT, WINDOW_SECONDS);
   if (!allowed) {
-    return result(429, false, false, false, "领取太频繁，请过一会儿再试。", []);
+    return result(429, false, false, false, "领取太频繁，请过一会儿再试。", "", []);
   }
   const honeypot = typeof input.company === "string" ? input.company.trim() : "";
   if (honeypot) {
-    return result(200, true, false, false, "请用下面的链接下载。", links);
+    return result(200, true, false, false, "请用下面的按钮下载。", "", links);
   }
 
   const now = deps.now ?? (() => new Date());
@@ -152,21 +184,25 @@ export async function submitPdfSignup(input: SignupInput, deps: SignupDeps): Pro
     stored = await remember(deps.store, email, source, now().toISOString());
   }
 
-  if (!mailIsConfigured(deps.resendApiKey, deps.resendFrom)) {
-    return result(200, true, stored, false, quietMessage(stored), links);
+  const apiKey = deps.resendApiKey?.trim() || null;
+  const sender = await resolveSender({ apiKey, from: deps.resendFrom ?? null, fetchImpl: deps.fetchImpl });
+  if (!apiKey || !sender.from) {
+    return result(200, true, stored, false, quietMessage(stored), sender.detail, links);
   }
 
   const canMail = await bump(rates, `mail:${email}`, MAIL_LIMIT, WINDOW_SECONDS);
   if (!canMail) {
-    return result(200, true, stored, false, "刚才已经寄过。请查收邮箱，或直接打开下面的链接。", links);
+    return result(200, true, stored, false, "刚才已经寄过。请查收邮箱，也可以直接点下面的按钮。", "", links);
   }
 
-  const fetchImpl = deps.fetchImpl ?? fetch;
-  const emailed = await sendResend(fetchImpl, deps.resendApiKey!.trim(), deps.resendFrom!.trim(), email, links);
-  if (!emailed) {
-    return result(200, true, stored, false, "邮件暂时没发出，请先用下面的链接下载。", links);
+  const message = composeMail(sender.from, email, poemTitle(input.title), links);
+  const sent = await sendViaResend(apiKey, message, deps.fetchImpl ?? fetch);
+  if (!sent.ok) {
+    console.error("resend send failed", sent.status, sent.detail, { sender: sender.from, source: sender.source });
+    const reason = sent.status ? `Resend ${sent.status}：${sent.detail}` : sent.detail;
+    return result(200, true, stored, false, "邮件暂时没发出，请先用下面的按钮下载。", reason, links);
   }
-  return result(200, true, stored, true, "下载链接已经寄到邮箱，也可以直接打开。", links);
+  return result(200, true, stored, true, `PDF 已经寄到 ${email}，也可以直接点下面的按钮。`, "", links);
 }
 
 export async function readSignupBody(
@@ -198,7 +234,7 @@ export async function readSignupBody(
 
 export async function handlePdfHttp(request: Request, deps: SignupDeps): Promise<Response> {
   const read = await readSignupBody(request);
-  if (!read.ok) return signupResponse(result(read.status, false, false, false, read.message, []));
+  if (!read.ok) return signupResponse(result(read.status, false, false, false, read.message, "", []));
   const url = new URL(request.url);
   const outcome = await submitPdfSignup(
     {
@@ -206,9 +242,11 @@ export async function handlePdfHttp(request: Request, deps: SignupDeps): Promise
       company: read.body.company,
       poemId: read.body.poemId,
       sheet: read.body.sheet,
+      title: read.body.title,
       ip: clientIp(request),
       origin: request.headers.get("origin"),
       host: request.headers.get("host") ?? url.host,
+      base: url.origin,
     },
     deps,
   );
@@ -222,6 +260,7 @@ export function signupResponse(payload: PdfSignupResult): Response {
       stored: payload.stored,
       emailed: payload.emailed,
       message: payload.message,
+      detail: payload.detail,
       links: payload.links,
     },
     {
@@ -231,14 +270,67 @@ export function signupResponse(payload: PdfSignupResult): Response {
   );
 }
 
-function result(status: number, ok: boolean, stored: boolean, emailed: boolean, message: string, links: PdfLink[]): PdfSignupResult {
-  return { status, ok, stored, emailed, message, links };
+function result(
+  status: number,
+  ok: boolean,
+  stored: boolean,
+  emailed: boolean,
+  message: string,
+  detail: string,
+  links: PdfLink[],
+): PdfSignupResult {
+  return { status, ok, stored, emailed, message, detail, links };
 }
 
 function quietMessage(stored: boolean): string {
   return stored
-    ? "邮件服务还没接通，名册已经记下。请先用下面的链接下载。"
-    : "邮件服务还没接通。请先用下面的链接下载。";
+    ? "邮件服务还没接通，名册已经记下。请先用下面的按钮下载。"
+    : "邮件服务还没接通。请先用下面的按钮下载。";
+}
+
+function composeMail(from: string, to: string, title: string, links: PdfLink[]): MailMessage {
+  const subject = title ? `《${title}》可打印 PDF（带拼音和译文）` : "可打印的古诗词 PDF（75 首，带拼音和译文）";
+  const text = [
+    "你好，",
+    "",
+    "这是必背诗笺的打印稿，点开就能下载：",
+    "",
+    ...links.flatMap((link) => [link.title, link.href, ""]),
+    "没收到这封信也没关系，页面上同样有下载按钮。",
+    "",
+    "必背诗笺 · 免费的小学生必背古诗词读本",
+  ].join("\n");
+  const buttons = links
+    .map(
+      (link, index) =>
+        `<p style="margin:0 0 12px"><a href="${escapeAttr(link.href)}" style="display:inline-block;padding:10px 16px;border-radius:8px;background:${
+          index === 0 ? "#b23a2b" : "#f3ece6"
+        };color:${index === 0 ? "#ffffff" : "#8c2f22"};text-decoration:none">${escapeText(link.title)}</a></p>`,
+    )
+    .join("");
+  const html = [
+    "<div style=\"font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.7;color:#2b2b2b\">",
+    "<p>你好，</p>",
+    "<p>这是必背诗笺的打印稿，点开就能下载：</p>",
+    buttons,
+    '<p style="color:#7a7a7a;font-size:13px">没收到这封信也没关系，页面上同样有下载按钮。</p>',
+    '<p style="color:#7a7a7a;font-size:13px;margin-top:24px">必背诗笺 · 免费的小学生必背古诗词读本</p>',
+    "</div>",
+  ].join("");
+  return { from, to, subject, text, html };
+}
+
+function escapeText(value: string): string {
+  return value.replace(/[&<>"]/g, (ch) => {
+    if (ch === "&") return "&amp;";
+    if (ch === "<") return "&lt;";
+    if (ch === ">") return "&gt;";
+    return "&quot;";
+  });
+}
+
+function escapeAttr(value: string): string {
+  return escapeText(value);
 }
 
 function clientIp(request: Request): string {
@@ -288,51 +380,129 @@ async function bump(store: SignupStore, key: string, limit: number, ttl: number)
   return true;
 }
 
-async function sendResend(fetchImpl: typeof fetch, apiKey: string, from: string, email: string, links: PdfLink[]): Promise<boolean> {
-  const text = [
-    "你好，这是必背诗笺的可打印稿，带拼音和译文。",
-    "",
-    ...links.flatMap((link) => [link.title, link.href, ""]),
-    "邮箱只用来寄这一份打印稿，不会转给别人，也不会用来推销。",
-  ].join("\n");
-  const html = [
-    "<p>你好，这是必背诗笺的可打印稿，带拼音和译文。</p>",
-    "<ul>",
-    ...links.map((link) => `<li><a href="${escapeAttr(link.href)}">${escapeText(link.title)}</a></li>`),
-    "</ul>",
-    "<p>邮箱只用来寄这一份打印稿，不会转给别人，也不会用来推销。</p>",
-  ].join("");
-  try {
-    const response = await fetchImpl("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${apiKey}`,
-        "content-type": "application/json",
+type PdfTarget = { url: string; filename: string; ascii: string; type: string; inline: boolean };
+
+/** Map a same-origin download path to the file in the repository. */
+export function pdfTarget(url: URL): { target: PdfTarget } | { status: number; message: string } | null {
+  if (url.pathname === FULL_PDF_PATH) {
+    return {
+      target: { url: FULL_PDF_URL, filename: FULL_PDF_NAME, ascii: FULL_PDF_ASCII, type: "application/pdf", inline: false },
+    };
+  }
+  if (url.pathname === PAGE_IMAGE_PATH) {
+    const name = printableSheetName(url.searchParams.get("name"));
+    if (!name) return { status: 400, message: "没有指定这一首的单页稿。" };
+    return {
+      target: {
+        url: `${SHEET_BASE}${encodeURIComponent(name)}`,
+        filename: name,
+        ascii: PAGE_IMAGE_ASCII,
+        type: "image/jpeg",
+        inline: true,
       },
-      body: JSON.stringify({
-        from,
-        to: [email],
-        subject: "必背诗笺：可打印的古诗词 PDF",
-        text,
-        html,
-      }),
-      signal: AbortSignal.timeout(8000),
+    };
+  }
+  return null;
+}
+
+async function servePdf(request: Request, url: URL, fetchImpl: typeof fetch): Promise<Response> {
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    return textResponse(405, "请直接下载。");
+  }
+  const mapped = pdfTarget(url);
+  if (!mapped) return textResponse(404, "没有这个文件。");
+  if ("status" in mapped) return textResponse(mapped.status, mapped.message);
+
+  const { target } = mapped;
+  try {
+    const upstream = await fetchImpl(target.url, {
+      headers: {
+        "user-agent": "bibei-shijian/1.0 (+https://github.com/xiaowen-pm/Ancient-Chinese-Poems-for-Primary-School)",
+      },
+      // Workers cache the 13 MB book at the edge; other runtimes ignore this.
+      cf: { cacheTtl: 3600, cacheEverything: true },
+    } as RequestInit);
+    if (!upstream.ok || !upstream.body) {
+      return textResponse(502, "文件暂时取不到，请稍后再试。");
+    }
+    const headers = new Headers({
+      "content-type": target.type,
+      "content-disposition": `${target.inline ? "inline" : "attachment"}; filename="${target.ascii}"; filename*=UTF-8''${encodeURIComponent(
+        target.filename,
+      )}`,
+      "cache-control": "public, max-age=3600",
+      "x-content-type-options": "nosniff",
     });
-    return response.ok;
-  } catch {
-    return false;
+    const length = upstream.headers.get("content-length");
+    if (length) headers.set("content-length", length);
+    return new Response(request.method === "HEAD" ? null : upstream.body, { status: 200, headers });
+  } catch (error) {
+    console.error("pdf fetch failed", target.url, error);
+    return textResponse(502, "文件暂时取不到，请稍后再试。");
   }
 }
 
-function escapeText(value: string): string {
-  return value.replace(/[&<>"]/g, (ch) => {
-    if (ch === "&") return "&amp;";
-    if (ch === "<") return "&lt;";
-    if (ch === ">") return "&gt;";
-    return "&quot;";
+function textResponse(status: number, message: string): Response {
+  return new Response(`${message}\n`, {
+    status,
+    headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
   });
 }
 
-function escapeAttr(value: string): string {
-  return escapeText(value);
+export type ApiContext = {
+  /** Cloudflare vars and secrets, or the local `.dev.vars` values. */
+  env?: Record<string, string | undefined>;
+  store?: SignupStore | null;
+  resendApiKey?: string | null;
+  resendFrom?: string | null;
+  fetchImpl?: typeof fetch;
+  now?: () => Date;
+};
+
+export type MailStatus = {
+  ok: true;
+  keyPresent: boolean;
+  keyPreview: string;
+  sender: string | null;
+  senderSource: SenderSource;
+  domains: DomainRow[];
+  ready: boolean;
+  detail: string;
+  hint: string;
+};
+
+/** Every `/api/` route the site answers, or `null` when the path is not ours. */
+export async function routeApi(request: Request, context: ApiContext = {}): Promise<Response | null> {
+  const url = new URL(request.url);
+  const env = context.env ?? {};
+  const apiKey = context.resendApiKey ?? pickApiKey(env);
+  const from = context.resendFrom ?? pickSender(env);
+
+  if (url.pathname === "/api/pdf-request") {
+    return handlePdfHttp(request, {
+      store: context.store ?? null,
+      resendApiKey: apiKey,
+      resendFrom: from,
+      fetchImpl: context.fetchImpl,
+      now: context.now,
+    });
+  }
+  if (url.pathname === "/api/mail-status") {
+    const status = await mailStatus({ apiKey: apiKey ?? null, from: from ?? null, fetchImpl: context.fetchImpl });
+    return Response.json({ ok: true, ...status, hint: senderHint(status) } satisfies MailStatus, {
+      headers: { "cache-control": "no-store" },
+    });
+  }
+  if (url.pathname.startsWith("/api/pdf/")) {
+    return servePdf(request, url, context.fetchImpl ?? fetch);
+  }
+  return null;
+}
+
+function senderHint(status: { keyPresent: boolean; sender: string | null; detail: string }): string {
+  if (!status.keyPresent) return "在 Cloudflare 里加一个变量：名称 RESEND_API_KEY（或 resend），值是 Resend 的 API Key。";
+  if (!status.sender) {
+    return "在 Resend 里验证一个发信域名，或者设置变量 RESEND_FROM，例如：必背诗笺 <pdf@your-domain.com>。";
+  }
+  return "发信已经就绪。";
 }

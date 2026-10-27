@@ -3,7 +3,6 @@ import { asset, findPoem, findSoon, poems, sheetUrl, soonPoems } from "./data.ts
 import { startEffects } from "./effects.ts";
 import { escapeHtml, rich } from "./html.ts";
 import { GRADE_CHIPS, TEXTBOOK_ORDER, gradeLabel, isGradeFilter, nextAutoplayId, type GradeFilter } from "./grades.ts";
-import { isParentEmail } from "./pdfSignup.ts";
 import { ReaderAudio } from "./player.ts";
 import { normalizeQuery, search, type ReadyHit, type SoonHit, type Span } from "./search.ts";
 import type { AudioTrack, Poem, Quiz, SoonPoem } from "./types.ts";
@@ -616,109 +615,24 @@ function closeModal(): void {
 }
 
 function openPdf(): void {
+  const poem = current();
+  const base = import.meta.env.BASE_URL || "./";
+  const root = base.endsWith("/") ? base : `${base}/`;
+  const sheet = poem.sheet ?? "";
+  const page = sheet
+    ? `<li><a href="${escapeHtml(`${root}api/pdf/page.jpg?name=${encodeURIComponent(sheet)}`)}">《${escapeHtml(poem.title)}》单页 · A4 图文稿</a></li>`
+    : "";
   openModal(
     `<p class="sheet-kicker">打印稿</p>
-     <h3>免费领取可打印 PDF</h3>
-     <p>一整本 75 首，A4，带拼音和译文，适合打印；还有这一首的单页稿。留下邮箱后，下载链接会寄到邮箱，这一页也会直接给出按钮。</p>
-     <form id="pdf-form">
-       <label class="field" for="email">家长邮箱</label>
-       <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-       <div class="hp" aria-hidden="true">
-         <label for="company">公司</label>
-         <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
-       </div>
-       <p class="form-error" id="email-error"></p>
-       <button class="print" id="pdf-submit" type="submit">免费领取</button>
-     </form>
-     <p class="fine">邮箱只用来寄这份打印稿，和领取时间一起记在 Cloudflare 上。不会给别人，也不会用来推销。</p>`,
-    "#email",
+     <h3>免费下载打印版 PDF</h3>
+     <p>一整本 75 首，A4，带拼音和译文，适合打印。点开就能下载或打印，不用填邮箱。</p>
+     <ul class="pdf-links">
+       <li><a href="${escapeHtml(`${root}api/pdf/full.pdf`)}">整本 75 首 · PDF（带拼音和译文）</a></li>
+       ${page}
+     </ul>
+     <p class="fine">文件也可以另存到手机或电脑，再拿去打印。</p>
+     <button type="button" class="print" data-action="close">好</button>`,
   );
-}
-
-function submitPdf(): void {
-  const input = sheet.querySelector<HTMLInputElement>("#email");
-  const error = sheet.querySelector<HTMLElement>("#email-error");
-  const value = input?.value.trim() ?? "";
-  if (!isParentEmail(value)) {
-    if (error) error.textContent = "请填写一个能用的邮箱，例如 name@example.com";
-    input?.focus();
-    return;
-  }
-  const button = sheet.querySelector<HTMLButtonElement>("#pdf-submit");
-  if (button) {
-    button.disabled = true;
-    button.textContent = "正在领取…";
-  }
-  const poem = current();
-  const company = sheet.querySelector<HTMLInputElement>("#company")?.value ?? "";
-  const base = import.meta.env.BASE_URL || "./";
-  const endpoint = `${base.endsWith("/") ? base : `${base}/`}api/pdf-request`;
-  void fetch(endpoint, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email: value, company, poemId: poem.id, sheet: poem.sheet ?? "", title: poem.title }),
-  })
-    .then(async (response) => {
-      const payload = (await response.json()) as {
-        ok?: boolean;
-        emailed?: boolean;
-        message?: string;
-        detail?: string;
-        links?: { title?: string; href?: string }[];
-      };
-      if (!response.ok || !payload.ok) {
-        if (error) error.textContent = payload.message || "领取没有成功，请再试一次。";
-        if (button) {
-          button.disabled = false;
-          button.textContent = "免费领取";
-        }
-        return;
-      }
-      const links = (payload.links ?? [])
-        .map((link) => {
-          const href = typeof link.href === "string" ? safePdfHref(link.href) : null;
-          const title = typeof link.title === "string" ? link.title : "";
-          return href && title ? { href, title } : null;
-        })
-        .filter((link): link is { href: string; title: string } => Boolean(link));
-      const detail = typeof payload.detail === "string" && payload.detail ? payload.detail : "";
-      const detailHtml = detail
-        ? `<p class="fine">服务端提示：${escapeHtml(detail)}</p>`
-        : `<p class="fine">没收到邮件时，看一眼垃圾邮件，也可以直接点上面的按钮下载。</p>`;
-      openModal(
-        `<p class="sheet-kicker">打印稿</p>
-         <h3>${payload.emailed ? "PDF 已经寄出" : "先下载吧"}</h3>
-         <p>${escapeHtml(payload.message || "请用下面的按钮下载。")}</p>
-         <p class="sheet-email">${escapeHtml(value)}</p>
-         <ul class="pdf-links">${links
-           .map(
-             (link) =>
-               `<li><a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a></li>`,
-           )
-           .join("")}</ul>
-         ${detailHtml}
-         <button type="button" class="print" data-action="close">好</button>`,
-      );
-    })
-    .catch(() => {
-      if (error) error.textContent = "网络没连上，请再试一次。";
-      if (button) {
-        button.disabled = false;
-        button.textContent = "免费领取";
-      }
-    });
-}
-
-function safePdfHref(href: string): string | null {
-  try {
-    // Downloads are served by this site itself, never by a third-party host.
-    const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin) return null;
-    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
-    return `${url.pathname}${url.search}`;
-  } catch {
-    return null;
-  }
 }
 
 function openPrint(): void {
@@ -757,7 +671,7 @@ function submitPrint(): void {
      <h3>打卡单还在排版</h3>
      <p>你想要的是${escapeHtml(style)}，篇目是 ${escapeHtml(titles || "还没有选择")}。这一版不会生成卷子，也不会弹出打印窗口。</p>
      <div class="sheet-actions">
-       <button type="button" class="print" data-action="pdf">改为领取当前这首的 PDF</button>
+       <button type="button" class="print" data-action="pdf">改为下载当前这首的 PDF</button>
        <button type="button" class="textbtn" data-action="close">关闭</button>
      </div>`,
   );
@@ -1109,7 +1023,6 @@ function bind(): void {
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
     event.preventDefault();
-    if (form.id === "pdf-form") submitPdf();
     if (form.id === "print-form") submitPrint();
   });
 }

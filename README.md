@@ -45,7 +45,7 @@ npm run preview  # 预览 dist/，同样是 4731 端口
 | 新诗的朗读 | 真，从 GitHub Release 的压缩包里按需取出，不打进 `dist/`。能对上几条就放几条 |
 | 新诗的图文打印稿 | 真的链接，打开仓库里的 JPG，不进构建产物 |
 | 搜索（诗名、作者、朝代、诗句、拼音、声母、别名） | 真。图文版没有的拓展篇目仍只有篇名和首句，点开写明「即将上线」 |
-| 邮箱领取可打印 PDF | 真。`POST /api/pdf-request` 校验邮箱，并记到 KV 绑定 `SIGNUPS`。配好 Resend 密钥（`RESEND_API_KEY` 或 `resend`）后用 Resend 寄下载链接；发件人取 `RESEND_FROM`，没设时自动用 Resend 里第一个已验证域名。PDF 仍在仓库的 `assets/`，经本站 `/api/pdf/…` 转发下载，不打进 `dist/` |
+| 下载可打印 PDF | 真。诗页按钮直接给出下载链接：整本 75 首 PDF，和这一首的单页图文稿。文件在仓库 `assets/`，经本站 `/api/pdf/…` 转发，不打进 `dist/`。邮箱领取先关掉，页面不收集邮箱 |
 | 打卡单打印 | 演示。不会生成卷子，也不会弹出打印 |
 | 视频 | 不做 |
 | Releases 里的朗读音频 | 不提交 MP3。站点用同一来源的 `/audio-pack` 读压缩包里的一首 |
@@ -117,11 +117,11 @@ npm run build
 
 本地先看构建结果：`npm run preview`。
 
-## 邮箱领取 PDF / Printable PDF
+## 下载 PDF / Printable PDF
 
-诗页上的「免费领取可打印 PDF」把家长邮箱交给同源的 `POST /api/pdf-request`。Worker 校验邮箱，用隐藏字段和按 IP 的次数限制挡住简单的灌水，再把邮箱、时间和来源（`web` 或 `web:诗的 id`）写进 KV 绑定 `SIGNUPS`。同一个邮箱只保留一条，后一次会更新时间。邮件里只有下载链接：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`；两个链接都走本站 `/api/pdf/…` 转发，邮箱里、页面上都是同一个地址，不直接依赖 GitHub。
+诗页上的「免费下载打印版 PDF」直接给出下载链接，同源的 `/api/pdf/…` 由 Worker 转发仓库里的文件：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`，链接不直接依赖 GitHub。
 
-发信走 Resend 的 HTTP API。密钥可以是 `RESEND_API_KEY` 或 `resend`（Cloudflare 面板里建什么名字都行）；发件人取 `RESEND_FROM`，没设或还是 `pdf@example.com` 时，自动改用 Resend 账户里第一个 `verified` 域名（`pdf@该域名`）。密钥或发件域名没就绪时不发信，页面直接给出下载按钮，并显示 Resend 返回的原因。想看排障信息，打开 `GET /api/mail-status`。本地 `npm run dev` / `npm run preview` 用 `.dev.vars` 或环境变量里的 `RESEND_API_KEY`，名册在内存里，重启就没了。只上传 `dist/`、不跑 Worker 时，这些接口不存在。
+邮箱领取先关掉：页面不再收集邮箱。原来那套 `POST /api/pdf-request` + Resend + KV `SIGNUPS` 的代码还留在 `src/pdfSignup.ts` 和 `src/resend.ts` 里，`GET /api/mail-status` 也还在，接回来时把表单加回 `openPdf()` 即可。密钥认 `RESEND_API_KEY` 或 `resend`，发件人取 `RESEND_FROM`，没设时自动用 Resend 里第一个已验证域名。本地 `npm run dev` / `npm run preview` 用 `.dev.vars` 或环境变量里的 `RESEND_API_KEY`，名册在内存里，重启就没了。
 
 打卡单仍然是说明，不会生成卷子。
 

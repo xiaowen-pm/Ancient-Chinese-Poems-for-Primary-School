@@ -115,7 +115,7 @@ npm run build
 
 - **Netlify**：仓库里有 `netlify.toml`，发布目录是 `dist`。
 - **Vercel**：有 `vercel.json`，框架选 Vite 即可。
-- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。Worker 先回答 `/api/pdf-request`、`/api/pdf/…`、`/api/mail-status` 和 `/audio-pack`，其余请求交给 `dist/`。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的 `previews` 块；预览不继承 KV，所以 `SIGNUPS` 在顶层和 `previews` 里各写一次。资源和 Worker 名仍只写在顶层。
+- **Cloudflare Workers**：仓库里有 `wrangler.jsonc`。`run_worker_first` 只列 `/api/*`、`/audio-pack`、`/audio-pack.mp3`，所以页面、79 张诗意图、字体和下载文件都由 Cloudflare 的静态资源层直出，**不占用 Worker 请求额度**（免费版 10 万次/天）。Worker 只回答下载接口、邮箱接口和朗读地址。`name` 与现在的 workers.dev 子域一致。非生产分支的 `npx wrangler preview` 需要文件里的 `previews` 块；预览不继承 KV，所以 `SIGNUPS` 在顶层和 `previews` 里各写一次。资源和 Worker 名仍只写在顶层。
 - **GitHub Pages**：把 `dist/` 里的文件作为站点根目录发布。不要把整个仓库根目录当站点，那里没有构建后的脚本。Pages 上没有这个 Worker，朗读地址不可用。
 
 本地先看构建结果：`npm run preview`。
@@ -123,6 +123,8 @@ npm run build
 ## 下载 PDF / Printable PDF
 
 诗页上的「免费下载打印版 PDF」直接给出下载链接，同源的 `/api/pdf/…` 由 Worker 转发仓库里的文件：整本 `assets/01-图文版/PDF版-带注音+译文/02必背古诗词75首-PDF版.pdf`，以及这一首的单页 JPG（如果有）。文件不进邮件，也不进 `dist/`，链接不直接依赖 GitHub。
+
+额度与防刷：页面、图片、字体和下载文件都由 Cloudflare 静态资源层直出（`run_worker_first` 只列 `/api/*` 和朗读地址），所以正常浏览不消耗 Worker 请求；下载响应带 `cache-control: public, max-age=3600`，同一文件重复打开会命中缓存。真被刷时，在 Cloudflare 上给绑定的自有域名加 Cache Rules、Rate Limiting、Bot Fight Mode，或给下载地址加短时签名即可。`workers.dev` 子域没有这些开关，绑自己的域名才有。
 
 邮箱领取先关掉：页面不再收集邮箱。原来那套 `POST /api/pdf-request` + Resend + KV `SIGNUPS` 的代码还留在 `src/pdfSignup.ts` 和 `src/resend.ts` 里，`GET /api/mail-status` 也还在，接回来时把表单加回 `openPdf()` 即可。密钥认 `RESEND_API_KEY` 或 `resend`，发件人取 `RESEND_FROM`，没设时自动用 Resend 里第一个已验证域名。本地 `npm run dev` / `npm run preview` 用 `.dev.vars` 或环境变量里的 `RESEND_API_KEY`，名册在内存里，重启就没了。
 

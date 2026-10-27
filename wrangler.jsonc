@@ -5,7 +5,10 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": true
+    // Only these paths go through the Worker; pages, images, the font and the
+    // PDF are served straight from Cloudflare's asset layer and do not use the
+    // Worker request quota (free plan: 100k/day).
+    "run_worker_first": ["/api/*", "/audio-pack", "/audio-pack.mp3"]
   },
   // The Resend key is a secret, not a var: `npx wrangler secret put RESEND_API_KEY`.
   // The dashboard name `resend` works too. The sender is taken from RESEND_FROM

@@ -489,9 +489,14 @@ export async function routeApi(request: Request, context: ApiContext = {}): Prom
   }
   if (url.pathname === "/api/mail-status") {
     const status = await mailStatus({ apiKey: apiKey ?? null, from: from ?? null, fetchImpl: context.fetchImpl });
-    return Response.json({ ok: true, ...status, hint: senderHint(status) } satisfies MailStatus, {
-      headers: { "cache-control": "no-store" },
-    });
+    // `envKeys` lists binding names only, so a missing secret can be told apart
+    // from a rejected key without ever printing the value.
+    return Response.json(
+      { ok: true, ...status, hint: senderHint(status), envKeys: Object.keys(env).sort() } satisfies MailStatus & { envKeys: string[] },
+      {
+        headers: { "cache-control": "no-store" },
+      },
+    );
   }
   if (url.pathname.startsWith("/api/pdf/")) {
     return servePdf(request, url, context.fetchImpl ?? fetch);

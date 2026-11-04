@@ -8,7 +8,26 @@
     // Only these paths go through the Worker; pages, images, the font and the
     // PDF are served straight from Cloudflare's asset layer and do not use the
     // Worker request quota (free plan: 100k/day).
-    "run_worker_first": ["/api/*", "/audio-pack", "/audio-pack.mp3"]
+    "run_worker_first": ["/api/*", "/audio-pack", "/audio-pack.mp3"],
+    // Browser navigations that miss a file get an empty 404 from the asset
+    // layer instead of invoking the Worker. /api/* and the audio paths above
+    // still run the Worker first, including when someone opens them in a tab.
+    "not_found_handling": "404-page"
+  },
+  // Workers Logs and traces were off, so the dashboard recorded no events.
+  // Volume here is the API and audio paths, not every painting, so keep a
+  // full sample. Lower head_sampling_rate if that volume grows.
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    }
   },
   // The Resend key is a secret, not a var: `npx wrangler secret put RESEND_API_KEY`.
   // The dashboard name `resend` works too. The sender is taken from RESEND_FROM
@@ -23,6 +42,18 @@
   "previews": {
     "kv_namespaces": [
       { "binding": "SIGNUPS", "id": "7626505f0f3d4a8783593bdb18d8721f" }
-    ]
+    ],
+    "observability": {
+      "enabled": true,
+      "logs": {
+        "enabled": true,
+        "invocation_logs": true,
+        "head_sampling_rate": 1
+      },
+      "traces": {
+        "enabled": true,
+        "head_sampling_rate": 1
+      }
+    }
   }
 }

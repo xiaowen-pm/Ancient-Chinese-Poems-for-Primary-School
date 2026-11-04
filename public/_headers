@@ -1,0 +1,11 @@
+# Vite fingerprints files under /assets/ (JS, CSS, subset font). The name
+# changes when the bytes change, so browsers and the edge can keep them.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The document URL is `/`. `html_handling` redirects `/index.html` to `/`.
+# Leave that redirect on the platform default so two rules do not stack the
+# same Cache-Control value. Unhashed files (paintings, favicon, local mp3s)
+# also keep the default short cache: public, max-age=0, must-revalidate.
+/
+  Cache-Control: public, max-age=0, must-revalidate

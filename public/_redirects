@@ -1,0 +1,3 @@
+# Browsers and bots request /favicon.ico even though the page links the svg.
+# A static redirect is answered by the asset layer and does not invoke the Worker.
+/favicon.ico /favicon.svg 302

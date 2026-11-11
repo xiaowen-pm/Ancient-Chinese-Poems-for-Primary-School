@@ -54,7 +54,10 @@
             <div class="bar" id="seek" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="朗读进度">
               <div id="pr"></div>
             </div>
-            <button class="autoplay" id="autoplay" type="button" aria-pressed="false" title="播完这一首，自动播当前筛选里的下一首，仍用同一条朗读">连播</button>
+            <div class="loops">
+              <button class="autoplay" id="repeat-one" type="button" aria-pressed="false" title="播完当前这条朗读，从头再播这一首">单首循环</button>
+              <button class="autoplay" id="autoplay" type="button" aria-pressed="false" title="播完这一首，自动播当前筛选里的下一首，仍用同一条朗读">连播</button>
+            </div>
             <div class="mode" id="mode"></div>
           </div>
         </div>

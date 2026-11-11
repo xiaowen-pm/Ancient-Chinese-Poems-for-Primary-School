@@ -618,8 +618,18 @@ header {
   background: #fff;
 }
 
-.autoplay {
+.loops {
   order: 2;
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.autoplay {
   flex: none;
   min-height: 44px;
   padding: 0 14px;
@@ -629,6 +639,7 @@ header {
   color: inherit;
   font: inherit;
   font-size: 12px;
+  white-space: nowrap;
   cursor: pointer;
 }
 

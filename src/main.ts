@@ -15,7 +15,9 @@ const $ = <T extends HTMLElement>(id: string) => {
 
 const gradesNav = $<HTMLElement>("grades");
 const autoplayBtn = $<HTMLButtonElement>("autoplay");
+const repeatBtn = $<HTMLButtonElement>("repeat-one");
 const AUTOPLAY_KEY = "bibei-autoplay-next";
+const REPEAT_KEY = "bibei-repeat-one";
 const scene = $<HTMLElement>("scene");
 const sceneImg = $<HTMLImageElement>("scene-img");
 const scenePlate = $<HTMLElement>("scene-plate");
@@ -47,6 +49,11 @@ const DYNASTY_ORDER = ["先秦", "汉", "三国", "北朝", "唐", "宋", "元",
 
 let gradeFilter: GradeFilter = "all";
 let autoplayNext = readStoredAutoplay();
+let repeatOne = readStoredRepeat();
+if (repeatOne && autoplayNext) {
+  autoplayNext = false;
+  storeFlag(AUTOPLAY_KEY, false);
+}
 let poemIndex = 0;
 let line = 0;
 let tab = 0;
@@ -68,12 +75,28 @@ const reader = new ReaderAudio({
   },
 });
 
-function readStoredAutoplay(): boolean {
+function readStoredFlag(key: string): boolean {
   try {
-    return localStorage.getItem(AUTOPLAY_KEY) === "1";
+    return localStorage.getItem(key) === "1";
   } catch {
     return false;
   }
+}
+
+function storeFlag(key: string, on: boolean): void {
+  try {
+    localStorage.setItem(key, on ? "1" : "0");
+  } catch {
+    // Private mode can refuse storage. The toggle still works for this visit.
+  }
+}
+
+function readStoredAutoplay(): boolean {
+  return readStoredFlag(AUTOPLAY_KEY);
+}
+
+function readStoredRepeat(): boolean {
+  return readStoredFlag(REPEAT_KEY);
 }
 
 function current(): Poem {
@@ -107,6 +130,36 @@ function paintAutoplay(): void {
   autoplayBtn.classList.toggle("on", autoplayNext);
   autoplayBtn.setAttribute("aria-pressed", autoplayNext ? "true" : "false");
   autoplayBtn.setAttribute("aria-label", autoplayNext ? "连播已开，播完自动下一首" : "连播已关");
+}
+
+function paintRepeat(): void {
+  repeatBtn.classList.toggle("on", repeatOne);
+  repeatBtn.setAttribute("aria-pressed", repeatOne ? "true" : "false");
+  repeatBtn.setAttribute("aria-label", repeatOne ? "单首循环已开，播完从头再播这一首" : "单首循环已关");
+}
+
+function setRepeatOne(on: boolean): void {
+  repeatOne = on;
+  if (on && autoplayNext) {
+    autoplayNext = false;
+    storeFlag(AUTOPLAY_KEY, false);
+    paintAutoplay();
+  }
+  reader.loop = on;
+  storeFlag(REPEAT_KEY, on);
+  paintRepeat();
+}
+
+function setAutoplayNext(on: boolean): void {
+  autoplayNext = on;
+  if (on && repeatOne) {
+    repeatOne = false;
+    reader.loop = false;
+    storeFlag(REPEAT_KEY, false);
+    paintRepeat();
+  }
+  storeFlag(AUTOPLAY_KEY, on);
+  paintAutoplay();
 }
 
 function setGrade(next: GradeFilter): void {
@@ -503,7 +556,8 @@ function onAudioEnd(): void {
   paintPlay(false);
   const active = tabsFor(current())[tab];
   if (active && (active.id === "notes" || active.id === "gloss")) renderPanel();
-  if (!autoplayNext) return;
+  // 单首循环 restarts inside the player and must not also advance to the next poem.
+  if (repeatOne || !autoplayNext) return;
   const label = current().audio?.[trackIndex]?.label;
   if (!label) return;
   const nextId = nextAutoplayId(
@@ -936,13 +990,10 @@ function bind(): void {
     setGrade(next);
   });
   autoplayBtn.addEventListener("click", () => {
-    autoplayNext = !autoplayNext;
-    try {
-      localStorage.setItem(AUTOPLAY_KEY, autoplayNext ? "1" : "0");
-    } catch {
-      // Private mode can refuse storage. The toggle still works for this visit.
-    }
-    paintAutoplay();
+    setAutoplayNext(!autoplayNext);
+  });
+  repeatBtn.addEventListener("click", () => {
+    setRepeatOne(!repeatOne);
   });
   $<HTMLButtonElement>("sico").addEventListener("click", openSearch);
   queryInput.addEventListener("input", runSearch);
@@ -1036,7 +1087,9 @@ function boot(): void {
   gradeFilter = initial.grade;
   if (gradeFilter !== "all" && current().grade !== gradeFilter) gradeFilter = "all";
   paintGrades();
+  reader.loop = repeatOne;
   paintAutoplay();
+  paintRepeat();
   renderLeads();
   renderSoonList();
   showImage(current());

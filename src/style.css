@@ -333,7 +333,6 @@ header {
 .stage {
   display: grid;
   grid-template-columns: 56% 44%;
-  min-height: 640px;
   margin-top: 4px;
   overflow: hidden;
   border-radius: 22px;
@@ -341,9 +340,21 @@ header {
   box-shadow: 0 30px 80px -30px rgba(40, 30, 10, 0.45);
 }
 
+.visual {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
 .scene {
   position: relative;
-  min-height: 640px;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: clamp(300px, calc(100vh - 360px), 580px);
+  max-height: calc(100vh - 340px);
   overflow: hidden;
   background: #1c1a17;
 }
@@ -372,7 +383,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 48px 36px 120px;
+  padding: 48px 36px;
   text-align: center;
   color: #2c2824;
   pointer-events: none;
@@ -446,7 +457,7 @@ header {
   background: linear-gradient(90deg, transparent 68%, rgba(246, 241, 231, 0.38));
 }
 
-.hot, .player, .quiet-exit { z-index: 2; }
+.hot, .quiet-exit { z-index: 2; }
 
 .hot {
   position: absolute;
@@ -485,19 +496,22 @@ header {
 }
 
 .player {
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 22px;
+  position: relative;
+  flex: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
-  padding: 12px 18px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(20, 20, 20, 0.38);
+  gap: 4px 12px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 16px 10px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  background: #231f1c;
   color: #fff;
-  backdrop-filter: blur(14px);
+  border-radius: 0 0 22px 22px;
 }
 
 .pbtn {
@@ -520,7 +534,7 @@ header {
 }
 
 .tname {
-  flex: 0 1 168px;
+  flex: 1 1 120px;
   min-width: 0;
   overflow: hidden;
   font-size: 13px;
@@ -531,49 +545,101 @@ header {
 .tname.warn { color: #ffd7cf; }
 
 .bar {
-  flex: 1 1 80px;
-  height: 4px;
-  overflow: hidden;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  order: 3;
+  flex: 1 1 100%;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 44px;
+  border-radius: 0;
+  background: transparent;
   cursor: pointer;
+}
+
+.bar::before,
+.bar div {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 4px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.bar::before {
+  content: "";
+  right: 0;
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .bar div {
   width: 0;
-  height: 100%;
   background: #fff;
 }
 
 .mode {
   display: flex;
+  order: 4;
+  flex: 1 1 100%;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  max-width: 100%;
   font-size: 12px;
 }
 
 .mode button {
-  padding: 4px 0;
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
   border: 0;
-  border-bottom: 1px solid transparent;
   background: none;
   color: inherit;
   opacity: 0.85;
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.mode button.on { opacity: 1; border-bottom-color: #fff; }
+.mode button.on { opacity: 1; }
+
+.mode button.on::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 7px;
+  height: 1px;
+  background: #fff;
+}
+
+.loops {
+  order: 2;
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 100%;
+}
 
 .autoplay {
   flex: none;
-  padding: 4px 10px;
+  min-height: 44px;
+  padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 999px;
   background: transparent;
   color: inherit;
   font: inherit;
   font-size: 12px;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -595,8 +661,9 @@ header {
   cursor: pointer;
 }
 
-.scene.is-quiet .player,
 .scene.is-quiet .hot { opacity: 0; visibility: hidden; }
+
+.stage:has(.scene.is-quiet) .player { display: none; }
 
 .scene.is-quiet .quiet-exit { display: inline-flex; }
 
@@ -1147,10 +1214,16 @@ footer.site a { color: var(--accent); }
 
   .stage { grid-template-columns: 1fr; min-height: 0; }
 
-  .scene { min-height: 320px; }
+  .scene {
+    flex: none;
+    width: 100%;
+    min-height: 220px;
+    max-height: none;
+    height: clamp(220px, 52vw, 380px);
+  }
 
   .scene::after {
-    background: linear-gradient(180deg, transparent 62%, rgba(246, 241, 231, 0.5));
+    background: linear-gradient(180deg, transparent 78%, rgba(35, 31, 28, 0.28));
   }
 
   .paper { padding: 22px 16px 20px; }
@@ -1167,7 +1240,13 @@ footer.site a { color: var(--accent); }
 
   .grade-row { width: auto; margin: 0; padding: 10px 14px 12px; }
 
-  .player { left: 12px; right: 12px; gap: 8px; padding: 10px 12px; flex-wrap: wrap; }
+  .player {
+    gap: 2px 10px;
+    padding: 6px 12px 8px;
+    border-radius: 0;
+  }
+
+  .scene-plate { padding: 24px 18px; gap: 10px; }
 
   .tname { flex-basis: 108px; }
 

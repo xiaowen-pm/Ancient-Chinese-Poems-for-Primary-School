@@ -40,19 +40,24 @@
 
     <main>
       <section class="stage" id="stage">
-        <div class="scene" id="scene">
-          <img id="scene-img" alt="" />
-          <div class="scene-plate" id="scene-plate" hidden></div>
-          <canvas id="fx" aria-hidden="true"></canvas>
-          <div id="hots"></div>
-          <button class="quiet-exit" id="quiet-exit" type="button">返回伴读</button>
+        <div class="visual">
+          <div class="scene" id="scene">
+            <img id="scene-img" alt="" />
+            <div class="scene-plate" id="scene-plate" hidden></div>
+            <canvas id="fx" aria-hidden="true"></canvas>
+            <div id="hots"></div>
+            <button class="quiet-exit" id="quiet-exit" type="button">返回伴读</button>
+          </div>
           <div class="player" id="player">
             <button class="pbtn" id="play" type="button" aria-label="播放" aria-pressed="false">▶</button>
             <div class="tname" id="tname"></div>
             <div class="bar" id="seek" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="朗读进度">
               <div id="pr"></div>
             </div>
-            <button class="autoplay" id="autoplay" type="button" aria-pressed="false" title="播完这一首，自动播当前筛选里的下一首，仍用同一条朗读">连播</button>
+            <div class="loops">
+              <button class="autoplay" id="repeat-one" type="button" aria-pressed="false" title="播完当前这条朗读，从头再播这一首">单首循环</button>
+              <button class="autoplay" id="autoplay" type="button" aria-pressed="false" title="播完这一首，自动播当前筛选里的下一首，仍用同一条朗读">连播</button>
+            </div>
             <div class="mode" id="mode"></div>
           </div>
         </div>

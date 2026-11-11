@@ -8,6 +8,11 @@ type Handlers = {
 export class ReaderAudio {
   private audio = new Audio();
   private playing = false;
+  private looping = false;
+  /** Bumped whenever the source changes, so a late play() cannot start the new track. */
+  private epoch = 0;
+  /** Epoch of the latest requested play, or -1 when playback should stay stopped. */
+  private desiredPlay = -1;
   private handlers: Handlers;
 
   constructor(handlers: Handlers) {
@@ -22,6 +27,17 @@ export class ReaderAudio {
       this.handlers.onTime(this.audio.currentTime, Number.isFinite(this.audio.duration) ? this.audio.duration : 0);
     };
     this.audio.onended = () => {
+      if (this.looping) {
+        // Some browsers still emit `ended` when `loop` is set. Restart this
+        // element only; a newer load() bumps epoch and this play is ignored.
+        try {
+          this.audio.currentTime = 0;
+        } catch {
+          // The resource cannot seek yet. play() still restarts most files.
+        }
+        void this.startPlayback();
+        return;
+      }
       this.playing = false;
       this.handlers.onPlayState(false);
       this.handlers.onEnd();
@@ -40,7 +56,15 @@ export class ReaderAudio {
     return this.playing;
   }
 
+  /** Replay the current source from the start when it ends. Does not change tracks. */
+  set loop(on: boolean) {
+    this.looping = on;
+    this.audio.loop = on;
+  }
+
   load(src: string): void {
+    this.epoch += 1;
+    this.desiredPlay = -1;
     this.stop();
     this.audio.preload = "metadata";
     this.audio.src = src;
@@ -48,17 +72,7 @@ export class ReaderAudio {
 
   /** Start playback. Returns false when the browser blocks it, without treating that as a broken file. */
   async play(): Promise<boolean> {
-    if (!this.audio.src) return false;
-    try {
-      await this.audio.play();
-      this.playing = true;
-      this.handlers.onPlayState(true);
-      return true;
-    } catch {
-      this.playing = false;
-      this.handlers.onPlayState(false);
-      return false;
-    }
+    return this.startPlayback();
   }
 
   async toggle(): Promise<void> {
@@ -67,23 +81,40 @@ export class ReaderAudio {
       return;
     }
     if (this.playing) {
+      this.desiredPlay = -1;
       this.audio.pause();
       this.playing = false;
       this.handlers.onPlayState(false);
       return;
     }
+    const started = await this.startPlayback();
+    if (!started && this.desiredPlay === this.epoch) this.handlers.onError();
+  }
+
+  private async startPlayback(): Promise<boolean> {
+    if (!this.audio.src) return false;
+    const epoch = this.epoch;
+    this.desiredPlay = epoch;
     try {
       await this.audio.play();
-      this.playing = true;
-      this.handlers.onPlayState(true);
     } catch {
+      if (this.epoch !== epoch || this.desiredPlay !== epoch) return false;
       this.playing = false;
       this.handlers.onPlayState(false);
-      this.handlers.onError();
+      return false;
     }
+    if (this.epoch !== epoch || this.desiredPlay !== epoch) {
+      // A newer load asked for silence. Pause only if nothing newer requested play.
+      if (this.desiredPlay !== this.epoch) this.audio.pause();
+      return false;
+    }
+    this.playing = true;
+    this.handlers.onPlayState(true);
+    return true;
   }
 
   stop(): void {
+    this.desiredPlay = -1;
     this.audio.pause();
     this.playing = false;
     if (this.audio.src && this.audio.readyState > 0) {
